@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nourritour</string>
+    <string name="welcome_user">Hey, user !</string>
+    <string name="text_newList">NEW</string>
+    <string name="text_promoteList">PROMOTE</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
