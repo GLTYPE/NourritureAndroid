@@ -4,9 +4,14 @@
     <string name="app_name">Nurriture</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="input_username">Please input your username</string>
+    <string name="input_email">Please input your username</string>
     <string name="input_password">Please input your password</string>
     <string name="login">LOGIN</string>
     <string name="search">Search</string>
-
+	<string name="email">Email</string>  
+    <string name="password">Password</string>  
+    
+    <string name="remember">remember</string>  
+   
+    <string name="result">result</string> 
 </resources>

@@ -50,22 +50,25 @@ public final class R {
         public static final int usericon=0x7f020016;
     }
     public static final class id {
-        public static final int action_settings=0x7f090017;
-        public static final int btn_writer=0x7f090012;
-        public static final int emailText=0x7f09000c;
-        public static final int et_search=0x7f090011;
-        public static final int imageview=0x7f090014;
+        public static final int action_settings=0x7f09001a;
+        public static final int btn_login=0x7f090010;
+        public static final int btn_writer=0x7f090015;
+        public static final int chbx_rem=0x7f090011;
+        public static final int et_email=0x7f09000d;
+        public static final int et_pass=0x7f09000f;
+        public static final int et_search=0x7f090014;
+        public static final int imageview=0x7f090017;
         public static final int img_item_content_pic=0x7f090006;
         public static final int img_item_content_subpic=0x7f090008;
         public static final int img_item_userphoto=0x7f090002;
         public static final int layout_title_bar=0x7f090001;
-        public static final int loginButton=0x7f09000e;
-        public static final int loginPostButton=0x7f09000f;
-        public static final int lv_moment=0x7f090010;
-        public static final int lv_search=0x7f090013;
-        public static final int passwordText=0x7f09000d;
+        public static final int lv_moment=0x7f090013;
+        public static final int lv_search=0x7f090016;
         public static final int realtabcontent=0x7f090000;
-        public static final int textview=0x7f090015;
+        public static final int textview=0x7f090018;
+        public static final int tv_email=0x7f09000c;
+        public static final int tv_pass=0x7f09000e;
+        public static final int tv_result=0x7f090012;
         public static final int tx_item_time=0x7f090004;
         public static final int txt_item_comment=0x7f09000b;
         public static final int txt_item_content=0x7f090005;
@@ -73,7 +76,7 @@ public final class R {
         public static final int txt_item_redirect=0x7f09000a;
         public static final int txt_item_subcontent=0x7f090007;
         public static final int txt_item_uname=0x7f090003;
-        public static final int txt_title=0x7f090016;
+        public static final int txt_title=0x7f090019;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -91,10 +94,14 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
+        public static final int email=0x7f060007;
         public static final int hello_world=0x7f060002;
+        public static final int input_email=0x7f060003;
         public static final int input_password=0x7f060004;
-        public static final int input_username=0x7f060003;
         public static final int login=0x7f060005;
+        public static final int password=0x7f060008;
+        public static final int remember=0x7f060009;
+        public static final int result=0x7f06000a;
         public static final int search=0x7f060006;
     }
     public static final class style {

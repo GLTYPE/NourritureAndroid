@@ -1,35 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <EditText
-        android:id="@+id/emailText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:hint="@string/input_username"
-       />
-
-    <EditText
-        android:id="@+id/passwordText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:hint="@string/input_password"
-       android:inputType="textPassword"
-       />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:onClick="onClick" />
-     <Button
-        android:id="@+id/loginPostButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:onClick="onClick_Post" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+        xmlns:tools="http://schemas.android.com/tools"  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        tools:context="${packageName}.${activityClass}" >  
+      
+        <TextView  
+            android:id="@+id/tv_email"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:textSize="20sp"  
+            android:layout_alignBaseline="@+id/et_email"  
+            android:text="@string/email" />  
+       
+          
+        <EditText  
+            android:id="@+id/et_email"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_alignParentRight="true"  
+            android:layout_toRightOf="@+id/tv_email"  
+            android:hint="@string/input_email" />  
+      
+          
+          
+       <TextView  
+            android:id="@+id/tv_pass"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_alignBaseline="@+id/et_pass"  
+            android:layout_below="@+id/tv_email"  
+            android:textSize="20sp"  
+            android:text="@string/password" />  
+      
+          
+        <EditText  
+            android:id="@+id/et_pass"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_alignParentRight="true"  
+            android:layout_toRightOf="@+id/tv_pass"  
+            android:layout_below="@+id/et_email"  
+            android:hint="@string/input_password" />  
+          
+          
+        <Button   
+            android:id="@+id/btn_login"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_marginTop="30dp"  
+            android:layout_below="@+id/tv_pass"  
+            android:onClick="login"  
+            android:text="@string/login"/>  
+          
         
-</LinearLayout>
+        <CheckBox   
+            android:id="@+id/chbx_rem"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_alignBaseline="@+id/btn_login"  
+            android:layout_marginLeft="50dp"  
+            android:layout_below="@+id/et_pass"  
+            android:layout_toRightOf="@+id/btn_login"  
+            android:text="@string/remember"/>  
+      
+      
+        <TextView   
+            android:id="@+id/tv_result"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_alignParentBottom="true"  
+            android:text="@string/result"/>  
+       
+      
+    </RelativeLayout>  
