@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <!-- welcome the user with username ['user' as defualt] -->
+    <TextView android:id="@+id/welcome_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:gravity="end"
+        android:text="@string/welcome_user" />
+    
+    <!--  show the newest videos(recipies moments) in Database -->
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="@string/text_newList"/>
+    
+    <GridView android:id="@+id/home_view_newList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:numColumns="3">
+        
+    </GridView>
+    
+    <!-- show the video list of promote (user like most; supplier promote; gastronomist promote) -->
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="@string/text_promoteList"/>
+    
+    <GridView android:id="@+id/home_view_promoteList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:numColumns="3">
+        
+    </GridView>
+</LinearLayout>

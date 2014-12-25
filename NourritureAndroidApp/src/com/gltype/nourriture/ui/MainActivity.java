@@ -1,19 +1,18 @@
 package com.gltype.nourriture.ui;
 
-
 import com.gltype.nurriture.R;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 
 import android.widget.TextView;
-
-import android.widget.TabHost.TabSpec;
 
 
 public class MainActivity extends FragmentActivity{	
@@ -23,51 +22,46 @@ public class MainActivity extends FragmentActivity{
 
 	private LayoutInflater layoutInflater;
 	
-	private Class fragmentArray[] = {HomeActivity.class,SearchActivity.class,MomentActivity.class};
-
-	private int mImageViewArray[] = {R.drawable.tab_home_btn,R.drawable.tab_square_btn,R.drawable.tab_selfinfo_btn};
-	
-
-	private String mTextviewArray[] = {"Home", "Search","Moment"};
+	private int tabId[] = {R.string.Tab_HOME,R.string.Tab_MOMENTS,
+			R.string.Tab_SEARCH,R.string.Tab_PROFILE};
+	private int tabSrcId[] = {R.drawable.tab_icon_home,R.drawable.tab_icon_moments,
+			R.drawable.tab_icon_search,R.drawable.tab_icon_profile};	
+	private String tabSpecs[] = {"HOME","MOMENTS","SEARCH","PROFILE"};
+	private Class FClassArray[] = {HomeFragment.class,MomentFragment.class,
+			SearchFragment.class,ProfileFragment.class};
 	
 	public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_startup);
         initView();
     }
-	 
-	
+	 	
 	private void initView(){
 		
-		layoutInflater = LayoutInflater.from(this);
-				
+		layoutInflater = LayoutInflater.from(this);	
 	
-		mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
-		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);	
+		mTabHost = (FragmentTabHost)findViewById(R.id.startup_tabHost);
+		mTabHost.setup(this, getSupportFragmentManager(), R.id.fragment_content);	
 
-		int count = fragmentArray.length;	
+		int count = FClassArray.length;	
 				
-		for(int i = 0; i < count; i++){	
-	
-			TabSpec tabSpec = mTabHost.newTabSpec(mTextviewArray[i]).setIndicator(getTabItemView(i));
-		
-			mTabHost.addTab(tabSpec, fragmentArray[i], null);
-			
-			mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selector_tab_background);
-		}
+		for(int i = 0; i < count; ++i) {
+    		mTabHost.addTab(mTabHost.newTabSpec(tabSpecs[i]).setIndicator(
+            		getTabIndicator(mTabHost.getContext(), tabId[i], tabSrcId[i])),
+            		FClassArray[i], null);
+    	}
 	}
-
 	
-	private View getTabItemView(int index){
-		View view = layoutInflater.inflate(R.layout.tab_item_view, null);
-	
-		ImageView imageView = (ImageView) view.findViewById(R.id.imageview);
-		imageView.setImageResource(mImageViewArray[index]);
-		
-		TextView textView = (TextView) view.findViewById(R.id.textview);		
-		textView.setText(mTextviewArray[index]);
-	
-		return view;
+	private View getTabIndicator(Context context, int title, int icon) {
+    	View view = layoutInflater.inflate(R.layout.layout_tabs, null);
+    	
+    	ImageView imgView = (ImageView) view.findViewById(R.id.tab_image);
+    	imgView.setImageResource(icon);
+    	TextView tView = (TextView) view.findViewById(R.id.tab_text);
+    	tView.setText(title);
+    	   	
+    	return view;
 	}
 }

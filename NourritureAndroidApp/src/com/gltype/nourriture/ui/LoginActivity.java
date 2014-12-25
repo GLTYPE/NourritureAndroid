@@ -13,7 +13,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;  
 import android.text.TextUtils;  
+import android.view.LayoutInflater;
 import android.view.View;  
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;  
 import android.widget.TextView;  
 import android.widget.Toast;  
@@ -21,39 +24,48 @@ import android.widget.Toast;
 public class LoginActivity extends Activity {
 	private EditText et_email;
 	private EditText et_password;
-	 private TextView tv_result;
+	private TextView tv_result;
+	private Button loginBtn;
+	private Button signupBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
-		et_email=(EditText) findViewById(R.id.et_email);
-		et_password=(EditText) findViewById(R.id.et_pass);
-		tv_result = (TextView) findViewById(R.id.tv_result); 
+		et_email=(EditText) findViewById(R.id.user_email);
+		et_password=(EditText) findViewById(R.id.password);
+		tv_result = (TextView) findViewById(R.id.tv_result);
+		loginBtn = (Button) findViewById(R.id.loginButton);
+		signupBtn = (Button) findViewById(R.id.signupButton);
 		
-	}
-	public void login(View v) {  
-       
-        int id = v.getId();  
-       
-        switch (id) {  
-        case R.id.btn_login:  
-           
-            String userName = et_email.getText().toString(); 
-            String userPass = et_password.getText().toString();  
-           
-            if (TextUtils.isEmpty(userName.trim())  
-                    || TextUtils.isEmpty(userPass.trim())) {  
-                Toast.makeText(this, "Email or Password can't be empty", Toast.LENGTH_LONG).show();  
-            } else {  
-                
-                loginByAsyncHttpClientPost(userName, userPass);  
-                //loginByAsyncHttpClientGet(userName, userPass);  
-            }  
-            break;  
-        }  
-    }  
-  
+		loginBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String userName = et_email.getText().toString(); 
+	            String userPass = et_password.getText().toString();  
+	           
+	            if (TextUtils.isEmpty(userName.trim())  
+	                    || TextUtils.isEmpty(userPass.trim())) {  
+	                Toast.makeText(v.getContext(), "Email or Password can't be empty", Toast.LENGTH_LONG).show();  
+	            } else {  
+	                
+	                loginByAsyncHttpClientPost(userName, userPass);  
+	                //loginByAsyncHttpClientGet(userName, userPass);  
+	            }				
+			}
+		});	
+		
+		//test
+		signupBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+				startActivity(intent);				
+			}
+		});
+	}  
    
     public void loginByAsyncHttpClientPost(String userName, String userPass) {  
         AsyncHttpClient client = new AsyncHttpClient(); 

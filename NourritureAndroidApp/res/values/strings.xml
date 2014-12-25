@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Nurriture</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="input_email">Please input your username</string>
+    <string name="app_name">Nourritour</string>
+        
+    <!-- LOGIN -->
+	<string name="username">USERNAME</string>
+	<string name="password">PASSWORD</string>  
+    <string name="login">LOG IN</string> 
+    <string name="signup">SIGN UP</string>    
+    <string name="email">Email</string>
+    <string name="remember">remember your state</string>
+    <string name="result">result</string>  
+    <string name="input_username">Please input your username</string>
+    <string name="input_email">Please input your email</string>
     <string name="input_password">Please input your password</string>
-    <string name="login">LOGIN</string>
-    <string name="search">Search</string>
-	<string name="email">Email</string>  
-    <string name="password">Password</string>  
     
-    <string name="remember">remember</string>  
-   
-    <string name="result">result</string> 
+    <!-- NAME of the fragments -->
+    <string name="Tab_HOME">Home</string>
+    <string name="Tab_MOMENTS">Moments</string>
+    <string name="Tab_SEARCH">Search</string>
+    <string name="Tab_PROFILE">Profile</string>
+
+    <!-- ICON image contextDescription -->
+    <string name="icon_user_like">icon_like</string>
+    <string name="icon_recipes">icon_recipes</string>
+    <string name="icon_moments">icon_moments</string>
+
+    <!-- Home Page -->
+    <string name="welcome_user">Hey, user !</string>
+    <string name="text_newList">NEW</string>
+    <string name="text_promoteList">PROMOTE</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+
+    <!-- Profile Page -->
+    <string name="profile_user_avatar">user_avatar</string>
+    <string name="profile_username">username</string>
+    <string name="profile_userlevel">level</string>
+    <string name="text_user_like">I Like</string>
+    <string name="text_user_recipes">My Recipes</string>
+    <string name="text_user_moments">My Moments</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_fragment__home">Fragment_Home</string>
+
+    <!-- Search Page -->
+    <string name="search_btn_name">Search!</string>
+    <string name="search_txt_hint">What do you want?</string>
+
 </resources>
