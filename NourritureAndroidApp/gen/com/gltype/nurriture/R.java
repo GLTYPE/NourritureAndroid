@@ -26,46 +26,40 @@ public final class R {
     }
     public static final class drawable {
         public static final int avatar_tomato=0x7f020000;
-        public static final int browser=0x7f020001;
-        public static final int camera=0x7f020002;
-        public static final int comment_icon=0x7f020003;
-        public static final int home_btn_bg=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int icon_home_nor=0x7f020006;
-        public static final int icon_home_sel=0x7f020007;
-        public static final int icon_ilike=0x7f020008;
-        public static final int icon_meassage_nor=0x7f020009;
-        public static final int icon_meassage_sel=0x7f02000a;
-        public static final int icon_more_nor=0x7f02000b;
-        public static final int icon_more_sel=0x7f02000c;
-        public static final int icon_myrecipe=0x7f02000d;
-        public static final int icon_selfinfo_nor=0x7f02000e;
-        public static final int icon_selfinfo_sel=0x7f02000f;
-        public static final int icon_square_nor=0x7f020010;
-        public static final int icon_square_sel=0x7f020011;
-        public static final int lock=0x7f020012;
-        public static final int maintab_toolbar_bg=0x7f020013;
-        public static final int message=0x7f020014;
-        public static final int music=0x7f020015;
-        public static final int phone=0x7f020016;
-        public static final int popup=0x7f020017;
-        public static final int redirect_icon=0x7f020018;
-        public static final int selector_tab_background=0x7f020019;
-        public static final int tab_home_btn=0x7f02001a;
-        public static final int tab_icon_home=0x7f02001b;
-        public static final int tab_icon_moments=0x7f02001c;
-        public static final int tab_icon_profile=0x7f02001d;
-        public static final int tab_icon_search=0x7f02001e;
-        public static final int tab_indicator=0x7f02001f;
-        public static final int tab_message_btn=0x7f020020;
-        public static final int tab_more_btn=0x7f020021;
-        public static final int tab_selected_bg=0x7f020022;
-        public static final int tab_selfinfo_btn=0x7f020023;
-        public static final int tab_square_btn=0x7f020024;
-        public static final int tab_stat_selected=0x7f020025;
-        public static final int tab_stat_unselected=0x7f020026;
-        public static final int tab_unselected_bg=0x7f020027;
-        public static final int usericon=0x7f020028;
+        public static final int comment_icon=0x7f020001;
+        public static final int home_btn_bg=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int icon_home_nor=0x7f020004;
+        public static final int icon_home_sel=0x7f020005;
+        public static final int icon_ilike=0x7f020006;
+        public static final int icon_meassage_nor=0x7f020007;
+        public static final int icon_meassage_sel=0x7f020008;
+        public static final int icon_more_nor=0x7f020009;
+        public static final int icon_more_sel=0x7f02000a;
+        public static final int icon_myrecipe=0x7f02000b;
+        public static final int icon_selfinfo_nor=0x7f02000c;
+        public static final int icon_selfinfo_sel=0x7f02000d;
+        public static final int icon_square_nor=0x7f02000e;
+        public static final int icon_square_sel=0x7f02000f;
+        public static final int maintab_toolbar_bg=0x7f020010;
+        public static final int popup=0x7f020011;
+        public static final int redirect_icon=0x7f020012;
+        public static final int selector_tab_background=0x7f020013;
+        public static final int tab_home_btn=0x7f020014;
+        public static final int tab_icon_home=0x7f020015;
+        public static final int tab_icon_moments=0x7f020016;
+        public static final int tab_icon_profile=0x7f020017;
+        public static final int tab_icon_search=0x7f020018;
+        public static final int tab_indicator=0x7f020019;
+        public static final int tab_message_btn=0x7f02001a;
+        public static final int tab_more_btn=0x7f02001b;
+        public static final int tab_selected_bg=0x7f02001c;
+        public static final int tab_selfinfo_btn=0x7f02001d;
+        public static final int tab_square_btn=0x7f02001e;
+        public static final int tab_stat_selected=0x7f02001f;
+        public static final int tab_stat_unselected=0x7f020020;
+        public static final int tab_unselected_bg=0x7f020021;
+        public static final int usericon=0x7f020022;
     }
     public static final class id {
         public static final int action_settings=0x7f090027;
@@ -199,5 +193,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int theme_fullScreen=0x7f070002;
+        public static final int theme_noTitle=0x7f070003;
     }
 }

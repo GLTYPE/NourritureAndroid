@@ -69,7 +69,7 @@ public class LoginActivity extends Activity {
    
     public void loginByAsyncHttpClientPost(String userName, String userPass) {  
         AsyncHttpClient client = new AsyncHttpClient(); 
-        String url = "http://172.29.64.31:8000/HelloWorld/servlet/LoginServlet"; 
+        String url = "http://172.31.14.212:8000/HelloWorld/servlet/LoginServlet"; 
 
         RequestParams params = new RequestParams();  
         params.put("email", userName);  
@@ -81,9 +81,10 @@ public class LoginActivity extends Activity {
             public void onSuccess(int statusCode, Header[] headers,  
                     byte[] responseBody) {  
                 if (statusCode == 200) {  
-                    //tv_result.setText(new String(responseBody)); 
+                    
                    String resResult = new String(responseBody);
                     if("Login Success".equals(resResult)){
+                    	tv_result.setText(resResult); 
                     	Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     	startActivity(intent);
                     }

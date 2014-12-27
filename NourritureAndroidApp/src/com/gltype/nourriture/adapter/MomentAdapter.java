@@ -2,6 +2,7 @@ package com.gltype.nourriture.adapter;
 
 import java.util.List;
 
+import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nurriture.R;
 
@@ -25,19 +26,19 @@ public class MomentAdapter extends BaseAdapter {
 	}
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
+	
 		return moments==null?0:moments.size();
 	}
 
 	@Override
 	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
+		
 		return moments==null?null:moments.get(arg0);
 	}
 
 	@Override
 	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
+		
 		return moments.get(arg0).getId();
 	}
 
@@ -56,10 +57,11 @@ public class MomentAdapter extends BaseAdapter {
 			holder.txt_item_uname = (TextView) view.findViewById(R.id.txt_item_uname);
 			
 			holder.txt_item_content= (TextView) view.findViewById(R.id.txt_item_content);
-			
+			holder.img_item_userphoto= (ImageView) view.findViewById(R.id.img_item_userphoto);
 			holder.txt_item_uname.setText(moment.getUsername());
 			holder.txt_item_content.setText(moment.getContent());
 			
+		//	SimpleImageLoader.showImg(holder.img_item_userphoto,moment.getPictureurl());
 		}
 		return view;
 	}

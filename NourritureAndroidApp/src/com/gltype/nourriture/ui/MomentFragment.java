@@ -14,6 +14,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ListView;
 
 public class MomentFragment extends Fragment {
@@ -36,8 +38,8 @@ public class MomentFragment extends Fragment {
 		
 		
 		List<Moment> moments = new ArrayList<Moment>();
-		Moment m1 = new Moment("aaaaa","asdfhkjhgfdsaf");
-		Moment m2 = new Moment("bbbbb","asdfhkjhgfdsaf");
+		Moment m1 = new Moment("aaaaa","asdfhkjhgfdsaf","http://p1.wmpic.me/article/2014/12/15/1418613396_lVMetWEM.jpeg");
+		Moment m2 = new Moment("bbbbb","asdfhkjhgfdsaf","http://p1.wmpic.me/article/2014/12/12/1418364498_xKxQwHOQ.jpg");
 		moments.add(m1);
 		moments.add(m2);
 		

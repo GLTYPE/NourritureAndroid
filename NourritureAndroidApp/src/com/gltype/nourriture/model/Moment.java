@@ -6,12 +6,21 @@ public class Moment {
 	
 	private String content;
 	private String time;
+	private String pictureurl;
 	public Moment(){
 		
 	}
-	public Moment(String username,String content){
+	public Moment(String username,String content,String pictureurl){
 		this.username = username;
 		this.content = content;
+		this.pictureurl = pictureurl;
+	}
+	
+	public String getPictureurl() {
+		return pictureurl;
+	}
+	public void setPictureurl(String pictureurl) {
+		this.pictureurl = pictureurl;
 	}
 	public int getId() {
 		return id;
