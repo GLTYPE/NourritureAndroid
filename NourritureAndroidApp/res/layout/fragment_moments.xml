@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     >
-
+<include android:id="@+id/moment_progress" layout="@layout/progress"/>
     <ListView
         android:id="@+id/moments_list"
         android:layout_width="match_parent"

@@ -1,7 +1,12 @@
 package com.gltype.nourriture.ui;
 
 
+import java.io.UnsupportedEncodingException;
+
 import org.apache.http.Header;
+import org.apache.http.entity.StringEntity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.gltype.nurriture.R; 
 
@@ -27,6 +32,7 @@ public class LoginActivity extends Activity {
 	private TextView tv_result;
 	private Button loginBtn;
 	private Button signupBtn;
+	private View progresView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,7 @@ public class LoginActivity extends Activity {
 		tv_result = (TextView) findViewById(R.id.tv_result);
 		loginBtn = (Button) findViewById(R.id.loginButton);
 		signupBtn = (Button) findViewById(R.id.signupButton);
+		//progresView = findViewById(R.id.login_progress);
 		
 		loginBtn.setOnClickListener(new OnClickListener() {
 			
@@ -52,6 +59,7 @@ public class LoginActivity extends Activity {
 	                
 	                loginByAsyncHttpClientPost(userName, userPass);  
 	                //loginByAsyncHttpClientGet(userName, userPass);  
+	            	
 	            }				
 			}
 		});	
@@ -61,46 +69,60 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 				startActivity(intent);				
 			}
 		});
 	}  
    
     public void loginByAsyncHttpClientPost(String userName, String userPass) {  
-        AsyncHttpClient client = new AsyncHttpClient(); 
-        String url = "http://172.31.14.212:8000/HelloWorld/servlet/LoginServlet"; 
+    	 AsyncHttpClient client = new AsyncHttpClient(); 
+         String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/connect"; 
 
-        RequestParams params = new RequestParams();  
-        params.put("email", userName);  
-        params.put("password", userPass);
+         JSONObject jsonObject = new JSONObject();
+         try {
+			jsonObject.put("email", userName);  
+			 jsonObject.put("password", userPass);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         StringEntity stringEntity = null; 
+         try {
+			stringEntity = new StringEntity(jsonObject.toString());
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
+         client.post(LoginActivity.this, url, stringEntity, "application/json",  new AsyncHttpResponseHandler() {  
+          
+             @Override  
+             public void onSuccess(int statusCode, Header[] headers,  
+                     byte[] responseBody) {  
+                // if (statusCode == 200) {  
+                     
+                    String resResult = new String(responseBody);
+                  
+                     	tv_result.setText(resResult); 
+                     	Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                     	startActivity(intent);
+                     	//progresView.setVisibility(View.GONE);
+                   
+             }  
+   
+            
+             @Override  
+             public void onFailure(int statusCode, Header[] headers,  
+                     byte[] responseBody, Throwable error) {  
+             	// System.out.println("F-----------------"+statusCode);
+             	 String resResult = new String(responseBody);
+             	 //System.out.println("F-----------------"+resResult); 
+             	tv_result.setText(resResult); 
+                 error.printStackTrace();
+             }  
+         });  
        
-        client.post(url, params, new AsyncHttpResponseHandler() {  
-           
-            @Override  
-            public void onSuccess(int statusCode, Header[] headers,  
-                    byte[] responseBody) {  
-                if (statusCode == 200) {  
-                    
-                   String resResult = new String(responseBody);
-                    if("Login Success".equals(resResult)){
-                    	tv_result.setText(resResult); 
-                    	Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    	startActivity(intent);
-                    }
-                    else{
-                    	 tv_result.setText("Wrong Email or Password");
-                    }
-                }  
-            }  
-  
-           
-            @Override  
-            public void onFailure(int statusCode, Header[] headers,  
-                    byte[] responseBody, Throwable error) {  
-                error.printStackTrace();
-            }  
-        });  
     }  
   
     

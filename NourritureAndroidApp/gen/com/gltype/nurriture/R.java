@@ -42,65 +42,73 @@ public final class R {
         public static final int icon_square_nor=0x7f02000e;
         public static final int icon_square_sel=0x7f02000f;
         public static final int maintab_toolbar_bg=0x7f020010;
-        public static final int popup=0x7f020011;
-        public static final int redirect_icon=0x7f020012;
-        public static final int selector_tab_background=0x7f020013;
-        public static final int tab_home_btn=0x7f020014;
-        public static final int tab_icon_home=0x7f020015;
-        public static final int tab_icon_moments=0x7f020016;
-        public static final int tab_icon_profile=0x7f020017;
-        public static final int tab_icon_search=0x7f020018;
-        public static final int tab_indicator=0x7f020019;
-        public static final int tab_message_btn=0x7f02001a;
-        public static final int tab_more_btn=0x7f02001b;
-        public static final int tab_selected_bg=0x7f02001c;
-        public static final int tab_selfinfo_btn=0x7f02001d;
-        public static final int tab_square_btn=0x7f02001e;
-        public static final int tab_stat_selected=0x7f02001f;
-        public static final int tab_stat_unselected=0x7f020020;
-        public static final int tab_unselected_bg=0x7f020021;
-        public static final int usericon=0x7f020022;
+        public static final int myprogress=0x7f020011;
+        public static final int popup=0x7f020012;
+        public static final int progress=0x7f020013;
+        public static final int redirect_icon=0x7f020014;
+        public static final int selector_tab_background=0x7f020015;
+        public static final int tab_home_btn=0x7f020016;
+        public static final int tab_icon_home=0x7f020017;
+        public static final int tab_icon_moments=0x7f020018;
+        public static final int tab_icon_profile=0x7f020019;
+        public static final int tab_icon_search=0x7f02001a;
+        public static final int tab_indicator=0x7f02001b;
+        public static final int tab_message_btn=0x7f02001c;
+        public static final int tab_more_btn=0x7f02001d;
+        public static final int tab_selected_bg=0x7f02001e;
+        public static final int tab_selfinfo_btn=0x7f02001f;
+        public static final int tab_square_btn=0x7f020020;
+        public static final int tab_stat_selected=0x7f020021;
+        public static final int tab_stat_unselected=0x7f020022;
+        public static final int tab_unselected_bg=0x7f020023;
+        public static final int usericon=0x7f020024;
     }
     public static final class id {
-        public static final int action_settings=0x7f090027;
-        public static final int chbx_rem=0x7f090022;
-        public static final int edit_profile=0x7f090004;
-        public static final int fragment_content=0x7f09001b;
+        public static final int action_settings=0x7f09002d;
+        public static final int chbx_rem=0x7f090023;
+        public static final int edit_profile=0x7f090005;
+        public static final int et_email=0x7f09002a;
+        public static final int et_firstname=0x7f090028;
+        public static final int et_lastname=0x7f090029;
+        public static final int et_password=0x7f09002b;
+        public static final int et_role=0x7f09002c;
+        public static final int fragment_content=0x7f09001c;
         public static final int home_view_newList=0x7f090001;
         public static final int home_view_promoteList=0x7f090002;
-        public static final int icon_moments=0x7f09000d;
-        public static final int icon_recipe=0x7f09000b;
-        public static final int icon_user_like=0x7f090009;
-        public static final int img_item_content_pic=0x7f090015;
-        public static final int img_item_content_subpic=0x7f090017;
-        public static final int img_item_userphoto=0x7f090011;
-        public static final int loginButton=0x7f090023;
-        public static final int moments_list=0x7f090003;
-        public static final int navigation_tab=0x7f09001d;
-        public static final int password=0x7f090021;
-        public static final int profile_avatar=0x7f090006;
-        public static final int profile_userlevel=0x7f090008;
-        public static final int profile_username=0x7f090007;
-        public static final int search_btn=0x7f090010;
-        public static final int search_text=0x7f09000f;
-        public static final int signupButton=0x7f090024;
-        public static final int startup_tabHost=0x7f09001c;
-        public static final int tab_image=0x7f09001e;
-        public static final int tab_text=0x7f09001f;
-        public static final int text_moments=0x7f09000e;
-        public static final int text_recipe=0x7f09000c;
-        public static final int text_user_like=0x7f09000a;
-        public static final int tv_result=0x7f090025;
-        public static final int tx_item_time=0x7f090013;
-        public static final int txt_item_comment=0x7f09001a;
-        public static final int txt_item_content=0x7f090014;
-        public static final int txt_item_from=0x7f090018;
-        public static final int txt_item_redirect=0x7f090019;
-        public static final int txt_item_subcontent=0x7f090016;
-        public static final int txt_item_uname=0x7f090012;
-        public static final int user_email=0x7f090020;
-        public static final int user_info=0x7f090005;
-        public static final int username=0x7f090026;
+        public static final int icon_moments=0x7f09000e;
+        public static final int icon_recipe=0x7f09000c;
+        public static final int icon_user_like=0x7f09000a;
+        public static final int img_item_content_pic=0x7f090016;
+        public static final int img_item_content_subpic=0x7f090018;
+        public static final int img_item_userphoto=0x7f090012;
+        public static final int loginButton=0x7f090024;
+        public static final int moment_progress=0x7f090003;
+        public static final int moments_list=0x7f090004;
+        public static final int navigation_tab=0x7f09001e;
+        public static final int password=0x7f090022;
+        public static final int pg_progress=0x7f090027;
+        public static final int profile_avatar=0x7f090007;
+        public static final int profile_userlevel=0x7f090009;
+        public static final int profile_username=0x7f090008;
+        public static final int search_btn=0x7f090011;
+        public static final int search_text=0x7f090010;
+        public static final int signupButton=0x7f090025;
+        public static final int startup_tabHost=0x7f09001d;
+        public static final int tab_image=0x7f09001f;
+        public static final int tab_text=0x7f090020;
+        public static final int text_moments=0x7f09000f;
+        public static final int text_recipe=0x7f09000d;
+        public static final int text_user_like=0x7f09000b;
+        public static final int tv_result=0x7f090026;
+        public static final int tx_item_time=0x7f090014;
+        public static final int txt_item_comment=0x7f09001b;
+        public static final int txt_item_content=0x7f090015;
+        public static final int txt_item_from=0x7f090019;
+        public static final int txt_item_redirect=0x7f09001a;
+        public static final int txt_item_subcontent=0x7f090017;
+        public static final int txt_item_uname=0x7f090013;
+        public static final int user_email=0x7f090021;
+        public static final int user_info=0x7f090006;
         public static final int welcome_user=0x7f090000;
     }
     public static final class layout {
@@ -112,7 +120,8 @@ public final class R {
         public static final int layout_startup=0x7f030005;
         public static final int layout_tabs=0x7f030006;
         public static final int login=0x7f030007;
-        public static final int sign_up=0x7f030008;
+        public static final int progress=0x7f030008;
+        public static final int sign_up=0x7f030009;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -137,6 +146,7 @@ public final class R {
         public static final int input_email=0x7f060009;
         public static final int input_password=0x7f06000a;
         public static final int input_username=0x7f060008;
+        public static final int loading=0x7f060023;
         public static final int login=0x7f060003;
         public static final int password=0x7f060002;
         /**  Profile Page 
@@ -193,7 +203,8 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
-        public static final int theme_fullScreen=0x7f070002;
-        public static final int theme_noTitle=0x7f070003;
+        public static final int myProgressStyle=0x7f070002;
+        public static final int theme_fullScreen=0x7f070003;
+        public static final int theme_noTitle=0x7f070004;
     }
 }

@@ -48,5 +48,10 @@
     <!-- Search Page -->
     <string name="search_btn_name">Search!</string>
     <string name="search_txt_hint">What do you want?</string>
+    
+    
+    
+    
+     <string name="loading">loading...</string>
 
 </resources>

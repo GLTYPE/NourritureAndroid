@@ -4,48 +4,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/username"/>
+   
 	    <EditText
-			android:id="@+id/username"
+			android:id="@+id/et_firstname"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="firstname"/>	    
+  <EditText
+			android:id="@+id/et_lastname"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="lastname"/>	  
+			<EditText
+			android:id="@+id/et_email"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="email"/>	    
+			<EditText
+			android:id="@+id/et_password"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:hint="@string/input_username"/>	    
-    </LinearLayout>
-	<LinearLayout 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal">
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password"/>
-	    <EditText
-	       android:id="@+id/password"
-	       android:layout_width="match_parent"
-	       android:layout_height="wrap_content"
-	       android:hint="@string/input_password"
-	       android:inputType="textPassword"/>
-	</LinearLayout>
-	
-	<LinearLayout android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal">
-	    <Button
-	        android:id="@+id/loginButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/login"
-	        android:onClick="onClick" />
+			<EditText
+			android:id="@+id/et_role"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="role"/>	     
 	    <Button
 	        android:id="@+id/signupButton"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/signup" />
-     </LinearLayout>
-        
+    
 </LinearLayout>
