@@ -8,7 +8,7 @@
     android:layout_marginTop="5dp"
     >
     <ImageView  
-        android:id="@+id/img_home_product"
+        android:id="@+id/img_item"
         android:layout_width="60dp"
         android:layout_height="50dp"  
         android:layout_gravity="center"
@@ -17,7 +17,7 @@
        
        />
     <TextView  
-        android:id="@+id/tv_home_productname"
+        android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"  
         android:layout_gravity="center"

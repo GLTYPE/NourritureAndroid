@@ -56,26 +56,13 @@ public class HomeFragment extends Fragment {
 		 promotegridView.setVerticalSpacing(25);
 		 refresh();
 		 
-		 
-			 
-	
-		 
-		return view;
-	}	
-	
+		 return view;
+	}
 	
 	public void refresh()
-	{
+	{		
+		getProductsByAsyncHttpClientGet();		
 		
-		getProductsByAsyncHttpClientGet();
-		
-		
-//		products = new ArrayList<Product>();
-//		 Product product = new Product("aaaaaa");
-//		 Product product1 = new Product("aaaaaa");
-//		
-//		 products.add(product);
-//		 products.add(product1);
 		HomeProductAdapter adapter = new HomeProductAdapter(context, products);
 		newgridView.setAdapter(adapter);
 		promotegridView.setAdapter(adapter);
@@ -92,21 +79,15 @@ public class HomeFragment extends Fragment {
 				  startActivity(intent);
 				
 			}
-		});
+		});	
 		
-		
-	}
-
-
-	
+	}	
 	 public void getProductsByAsyncHttpClientGet() {  	
 	        AsyncHttpClient client = new AsyncHttpClient();
 	        
-	  	        String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/products"; 
+	        String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/products"; 
    
-	        client.get(url,new JsonHttpResponseHandler() {     
-	        
-	        
+	        client.get(url,new JsonHttpResponseHandler() {     	        
 	        	 @Override
 	        	public void onSuccess(int statusCode, Header[] headers,
 	        			JSONArray response) {
@@ -116,27 +97,25 @@ public class HomeFragment extends Fragment {
 						if(response.length()<=9){
 							for(int i=0; i<response.length();i++){
 								jsonObject= response.getJSONObject(i);
-							 String productname= jsonObject.getString("name");
-							 String img= jsonObject.getString("picture");
-							
-							 Product product = new Product(productname);
-							 product.setPicture(img);
-							 product.setProductid(jsonObject.getString("_id"));
-							 product.setDescription(jsonObject.getString("description"));
-							 product.setValue(jsonObject.getString("values"));
-							 product.setBrand(jsonObject.getString("brand"));
-							 products.add(product);
-						
+								String productname= jsonObject.getString("name");
+								String img= jsonObject.getString("picture");
+								Product product = new Product(productname);
+								product.setPicture(img);
+								product.setProductid(jsonObject.getString("_id"));
+								product.setDescription(jsonObject.getString("description"));
+								product.setValue(jsonObject.getString("values"));
+								product.setBrand(jsonObject.getString("brand"));
+								products.add(product);
 							}
 						}else{
 							for(int i=0; i<9;i++){
 								jsonObject= response.getJSONObject(i);
-							 String productname= jsonObject.getString("name");
-							 String img= jsonObject.getString("picture");
-							
-							 Product product = new Product(productname);
-							 product.setPicture(img);
-							 products.add(product);
+								 String productname= jsonObject.getString("name");
+								 String img= jsonObject.getString("picture");
+								
+								 Product product = new Product(productname);
+								 product.setPicture(img);
+								 products.add(product);
 							}
 						}
 					} catch (JSONException e) {
@@ -157,7 +136,7 @@ public class HomeFragment extends Fragment {
 
 	 public void getUserByAsyncHttpClientGet(String email) {  	
 	        AsyncHttpClient client = new AsyncHttpClient();  
-	  	        String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/mail/"+email; 
+	  	    String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/mail/"+email; 
       
 	        client.get(url,new JsonHttpResponseHandler() {            
 	        	 @Override

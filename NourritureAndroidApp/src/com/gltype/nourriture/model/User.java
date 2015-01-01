@@ -1,25 +1,29 @@
 package com.gltype.nourriture.model;
 
 public class User {
+	private String userId;
 	private String email;
 	private String password;
 	private String firstname;
 	private String lastname;
-	private String role;
+	private int role;
+	private String picture;
 	
 	
-	public User(String email,String password,String firstname,String lastname,String role){
+	public User(String email,String password,String firstname,String lastname,int role){
 		this.email=email;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.role = role;
-		
-		
 	}
-	public User(){}
-	
-	
+	public User(String email,String firstname,String lastname,int role){
+		this.email=email;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.role = role;
+	}
+	public User(){}	
 	
 	public String getEmail() {
 		return email;
@@ -46,11 +50,29 @@ public class User {
 		this.lastname = lastname;
 	}
 	public String getRole() {
-		return role;
+		//1 = consumer / 2 = food supplier / 3 = gastronomist / 4 = admin
+		switch(role) {
+		case 1: return "consumer";
+		case 2: return "food supplier";
+		case 3: return "gastronomist";
+		case 4: return "administer";
+		}
+		return null;
 	}
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
-	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
 }

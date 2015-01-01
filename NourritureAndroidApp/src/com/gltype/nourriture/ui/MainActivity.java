@@ -74,6 +74,8 @@ public class MainActivity extends FragmentActivity{
         //HomeFragment homeFragment = new HomeFragment();
         HomeFragment.email = email;
         HomeFragment.token = token;
+        ProfileFragment.email = email;
+        ProfileFragment.token = token;
         //Bundle bundle1 = new Bundle(); 
         //bundle1.putString("email",email);
         //homeFragment.setArguments(bundle1);

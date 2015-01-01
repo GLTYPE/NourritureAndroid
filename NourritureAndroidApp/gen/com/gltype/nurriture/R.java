@@ -12,6 +12,9 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f040001;
+        public static final int blue=0x7f040004;
+        public static final int grey=0x7f040003;
+        public static final int light_grey=0x7f040002;
         public static final int white=0x7f040000;
     }
     public static final class dimen {
@@ -64,82 +67,87 @@ public final class R {
         public static final int usericon=0x7f020024;
     }
     public static final class id {
-        public static final int action_settings=0x7f09003c;
-        public static final int bt_productcommit=0x7f090035;
-        public static final int bt_productedit=0x7f09002f;
-        public static final int chbx_rem=0x7f090026;
+        public static final int action_settings=0x7f090040;
+        public static final int bt_productcommit=0x7f090038;
+        public static final int bt_productedit=0x7f090032;
+        public static final int chbx_rem=0x7f090028;
         public static final int edit_profile=0x7f090005;
-        public static final int et_email=0x7f090039;
-        public static final int et_firstname=0x7f090037;
-        public static final int et_lastname=0x7f090038;
-        public static final int et_password=0x7f09003a;
-        public static final int et_productbrand=0x7f090031;
-        public static final int et_productdescription=0x7f090034;
-        public static final int et_productimg=0x7f090033;
-        public static final int et_productname=0x7f090030;
-        public static final int et_productvalue=0x7f090032;
-        public static final int et_role=0x7f09003b;
-        public static final int fragment_content=0x7f09001f;
+        public static final int et_email=0x7f09003a;
+        public static final int et_firstname=0x7f09003d;
+        public static final int et_lastname=0x7f09003e;
+        public static final int et_password=0x7f09003b;
+        public static final int et_password_again=0x7f09003c;
+        public static final int et_productbrand=0x7f090034;
+        public static final int et_productdescription=0x7f090037;
+        public static final int et_productimg=0x7f090036;
+        public static final int et_productname=0x7f090033;
+        public static final int et_productvalue=0x7f090035;
+        public static final int forgetPwd=0x7f090029;
+        public static final int fragment_content=0x7f090021;
+        public static final int gv_moments=0x7f090011;
+        public static final int gv_recipe=0x7f09000e;
+        public static final int gv_user_like=0x7f09000b;
         public static final int home_view_newList=0x7f090001;
         public static final int home_view_promoteList=0x7f090002;
-        public static final int icon_moments=0x7f09000e;
+        public static final int icon_moments=0x7f09000f;
         public static final int icon_recipe=0x7f09000c;
-        public static final int icon_user_like=0x7f09000a;
-        public static final int img_home_product=0x7f090013;
-        public static final int img_item_content_pic=0x7f090019;
-        public static final int img_item_content_subpic=0x7f09001b;
-        public static final int img_item_userphoto=0x7f090015;
-        public static final int img_product=0x7f09002c;
-        public static final int loginButton=0x7f090027;
+        public static final int icon_user_like=0x7f090009;
+        public static final int img_item=0x7f090015;
+        public static final int img_item_content_pic=0x7f09001b;
+        public static final int img_item_content_subpic=0x7f09001d;
+        public static final int img_item_userphoto=0x7f090017;
+        public static final int img_product=0x7f09002f;
+        public static final int loginButton=0x7f09002b;
         public static final int moment_progress=0x7f090003;
         public static final int moments_list=0x7f090004;
-        public static final int navigation_tab=0x7f090021;
-        public static final int password=0x7f090025;
-        public static final int pg_progress=0x7f090036;
-        public static final int profile_avatar=0x7f090007;
-        public static final int profile_userlevel=0x7f090009;
-        public static final int profile_username=0x7f090008;
-        public static final int root=0x7f090012;
-        public static final int search_btn=0x7f090011;
-        public static final int search_text=0x7f090010;
-        public static final int signupButton=0x7f090028;
-        public static final int startup_tabHost=0x7f090020;
-        public static final int tab_image=0x7f090022;
-        public static final int tab_text=0x7f090023;
-        public static final int text_moments=0x7f09000f;
+        public static final int navigation_tab=0x7f090023;
+        public static final int password=0x7f090027;
+        public static final int pg_progress=0x7f090039;
+        public static final int profile_avatar=0x7f090006;
+        public static final int profile_userlevel=0x7f090008;
+        public static final int profile_username=0x7f090007;
+        public static final int root=0x7f090014;
+        public static final int search_btn=0x7f090013;
+        public static final int search_text=0x7f090012;
+        public static final int signupButton=0x7f09003f;
+        public static final int startup_tabHost=0x7f090022;
+        public static final int tab_image=0x7f090024;
+        public static final int tab_text=0x7f090025;
+        public static final int text_moments=0x7f090010;
         public static final int text_recipe=0x7f09000d;
-        public static final int text_user_like=0x7f09000b;
-        public static final int tv_home_productname=0x7f090014;
-        public static final int tv_productbrand=0x7f09002b;
-        public static final int tv_productdescription=0x7f09002e;
-        public static final int tv_productname=0x7f09002a;
-        public static final int tv_productvalue=0x7f09002d;
-        public static final int tv_result=0x7f090029;
-        public static final int tx_item_time=0x7f090017;
-        public static final int txt_item_comment=0x7f09001e;
-        public static final int txt_item_content=0x7f090018;
-        public static final int txt_item_from=0x7f09001c;
-        public static final int txt_item_redirect=0x7f09001d;
-        public static final int txt_item_subcontent=0x7f09001a;
-        public static final int txt_item_uname=0x7f090016;
-        public static final int user_email=0x7f090024;
-        public static final int user_info=0x7f090006;
+        public static final int text_user_like=0x7f09000a;
+        public static final int tv_item_name=0x7f090016;
+        public static final int tv_productbrand=0x7f09002e;
+        public static final int tv_productdescription=0x7f090031;
+        public static final int tv_productname=0x7f09002d;
+        public static final int tv_productvalue=0x7f090030;
+        public static final int tv_result=0x7f09002c;
+        public static final int tv_signup=0x7f09002a;
+        public static final int tx_item_time=0x7f090019;
+        public static final int txt_item_comment=0x7f090020;
+        public static final int txt_item_content=0x7f09001a;
+        public static final int txt_item_from=0x7f09001e;
+        public static final int txt_item_redirect=0x7f09001f;
+        public static final int txt_item_subcontent=0x7f09001c;
+        public static final int txt_item_uname=0x7f090018;
+        public static final int user_email=0x7f090026;
         public static final int welcome_user=0x7f090000;
     }
     public static final class layout {
-        public static final int fragment_home=0x7f030000;
-        public static final int fragment_moments=0x7f030001;
-        public static final int fragment_profile=0x7f030002;
-        public static final int fragment_search=0x7f030003;
-        public static final int home_gridview_item=0x7f030004;
-        public static final int item_template=0x7f030005;
-        public static final int layout_startup=0x7f030006;
-        public static final int layout_tabs=0x7f030007;
-        public static final int login=0x7f030008;
-        public static final int product_detial=0x7f030009;
-        public static final int productedit=0x7f03000a;
-        public static final int progress=0x7f03000b;
-        public static final int sign_up=0x7f03000c;
+        public static final int edit_user_profile=0x7f030000;
+        public static final int fragment_home=0x7f030001;
+        public static final int fragment_moments=0x7f030002;
+        public static final int fragment_profile=0x7f030003;
+        public static final int fragment_search=0x7f030004;
+        public static final int gridview_item=0x7f030005;
+        public static final int item_template=0x7f030006;
+        public static final int layout_startup=0x7f030007;
+        public static final int layout_tabs=0x7f030008;
+        public static final int login=0x7f030009;
+        public static final int product_detial=0x7f03000a;
+        public static final int productedit=0x7f03000b;
+        public static final int progress=0x7f03000c;
+        public static final int sign_up=0x7f03000d;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -147,53 +155,58 @@ public final class R {
     public static final class string {
         /**  NAME of the fragments 
          */
-        public static final int Tab_HOME=0x7f06000b;
-        public static final int Tab_MOMENTS=0x7f06000c;
-        public static final int Tab_PROFILE=0x7f06000e;
-        public static final int Tab_SEARCH=0x7f06000d;
-        public static final int action_search=0x7f060016;
-        public static final int action_settings=0x7f060015;
+        public static final int Tab_HOME=0x7f06000d;
+        public static final int Tab_MOMENTS=0x7f06000e;
+        public static final int Tab_PROFILE=0x7f060010;
+        public static final int Tab_SEARCH=0x7f06000f;
+        public static final int action_search=0x7f060018;
+        public static final int action_settings=0x7f060017;
         public static final int app_name=0x7f060000;
-        public static final int commit=0x7f060023;
-        public static final int email=0x7f060005;
-        public static final int hello_world=0x7f06001e;
-        public static final int icon_moments=0x7f060011;
-        public static final int icon_recipes=0x7f060010;
+        public static final int commit=0x7f060026;
+        public static final int confirm_psw=0x7f06000c;
+        public static final int email=0x7f060004;
+        public static final int forget_password=0x7f060009;
+        public static final int hello_world=0x7f060020;
+        public static final int icon_moments=0x7f060013;
+        public static final int icon_recipes=0x7f060012;
         /**  ICON image contextDescription 
          */
-        public static final int icon_user_like=0x7f06000f;
-        public static final int input_email=0x7f060009;
-        public static final int input_password=0x7f06000a;
-        public static final int input_username=0x7f060008;
-        public static final int loading=0x7f060024;
+        public static final int icon_user_like=0x7f060011;
+        public static final int input_email=0x7f06000b;
+        public static final int input_password=0x7f060008;
+        public static final int input_username=0x7f060007;
+        public static final int loading=0x7f060027;
         public static final int login=0x7f060003;
         public static final int password=0x7f060002;
         /**  Profile Page 
          */
-        public static final int profile_user_avatar=0x7f060017;
-        public static final int profile_userlevel=0x7f060019;
-        public static final int profile_username=0x7f060018;
-        public static final int remember=0x7f060006;
-        public static final int result=0x7f060007;
+        public static final int profile_user_avatar=0x7f060019;
+        public static final int profile_userlevel=0x7f06001b;
+        public static final int profile_username=0x7f06001a;
+        public static final int remember=0x7f060005;
+        public static final int result=0x7f060006;
         /**  Search Page 
          */
-        public static final int search_btn_name=0x7f060021;
-        public static final int search_txt_hint=0x7f060022;
-        public static final int signup=0x7f060004;
-        public static final int text_newList=0x7f060013;
-        public static final int text_promoteList=0x7f060014;
-        public static final int text_user_like=0x7f06001a;
-        public static final int text_user_moments=0x7f06001c;
-        public static final int text_user_recipes=0x7f06001b;
-        public static final int title_activity_fragment__home=0x7f060020;
-        public static final int title_activity_profile=0x7f06001d;
-        public static final int title_activity_search=0x7f06001f;
+        public static final int search_btn_name=0x7f060024;
+        public static final int search_txt_hint=0x7f060025;
+        public static final int show_more=0x7f060023;
+        /**  SING UP 
+         */
+        public static final int signup=0x7f06000a;
+        public static final int text_newList=0x7f060015;
+        public static final int text_promoteList=0x7f060016;
+        public static final int text_user_like=0x7f06001c;
+        public static final int text_user_moments=0x7f06001e;
+        public static final int text_user_recipes=0x7f06001d;
+        public static final int title_activity_fragment__home=0x7f060022;
+        public static final int title_activity_profile=0x7f06001f;
+        public static final int title_activity_search=0x7f060021;
         /**  LOGIN 
          */
         public static final int username=0x7f060001;
         /**  Home Page 
          */
-        public static final int welcome_user=0x7f060012;
+        public static final int welcome_user=0x7f060014;
     }
     public static final class style {
         /** 

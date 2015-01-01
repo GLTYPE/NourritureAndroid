@@ -53,29 +53,21 @@ public class HomeProductAdapter extends BaseAdapter {
 			Holder holder= new Holder();
 			Product product = this.products.get(arg0);
 			
-			view  = LayoutInflater.from(context).inflate(R.layout.home_gridview_item, null);
+			view  = LayoutInflater.from(context).inflate(R.layout.gridview_item, null);
 			
-			holder.txt_item_productname = (TextView) view.findViewById(R.id.tv_home_productname);
+			holder.txt_item_name = (TextView) view.findViewById(R.id.tv_item_name);
 			
 			
-			holder.img_item_productimg= (ImageView) view.findViewById(R.id.img_home_product);
-			holder.txt_item_productname.setText(product.getName());
+			holder.img_item= (ImageView) view.findViewById(R.id.img_item);
+			holder.txt_item_name.setText(product.getName());
 			if(""!=product.getPicture()){
 			
-				SimpleImageLoader.showImg(holder.img_item_productimg,product.getPicture());
+				SimpleImageLoader.showImg(holder.img_item,product.getPicture());
 			}
 		}
 		return view;
 	}
 	
-	private static class Holder
-	{
-		
-		ImageView img_item_productimg;
-		
-		TextView txt_item_productname;	
-		
-	}
 	
 	
 

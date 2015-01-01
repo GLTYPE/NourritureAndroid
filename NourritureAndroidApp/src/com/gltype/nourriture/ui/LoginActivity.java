@@ -34,7 +34,8 @@ public class LoginActivity extends Activity {
 	private EditText et_password;
 	private TextView tv_result;
 	private Button loginBtn;
-	private Button signupBtn;
+	private TextView tv_signup;
+	private TextView tv_forgetPwd;
 	private View progresView;
 	private String email;
 
@@ -46,7 +47,8 @@ public class LoginActivity extends Activity {
 		et_password=(EditText) findViewById(R.id.password);
 		tv_result = (TextView) findViewById(R.id.tv_result);
 		loginBtn = (Button) findViewById(R.id.loginButton);
-		signupBtn = (Button) findViewById(R.id.signupButton);
+		tv_signup = (TextView) findViewById(R.id.tv_signup);
+		tv_forgetPwd = (TextView) findViewById(R.id.forgetPwd);
 		//progresView = findViewById(R.id.login_progress);
 		
 		loginBtn.setOnClickListener(new OnClickListener() {
@@ -63,20 +65,29 @@ public class LoginActivity extends Activity {
 	            } else {  
 	                
 	                loginByAsyncHttpClientPost(userName, userPass);  
-	                //loginByAsyncHttpClientGet(userName, userPass);  
-	 
-	            	
+	                //loginByAsyncHttpClientGet(userName, userPass); 
 	            }				
 			}
 		});	
 		
-		//test
-		signupBtn.setOnClickListener(new OnClickListener() {
+		//Sign_up
+		tv_signup.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 				startActivity(intent);				
+			}
+		});
+		
+		//test profile
+		tv_forgetPwd.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+				startActivity(intent);
+				
 			}
 		});
 	}  
