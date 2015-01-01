@@ -1,7 +1,7 @@
 package com.gltype.nourriture.model;
 
 public class Moment {
-	private int id;
+	private String id;
 	private String username;
 	
 	private String content;
@@ -22,10 +22,10 @@ public class Moment {
 	public void setPictureurl(String pictureurl) {
 		this.pictureurl = pictureurl;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

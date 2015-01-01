@@ -3,15 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="10dp"
     tools:context="com.example.nourritour.ProfileActivity" >
+ 
+    <ImageButton android:id="@+id/edit_profile"
+        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_weight="0.3"
+        android:layout_gravity="end"
+        android:background="#00000000"
+        android:src="@android:drawable/ic_menu_edit"/>   
     
-    <LinearLayout android:id="@+id/edit_profile"
+    <LinearLayout android:id="@+id/user_info"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:background="#11111150">
-         
+        android:layout_weight="1">
+        
         <!-- display user avatar [system shows every user a default avatar]-->
         <ImageView
             android:contentDescription="@string/profile_user_avatar"
@@ -19,48 +27,45 @@
             android:src="@drawable/avatar_tomato"
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:layout_weight="1"            
+            android:layout_weight="2"            
             android:scaleType="fitCenter"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <LinearLayout android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="left|center_vertical"
             android:layout_marginLeft="10dp"
-            android:layout_weight="2">
+            android:layout_weight="3">
 			<!-- user name -->
-	        <EditText
+	        <TextView
 	            android:id="@+id/profile_username"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
+	            android:layout_toRightOf="@id/profile_avatar"
 	            android:text="@string/profile_username" 
-	            android:textSize="20sp"
-	            android:enabled="false"/>
+	            android:textSize="30sp"/>
 	        
 			<!-- user level -->
-	        <EditText
+	        <TextView
 	            android:id="@+id/profile_userlevel"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@id/profile_username"
+	            android:layout_below="@id/profile_username"
 	            android:text="@string/profile_userlevel" 
-	            android:textSize="20sp"
-	            android:gravity="bottom"
-	            android:enabled="false"/>
+	            android:textSize="30sp"
+	            android:gravity="bottom"/>
 		</LinearLayout>
-<!--  	
-        <ImageButton android:id="@+id/edit_profile"
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
-	        android:gravity="end"
-	        android:background="#00000000"
-	        android:src="@android:drawable/ic_menu_edit"/> -->	
     </LinearLayout>
 
     <!-- show the recipes products that user LIKE -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_width="wrap_content"
         android:layout_weight="1">
 		<ImageView
 		    android:contentDescription="@string/icon_user_like"
@@ -68,87 +73,82 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:src="@drawable/icon_ilike" />
+
+		<TextView
+			android:id="@+id/text_user_like"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@id/icon_user_like"
+			android:layout_toRightOf="@id/icon_user_like"
+			android:text="@string/text_user_like"
+			android:textSize="20sp" />
 		
-        <LinearLayout 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="left">	
-			<TextView
-				android:id="@+id/text_user_like"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:text="@string/text_user_like"
-				android:textSize="15sp" 
-				android:gravity="center_vertical"/>
-			<ListView
-			    android:id="@+id/listView1"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content">
-			</ListView>
-		</LinearLayout>		
-    </LinearLayout>
+		<TextView 
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content"
+		    android:text="@string/text_user_like"
+		    android:layout_alignLeft="@id/text_user_like"
+		    android:layout_below="@id/text_user_like"
+		    android:textSize="50sp"/>
+    </RelativeLayout>
 
     <!-- show the RECIPES  user puts -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_width="wrap_content"
+        android:layout_weight="1">
 		<ImageView
 		    android:contentDescription="@string/icon_recipes"
 			android:id="@+id/icon_recipe"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:src="@drawable/icon_myrecipe" />
-		<LinearLayout 
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-		    android:gravity="left">
-	
-			<TextView
-				android:id="@+id/text_recipe"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/text_user_recipes"
-				android:textSize="15sp" />
-			<ListView android:id="@+id/lv_myrecipes"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"/>
-		</LinearLayout>
+
+		<TextView
+			android:id="@+id/text_recipe"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@id/icon_recipe"
+			android:layout_toRightOf="@id/icon_recipe"
+			android:text="@string/text_user_recipes"
+			android:textSize="20sp" />
 		
-    </LinearLayout>
+		<TextView 
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content"
+		    android:text="@string/text_user_recipes"
+		    android:layout_alignLeft="@id/text_recipe"
+		    android:layout_below="@id/text_recipe"
+		    android:textSize="50sp"/>
+    </RelativeLayout>
 
     <!-- show the MOMENTS user shared -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_height="0dp"
         android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="1">
 		<ImageView
 		    android:contentDescription="@string/icon_moments"
 			android:id="@+id/icon_moments"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:src="@drawable/tab_icon_moments" />
-		<LinearLayout android:layout_height="match_parent"
-		    android:layout_width="match_parent"
-		    android:orientation="vertical"
-		    android:gravity="left">
-			<TextView
-				android:id="@+id/text_moments"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/text_user_moments"
-				android:textSize="15sp" />
 
-			<ListView
-			    android:id="@+id/listView2"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content" >
-			</ListView>
-			
-		</LinearLayout>
-    </LinearLayout>
+		<TextView
+			android:id="@+id/text_moments"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@id/icon_moments"
+			android:layout_toRightOf="@id/icon_moments"
+			android:text="@string/text_user_moments"
+			android:textSize="20sp" />
+		
+		<TextView 
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content"
+		    android:text="@string/text_user_moments"
+		    android:layout_alignLeft="@id/text_moments"
+		    android:layout_below="@id/text_moments"
+		    android:textSize="40sp"/>
+    </RelativeLayout>
 </LinearLayout>

@@ -3,13 +3,24 @@ package com.gltype.nourriture.ui;
 import com.gltype.nurriture.R;
 
 
+
+import android.annotation.SuppressLint;
+
+
+
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+
+
 import android.support.v4.app.FragmentTabHost;
+
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
+
 import android.widget.ImageView;
 
 import android.widget.TextView;
@@ -18,7 +29,8 @@ import android.widget.TextView;
 public class MainActivity extends FragmentActivity{	
 
 	private FragmentTabHost mTabHost;
-	
+	private FragmentManager manager;  
+	private FragmentTransaction transaction; 
 
 	private LayoutInflater layoutInflater;
 	
@@ -30,11 +42,41 @@ public class MainActivity extends FragmentActivity{
 	private Class FClassArray[] = {HomeFragment.class,MomentFragment.class,
 			SearchFragment.class,ProfileFragment.class};
 	
+	private String email;
+	private String token;
+	
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
 	public void onCreate(Bundle savedInstanceState) {
 //        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_startup);
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
+        token = intent.getStringExtra("token");
+        //HomeFragment homeFragment = new HomeFragment();
+        HomeFragment.email = email;
+        HomeFragment.token = token;
+        //Bundle bundle1 = new Bundle(); 
+        //bundle1.putString("email",email);
+        //homeFragment.setArguments(bundle1);
         initView();
     }
 	 	

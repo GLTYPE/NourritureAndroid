@@ -2,7 +2,6 @@ package com.gltype.nourriture.adapter;
 
 import java.util.List;
 
-import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nurriture.R;
 
@@ -38,6 +37,10 @@ public class MomentAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public String getMomentId(int arg0) {
 		
 		return moments.get(arg0).getId();
 	}

@@ -12,13 +12,16 @@ import com.gltype.nurriture.R;
 
 import com.loopj.android.http.AsyncHttpClient;  
 import com.loopj.android.http.AsyncHttpResponseHandler;  
+
+import com.loopj.android.http.JsonHttpResponseHandler;
+
 import com.loopj.android.http.RequestParams;  
   
 import android.app.Activity;  
 import android.content.Intent;
 import android.os.Bundle;  
 import android.text.TextUtils;  
-import android.view.LayoutInflater;
+
 import android.view.View;  
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,9 +34,9 @@ public class LoginActivity extends Activity {
 	private EditText et_password;
 	private TextView tv_result;
 	private Button loginBtn;
-	private TextView tv_signup;
-	private TextView tv_forgetPwd;
+	private Button signupBtn;
 	private View progresView;
+	private String email;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,7 @@ public class LoginActivity extends Activity {
 		et_password=(EditText) findViewById(R.id.password);
 		tv_result = (TextView) findViewById(R.id.tv_result);
 		loginBtn = (Button) findViewById(R.id.loginButton);
-		tv_signup = (TextView) findViewById(R.id.tv_signup);
-		tv_forgetPwd = (TextView) findViewById(R.id.forgetPwd);
+		signupBtn = (Button) findViewById(R.id.signupButton);
 		//progresView = findViewById(R.id.login_progress);
 		
 		loginBtn.setOnClickListener(new OnClickListener() {
@@ -53,6 +55,7 @@ public class LoginActivity extends Activity {
 			public void onClick(View v) {
 				String userName = et_email.getText().toString(); 
 	            String userPass = et_password.getText().toString();  
+	            email = userName;
 	           
 	            if (TextUtils.isEmpty(userName.trim())  
 	                    || TextUtils.isEmpty(userPass.trim())) {  
@@ -61,13 +64,14 @@ public class LoginActivity extends Activity {
 	                
 	                loginByAsyncHttpClientPost(userName, userPass);  
 	                //loginByAsyncHttpClientGet(userName, userPass);  
+	 
 	            	
 	            }				
 			}
 		});	
 		
-		//Sign_up
-		tv_signup.setOnClickListener(new OnClickListener() {
+		//test
+		signupBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -75,18 +79,9 @@ public class LoginActivity extends Activity {
 				startActivity(intent);				
 			}
 		});
-		
-		//test profile
-		tv_forgetPwd.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-				startActivity(intent);
-				
-			}
-		});
 	}  
+	
+ 
    
     public void loginByAsyncHttpClientPost(String userName, String userPass) {  
     	 AsyncHttpClient client = new AsyncHttpClient(); 
@@ -108,32 +103,35 @@ public class LoginActivity extends Activity {
 			e.printStackTrace();
 		} 
 
-         client.post(LoginActivity.this, url, stringEntity, "application/json",  new AsyncHttpResponseHandler() {  
-          
-             @Override  
-             public void onSuccess(int statusCode, Header[] headers,  
-                     byte[] responseBody) {  
-                // if (statusCode == 200) {  
-                     
-                    String resResult = new String(responseBody);
-                  
-                     	tv_result.setText(resResult); 
-                     	Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                     	startActivity(intent);
-                     	//progresView.setVisibility(View.GONE);
-                   
-             }  
-   
-            
-             @Override  
-             public void onFailure(int statusCode, Header[] headers,  
-                     byte[] responseBody, Throwable error) {  
-             	// System.out.println("F-----------------"+statusCode);
-             	 String resResult = new String(responseBody);
-             	 //System.out.println("F-----------------"+resResult); 
-             	tv_result.setText(resResult); 
-                 error.printStackTrace();
-             }  
+         client.post(LoginActivity.this, url, stringEntity, "application/json",  new JsonHttpResponseHandler() {  
+         
+        	 @Override
+        	public void onSuccess(int statusCode, Header[] headers,
+        			JSONObject response) {
+        		 String token;
+				try {
+					token = response.getString("token");
+				
+        		 tv_result.setText(token); 
+              	Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+              	intent.putExtra("token", token);
+              	intent.putExtra("email", LoginActivity.this.email);
+              	startActivity(intent);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+        		// TODO Auto-generated method stub
+        		super.onSuccess(statusCode, headers, response);
+        	}
+            @Override
+            public void onFailure(int statusCode, Header[] headers,
+            		String responseString, Throwable throwable) {
+            	// TODO Auto-generated method stub
+            	tv_result.setText(responseString); 
+            	super.onFailure(statusCode, headers, responseString, throwable);
+            }   
+           
          });  
        
     }  

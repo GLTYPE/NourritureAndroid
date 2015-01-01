@@ -30,7 +30,7 @@
        <activity android:name="com.gltype.nourriture.ui.RegisterActivity" />
          <activity android:name="com.gltype.nourriture.ui.MainActivity" /><!-- android:theme="@style/theme_fullScreen"/> -->
          
-        
+          <activity android:name="com.gltype.nourriture.ui.ProductDetialActivity" />
     </application>
 
 </manifest>
