@@ -1,12 +1,16 @@
 package com.gltype.nourriture.model;
 
+import java.util.List;
+
 public class User {
 	private String email;
 	private String password;
 	private String firstname;
 	private String lastname;
 	private String role;
-	
+	private List<RecipesInfo> like_list;
+	private List<RecipesInfo> recipes_list;
+	private List<Moment> moments_list;
 	
 	public User(String email,String password,String firstname,String lastname,String role){
 		this.email=email;

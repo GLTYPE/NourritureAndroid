@@ -2,18 +2,22 @@
 <resources>
 
     <string name="app_name">Nourritour</string>
-        
+            
     <!-- LOGIN -->
 	<string name="username">USERNAME</string>
 	<string name="password">PASSWORD</string>  
-    <string name="login">LOG IN</string> 
-    <string name="signup">SIGN UP</string>    
+    <string name="login">LOG IN</string>   
     <string name="email">Email</string>
     <string name="remember">remember your state</string>
     <string name="result">result</string>  
-    <string name="input_username">Please input your username</string>
-    <string name="input_email">Please input your email</string>
-    <string name="input_password">Please input your password</string>
+    <string name="input_username">Input username</string>
+    <string name="input_password">Input password</string>
+    <string name="forget_password">forget password</string>
+    
+    <!-- SING UP -->
+    <string name="signup">SIGN UP</string>  
+    <string name="input_email">Input email</string>
+    <string name="confirm_psw">Confirm password</string>
     
     <!-- NAME of the fragments -->
     <string name="Tab_HOME">Home</string>

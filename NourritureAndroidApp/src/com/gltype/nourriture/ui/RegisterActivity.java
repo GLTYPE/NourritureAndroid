@@ -30,11 +30,11 @@ import android.widget.Toast;
 public class RegisterActivity extends Activity {
 	private EditText et_email;
 	private EditText et_password;
+	private EditText et_PasswordAgain;
 	private EditText et_firstname;
 	private EditText et_lastname;
 	private EditText et_role;
 
-	private Button loginBtn;
 	private Button signupBtn;
 	private View progresView;
 	
@@ -44,6 +44,7 @@ public class RegisterActivity extends Activity {
 		setContentView(R.layout.sign_up);
 		et_email=(EditText) findViewById(R.id.et_email);
 		et_password=(EditText) findViewById(R.id.et_password);
+		et_PasswordAgain=(EditText) findViewById(R.id.et_password_again);
 		et_firstname=(EditText) findViewById(R.id.et_firstname);
 		et_lastname=(EditText) findViewById(R.id.et_lastname);
 		et_role=(EditText) findViewById(R.id.et_role);
@@ -57,19 +58,26 @@ public class RegisterActivity extends Activity {
 			public void onClick(View v) {
 				String email = et_email.getText().toString(); 
 	            String password = et_password.getText().toString();  
+	            String passwordAgain = et_PasswordAgain.getText().toString();  
 	            String firstname = et_firstname.getText().toString(); 
 	            String lastname = et_lastname.getText().toString(); 
-	            String role = et_role.getText().toString(); 
-	            User user= new User(email, password, firstname, lastname, role);
-	           
-	            if (TextUtils.isEmpty(email.trim())  
-	                    || TextUtils.isEmpty(password.trim())) {  
-	                Toast.makeText(v.getContext(), "Email or Password can't be empty", Toast.LENGTH_LONG).show();  
-	            } else {  
-	                
-	                loginByAsyncHttpClientPost(user);  
-	                //loginByAsyncHttpClientGet(userName, userPass);  
-	            }				
+	            String role = et_role.getText().toString();
+	            
+	            if(!password.equals(passwordAgain)) {
+	            	Toast.makeText(v.getContext(), "Password doesn't match", Toast.LENGTH_LONG).show();
+	            } else {
+	            	
+		            User user= new User(email, password, firstname, lastname, role);
+		           
+		            if (TextUtils.isEmpty(email.trim())  
+		                    || TextUtils.isEmpty(password.trim())) {  
+		                Toast.makeText(v.getContext(), "Email or Password can't be empty", Toast.LENGTH_LONG).show();  
+		            } else {  
+		                
+		                loginByAsyncHttpClientPost(user);  
+		                //loginByAsyncHttpClientGet(userName, userPass);  
+		            }				            	
+	            }	
 			}
 		});	
 		
