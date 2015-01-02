@@ -35,8 +35,8 @@ import android.widget.TextView;
 
 @SuppressLint("NewApi")
 public class HomeFragment extends Fragment {
-	public static String email;
-	public static String token;
+
+	
 	private TextView textView ;
 	private GridView newgridView;
 	private GridView promotegridView;
@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
 		context = getActivity();
 		textView = (TextView) view.findViewById(R.id.welcome_user);		
 		
-		 getUserByAsyncHttpClientGet(email);
+		 getUserByAsyncHttpClientGet(LoginActivity.token);
 		 newgridView = (GridView) view.findViewById(R.id.home_view_newList);
 		 promotegridView = (GridView) view.findViewById(R.id.home_view_promoteList);
 		 newgridView.setVerticalSpacing(25);
@@ -134,9 +134,9 @@ public class HomeFragment extends Fragment {
 	       
 	    }  
 
-	 public void getUserByAsyncHttpClientGet(String email) {  	
+	 public void getUserByAsyncHttpClientGet(String token) {  	
 	        AsyncHttpClient client = new AsyncHttpClient();  
-	  	    String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/mail/"+email; 
+	  	    String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/token/"+token; 
       
 	        client.get(url,new JsonHttpResponseHandler() {            
 	        	 @Override

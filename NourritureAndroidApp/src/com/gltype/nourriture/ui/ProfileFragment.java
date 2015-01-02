@@ -107,9 +107,9 @@ public class ProfileFragment extends Fragment {
 	public void getUserInfoByAsyncHttpClientGet() {	
 		
 		AsyncHttpClient usr_client = new AsyncHttpClient();
-		String usr_url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/mail/";
+		String usr_url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/token/";
 		//get information of user by email
-		usr_client.get(usr_url+email,new JsonHttpResponseHandler() {		
+		usr_client.get(usr_url+LoginActivity.token,new JsonHttpResponseHandler() {		
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONObject response) {

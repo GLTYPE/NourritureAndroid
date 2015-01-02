@@ -42,25 +42,9 @@ public class MainActivity extends FragmentActivity{
 	private Class FClassArray[] = {HomeFragment.class,MomentFragment.class,
 			SearchFragment.class,ProfileFragment.class};
 	
-	private String email;
-	private String token;
+
 	
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	
 
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -69,16 +53,7 @@ public class MainActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_startup);
         Intent intent = getIntent();
-        email = intent.getStringExtra("email");
-        token = intent.getStringExtra("token");
-        //HomeFragment homeFragment = new HomeFragment();
-        HomeFragment.email = email;
-        HomeFragment.token = token;
-        ProfileFragment.email = email;
-        ProfileFragment.token = token;
-        //Bundle bundle1 = new Bundle(); 
-        //bundle1.putString("email",email);
-        //homeFragment.setArguments(bundle1);
+       
         initView();
     }
 	 	

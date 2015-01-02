@@ -37,7 +37,7 @@ public class LoginActivity extends Activity {
 	private TextView tv_signup;
 	private TextView tv_forgetPwd;
 	private View progresView;
-	private String email;
+	public static String token;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class LoginActivity extends Activity {
 			public void onClick(View v) {
 				String userName = et_email.getText().toString(); 
 	            String userPass = et_password.getText().toString();  
-	            email = userName;
+	         
 	           
 	            if (TextUtils.isEmpty(userName.trim())  
 	                    || TextUtils.isEmpty(userPass.trim())) {  
@@ -119,14 +119,12 @@ public class LoginActivity extends Activity {
         	 @Override
         	public void onSuccess(int statusCode, Header[] headers,
         			JSONObject response) {
-        		 String token;
+        		
 				try {
 					token = response.getString("token");
 				
         		 tv_result.setText(token); 
-              	Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-              	intent.putExtra("token", token);
-              	intent.putExtra("email", LoginActivity.this.email);
+              	Intent intent = new Intent(LoginActivity.this, MainActivity.class);    
               	startActivity(intent);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
