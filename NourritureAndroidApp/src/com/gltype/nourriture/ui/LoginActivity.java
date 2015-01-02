@@ -61,6 +61,7 @@ public class LoginActivity extends Activity {
 			isConnect = true;
 			token = user.getToken();
 			role = user.getRole();
+			System.out.println("-------------------"+role);
 		}
 		
 		

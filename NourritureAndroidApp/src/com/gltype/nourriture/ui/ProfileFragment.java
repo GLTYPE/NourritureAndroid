@@ -30,14 +30,13 @@ import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nourriture.model.Recipe;
 import com.gltype.nourriture.model.User;
+import com.gltype.nourriture.utils.RoleUtil;
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 @SuppressLint("NewApi")
 public class ProfileFragment extends Fragment {
-	public static String email;
-	public static String token;
 	
 	public User user = null;
 	public List<Moment> moments;
@@ -68,7 +67,7 @@ public class ProfileFragment extends Fragment {
 		gv_moments.setVerticalSpacing(25);
 		
 		if(user != null) {
-			displayInfo(this.user);
+			displayInfo();
 		} else {
 
 			getUserInfoByAsyncHttpClientGet();
@@ -95,21 +94,21 @@ public class ProfileFragment extends Fragment {
 		return view;
 	}
 	
-	public void displayInfo(User user) {
+	public void displayInfo() {
 
 		tv_username.setText(user.getFirstname() + " " + user.getLastname());
-		tv_userrole.setText(user.getRole());
-		if(user.getPicture()!=null) {
+		tv_userrole.setText(new RoleUtil(user.getRole()).getRoleStr());
+		if("".equals(user.getPicture())) {
 			SimpleImageLoader.showImg(img_avatar,user.getPicture());
 		}
 	}
 	
 	public void getUserInfoByAsyncHttpClientGet() {	
-		
 		AsyncHttpClient usr_client = new AsyncHttpClient();
-		String usr_url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/token/";
+		String usr_url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/token/"+LoginActivity.token;
 		//get information of user by email
-		usr_client.get(usr_url+LoginActivity.token,new JsonHttpResponseHandler() {		
+		usr_client.get(usr_url,new JsonHttpResponseHandler() {		
+			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONObject response) {
@@ -119,8 +118,11 @@ public class ProfileFragment extends Fragment {
 					String lastname = response.getString("lastname");
 					int role = response.getInt("role");
 					String pic = response.getString("picture");
-					user = new User(pic, firstname, lastname, role);
-					displayInfo(user);
+					String email = response.getString("email");
+					 user = new User(email,pic,firstname, lastname, role);
+					displayInfo();
+				
+					
 					
 				} catch (JSONException e) {
 					e.printStackTrace();

@@ -10,9 +10,10 @@ public class User {
 	private String picture;
 	private String token;
 	
-	public User(String email,String password,String firstname,String lastname,int role){
+	
+	public User(String email,String picture,String firstname,String lastname,int role){
 		this.email=email;
-		this.password = password;
+		this.picture = picture;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.role = role;

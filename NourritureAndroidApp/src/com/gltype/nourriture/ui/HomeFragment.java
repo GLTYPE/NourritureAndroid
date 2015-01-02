@@ -57,7 +57,6 @@ public class HomeFragment extends Fragment {
 		 newgridView.setVerticalSpacing(25);
 		 promotegridView.setVerticalSpacing(25);
 		 refresh();
-		 refresh();
 		 refeshButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
