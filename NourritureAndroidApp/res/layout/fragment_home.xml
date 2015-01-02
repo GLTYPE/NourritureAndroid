@@ -6,12 +6,22 @@
     android:orientation="vertical">
 
     <!-- welcome the user with username ['user' as defualt] -->
-    <TextView android:id="@+id/welcome_user"
-        android:layout_width="match_parent"
+    <FrameLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+	   <Button android:id="@+id/bt_home_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_gravity="left"
+        android:text="refresh"/>
+	     <TextView android:id="@+id/welcome_user"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:gravity="end"
+        android:layout_gravity="right"
         android:text="@string/welcome_user" />
+</FrameLayout>   
     
     <!--  show the newest videos(recipies moments) in Database -->
     <TextView android:layout_width="match_parent"

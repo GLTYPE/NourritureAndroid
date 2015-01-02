@@ -8,6 +8,8 @@ import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.gltype.nourriture.db.dao.UserDao;
+import com.gltype.nourriture.model.User;
 import com.gltype.nurriture.R; 
 
 import com.loopj.android.http.AsyncHttpClient;  
@@ -38,7 +40,9 @@ public class LoginActivity extends Activity {
 	private TextView tv_forgetPwd;
 	private View progresView;
 	public static String token;
-
+	public static int role;
+	public boolean isConnect = false;
+	UserDao userDao = new UserDao(this);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,45 +55,62 @@ public class LoginActivity extends Activity {
 		tv_forgetPwd = (TextView) findViewById(R.id.forgetPwd);
 		//progresView = findViewById(R.id.login_progress);
 		
-		loginBtn.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				String userName = et_email.getText().toString(); 
-	            String userPass = et_password.getText().toString();  
-	         
-	           
-	            if (TextUtils.isEmpty(userName.trim())  
-	                    || TextUtils.isEmpty(userPass.trim())) {  
-	                Toast.makeText(v.getContext(), "Email or Password can't be empty", Toast.LENGTH_LONG).show();  
-	            } else {  
-	                
-	                loginByAsyncHttpClientPost(userName, userPass);  
-	                //loginByAsyncHttpClientGet(userName, userPass); 
-	            }				
-			}
-		});	
 		
-		//Sign_up
-		tv_signup.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-				startActivity(intent);				
-			}
-		});
+		User user = userDao.find();
+		if(user!=null){
+			isConnect = true;
+			token = user.getToken();
+			role = user.getRole();
+		}
 		
-		//test profile
-		tv_forgetPwd.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-				startActivity(intent);
+		
+		if(isConnect){
+			Intent intent = new Intent(this, MainActivity.class);    
+          	startActivity(intent);
+          	//tv_result.setText(token);
+          	 Toast.makeText(this, token, Toast.LENGTH_LONG).show(); 
+		}
+		else{
+			loginBtn.setOnClickListener(new OnClickListener() {
 				
-			}
-		});
+				@Override
+				public void onClick(View v) {
+					String userName = et_email.getText().toString(); 
+		            String userPass = et_password.getText().toString();  
+		         
+		           
+		            if (TextUtils.isEmpty(userName.trim())  
+		                    || TextUtils.isEmpty(userPass.trim())) {  
+		                Toast.makeText(v.getContext(), "Email or Password can't be empty", Toast.LENGTH_LONG).show();  
+		            } else {  
+		                
+		                loginByAsyncHttpClientPost(userName, userPass);  
+		                //loginByAsyncHttpClientGet(userName, userPass); 
+		            }				
+				}
+			});	
+			
+			//Sign_up
+			tv_signup.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+					startActivity(intent);				
+				}
+			});
+			
+			//test profile
+			tv_forgetPwd.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+					startActivity(intent);
+					
+				}
+			});
+		}
 	}  
 	
  
@@ -122,8 +143,10 @@ public class LoginActivity extends Activity {
         		
 				try {
 					token = response.getString("token");
-				
-        		 tv_result.setText(token); 
+					role = response.getInt("role");
+					isConnect = true;
+					userDao.add(token, role);
+					tv_result.setText(token);
               	Intent intent = new Intent(LoginActivity.this, MainActivity.class);    
               	startActivity(intent);
 				} catch (JSONException e) {

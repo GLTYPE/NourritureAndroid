@@ -8,7 +8,7 @@ public class User {
 	private String lastname;
 	private int role;
 	private String picture;
-	
+	private String token;
 	
 	public User(String email,String password,String firstname,String lastname,int role){
 		this.email=email;
@@ -24,7 +24,17 @@ public class User {
 		this.role = role;
 	}
 	public User(){}	
+	public User(String token , int role){
+		this.token = token;
+		this.role = role;
+	}
 	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -49,15 +59,15 @@ public class User {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public String getRole() {
+	public int getRole() {
 		//1 = consumer / 2 = food supplier / 3 = gastronomist / 4 = admin
-		switch(role) {
-		case 1: return "consumer";
-		case 2: return "food supplier";
-		case 3: return "gastronomist";
-		case 4: return "administer";
-		}
-		return null;
+//		switch(role) {
+//		case 1: return "consumer";
+//		case 2: return "food supplier";
+//		case 3: return "gastronomist";
+//		case 4: return "administer";
+//		}
+		return this.role;
 	}
 	public void setRole(int role) {
 		this.role = role;

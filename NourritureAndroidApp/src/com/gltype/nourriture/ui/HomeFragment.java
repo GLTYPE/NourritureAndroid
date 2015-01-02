@@ -17,7 +17,7 @@ import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
-
+import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -42,23 +43,40 @@ public class HomeFragment extends Fragment {
 	private GridView promotegridView;
 	private Context context;
 	public List<Product> products;
+	private Button refeshButton;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view=inflater.inflate(R.layout.fragment_home, null);
 		context = getActivity();
 		textView = (TextView) view.findViewById(R.id.welcome_user);		
-		
+		refeshButton = (Button) view.findViewById(R.id.bt_home_refresh);
 		 getUserByAsyncHttpClientGet(LoginActivity.token);
 		 newgridView = (GridView) view.findViewById(R.id.home_view_newList);
 		 promotegridView = (GridView) view.findViewById(R.id.home_view_promoteList);
 		 newgridView.setVerticalSpacing(25);
 		 promotegridView.setVerticalSpacing(25);
 		 refresh();
-		 
+		 refresh();
+		 refeshButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				refresh();
+				
+			}
+		});
+		 System.out.println("===================Create view");
 		 return view;
+		
 	}
 	
+	
+	@Override
+	public void onDestroyView() {
+		 System.out.println("===================Destroy view");
+		super.onDestroyView();
+	}
 	public void refresh()
 	{		
 		getProductsByAsyncHttpClientGet();		
@@ -72,6 +90,7 @@ public class HomeFragment extends Fragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				 Product product = (Product) arg0.getItemAtPosition(arg2);
+				 System.out.println("--------------"+product.getBrand());
 				  Intent intent =new Intent(HomeFragment.this.getActivity(), ProductDetialActivity.class);
 				  Bundle bundle = new Bundle();
 				  bundle.putSerializable("product",product);
