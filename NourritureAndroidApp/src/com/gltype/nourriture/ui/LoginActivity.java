@@ -41,6 +41,7 @@ public class LoginActivity extends Activity {
 	private View progresView;
 	public static String token;
 	public static int role;
+	
 	public boolean isConnect = false;
 	UserDao userDao = new UserDao(this);
 	@Override
@@ -61,6 +62,7 @@ public class LoginActivity extends Activity {
 			isConnect = true;
 			token = user.getToken();
 			role = user.getRole();
+			
 			System.out.println("-------------------"+role);
 		}
 		
@@ -68,6 +70,7 @@ public class LoginActivity extends Activity {
 		if(isConnect){
 			Intent intent = new Intent(this, MainActivity.class);    
           	startActivity(intent);
+          	this.finish();
           	//tv_result.setText(token);
           	 Toast.makeText(this, token, Toast.LENGTH_LONG).show(); 
 		}
@@ -145,6 +148,7 @@ public class LoginActivity extends Activity {
 				try {
 					token = response.getString("token");
 					role = response.getInt("role");
+					
 					isConnect = true;
 					userDao.add(token, role);
 					tv_result.setText(token);

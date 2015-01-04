@@ -79,7 +79,7 @@ public class ProductEditActivity extends Activity {
 			jsonObject.put("brand", product.getBrand());  
 			jsonObject.put("picture", product.getPicture());  
 			jsonObject.put("description", product.getDescription());  
-			jsonObject.put("value", product.getValue());  
+			jsonObject.put("values", product.getValue());  
 			jsonObject.put("token", LoginActivity.token); 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -105,6 +105,7 @@ public class ProductEditActivity extends Activity {
            @Override
            public void onFailure(int statusCode, Header[] headers,
            		String responseString, Throwable throwable) {
+        	   System.out.println("----------------"+responseString);
         	   Toast.makeText(ProductEditActivity.this, "Edit Failure", Toast.LENGTH_SHORT).show();
            	super.onFailure(statusCode, headers, responseString, throwable);
            }   

@@ -28,6 +28,7 @@ public class User {
 	public User(String token , int role){
 		this.token = token;
 		this.role = role;
+		
 	}
 	
 	public String getToken() {
@@ -70,6 +71,7 @@ public class User {
 //		}
 		return this.role;
 	}
+	
 	public void setRole(int role) {
 		this.role = role;
 	}

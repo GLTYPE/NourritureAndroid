@@ -3,7 +3,8 @@ package com.gltype.nourriture.model;
 public class Moment {
 	private String id;
 	private String username;
-	
+	private String ownId;
+	private String targetId;
 	private String content;
 	private String time;
 	private String pictureurl;
@@ -16,6 +17,18 @@ public class Moment {
 		this.pictureurl = pictureurl;
 	}
 	
+	public String getOwnId() {
+		return ownId;
+	}
+	public void setOwnId(String ownId) {
+		this.ownId = ownId;
+	}
+	public String getTargetId() {
+		return targetId;
+	}
+	public void setTargetId(String targetId) {
+		this.targetId = targetId;
+	}
 	public String getPictureurl() {
 		return pictureurl;
 	}

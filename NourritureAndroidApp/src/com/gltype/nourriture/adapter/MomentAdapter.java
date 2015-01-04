@@ -2,6 +2,7 @@ package com.gltype.nourriture.adapter;
 
 import java.util.List;
 
+import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nurriture.R;
 
@@ -63,8 +64,11 @@ public class MomentAdapter extends BaseAdapter {
 			holder.img_item_userphoto= (ImageView) view.findViewById(R.id.img_item_userphoto);
 			holder.txt_item_uname.setText(moment.getUsername());
 			holder.txt_item_content.setText(moment.getContent());
-			
-		//	SimpleImageLoader.showImg(holder.img_item_userphoto,moment.getPictureurl());
+			if("".equals(moment.getPictureurl())){
+			SimpleImageLoader.showImg(holder.img_item_userphoto,moment.getPictureurl());
+			}else{
+				holder.img_item_userphoto.setImageResource(R.drawable.usericon);
+			}
 		}
 		return view;
 	}

@@ -24,10 +24,11 @@ public class UserDao {
 	public User find(){
 		User user = null;
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor cursor = db.rawQuery("select token, role from user", null);
+		Cursor cursor = db.rawQuery("select token, role, userid from user", null);
 		if(cursor.moveToNext()){
 			String token = cursor.getString(cursor.getColumnIndex("token"));
 			int role = cursor.getInt(cursor.getColumnIndex("role"));
+			
 			user = new User(token,role);		
 		}
 		cursor.close();

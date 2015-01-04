@@ -21,9 +21,9 @@ public class HomeProductAdapter extends BaseAdapter {
 	private List<Product> products;
 	private Context context;
 	
-	public HomeProductAdapter(Context contex, List<Product> products){
+	public HomeProductAdapter(Context context, List<Product> products){
 		this.products = products;
-		this.context= contex;
+		this.context= context;
 	}
 	@Override
 	public int getCount() {

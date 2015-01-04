@@ -27,7 +27,7 @@
     <TextView android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="@string/text_newList"/>
+        android:text="Promote Recipes"/>
     
     <GridView android:id="@+id/home_view_newList"
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
     <TextView android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="@string/text_promoteList"/>
+        android:text="Promote Products"/>
     
     <GridView android:id="@+id/home_view_promoteList"
         android:layout_width="match_parent"

@@ -161,7 +161,7 @@ public class ProfileFragment extends Fragment {
 								
 							Recipe recipe = new Recipe(name, pic);
 							recipe.set_id(id);
-							recipe.setDiscription(desc);
+							recipe.setDescription(desc);
 							//recipe.setIngs(jsonObj.getString("ings"));
 							recipes.add(recipe);
 						}	
@@ -173,7 +173,7 @@ public class ProfileFragment extends Fragment {
 							String pic = jsonObj.getString("picture");	
 							Recipe recipe = new Recipe(name, pic);	
 							recipe.set_id(jsonObj.getString("_id"));
-							recipe.setDiscription(jsonObj.getString("description"));
+							recipe.setDescription(jsonObj.getString("description"));
 							recipes.add(recipe);
 							
 						}

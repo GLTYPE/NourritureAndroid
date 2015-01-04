@@ -1,12 +1,14 @@
 package com.gltype.nourriture.model;
 
+import java.io.Serializable;
+import java.security.PublicKey;
 import java.util.List;
 
-public class Recipe {
+public class Recipe implements Serializable{
 	
 	private String _id;
 	private String name;
-	private String discription = "";
+	private String description = "";
 	private int value;
 	private String ownerId;
 	private String ings = "";
@@ -22,15 +24,25 @@ public class Recipe {
 		this.picture = pic;
 	}
 	
-	public Recipe(String name, String discription, int value, String ownerId,
+	public Recipe(String name, String description, int value, String ownerId,
 			String ings) {
 		super();
 		this.name = name;
-		this.discription = discription;
+		this.description = description;
 		this.value = value;
 		this.ownerId = ownerId;
 		this.ings = ings;
 	}
+	
+	public Recipe(String name, int value, String discription, String picture) {
+		super();
+		this.name = name;
+		this.description = discription;
+		this.value = value;
+		this.picture = picture;
+		
+	}
+	
 	public String get_id() {
 		return _id;
 	}
@@ -43,11 +55,13 @@ public class Recipe {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDiscription() {
-		return discription;
+	
+	
+	public String getDescription() {
+		return description;
 	}
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public int getValue() {
 		return value;

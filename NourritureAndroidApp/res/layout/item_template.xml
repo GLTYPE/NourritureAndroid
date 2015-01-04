@@ -8,8 +8,8 @@
   
   
   <ImageView android:id="@+id/img_item_userphoto"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
+  android:layout_width="40dp"
+  android:layout_height="40dp"
   android:src="@drawable/usericon"
   android:layout_marginTop="5dp"/>
   

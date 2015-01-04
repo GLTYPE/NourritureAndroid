@@ -35,6 +35,10 @@
 		<activity android:name="com.gltype.nourriture.ui.ProductDetialActivity" />
 		<activity android:name="com.gltype.nourriture.ui.EditUserProfile" />
 		<activity android:name="com.gltype.nourriture.ui.ProductEditActivity" />
+		<activity android:name="com.gltype.nourriture.ui.RecipeDetialActivity" />
+		<activity android:name="com.gltype.nourriture.ui.RecipeEditActivity" />
+		<activity android:name="com.gltype.nourriture.ui.IngredientDetialActivity" />
+		<activity android:name="com.gltype.nourriture.ui.IngredientEditActivity" />
     </application>
 
 </manifest>
