@@ -49,6 +49,10 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_fragment__home">Fragment_Home</string>
     <string name="show_more">more</string>
+    
+    <!-- Profile Edit -->
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 
     <!-- Search Page -->
     <string name="search_btn_name">Search</string>

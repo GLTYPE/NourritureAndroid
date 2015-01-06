@@ -95,13 +95,13 @@ public class ProductEditActivity extends Activity {
 
         client.put(ProductEditActivity.this, url, stringEntity, "application/json",  new JsonHttpResponseHandler() {  
         
-       	 @Override
-       	public void onSuccess(int statusCode, Header[] headers,
-       			JSONObject response) {
-       		Toast.makeText(ProductEditActivity.this, "Edit Success", Toast.LENGTH_SHORT).show();
-				
-       		super.onSuccess(statusCode, headers, response);
-       	}
+	       	 @Override
+	       	public void onSuccess(int statusCode, Header[] headers,
+	       			JSONObject response) {
+	       		Toast.makeText(ProductEditActivity.this, "Edit Success", Toast.LENGTH_SHORT).show();
+					
+	       		super.onSuccess(statusCode, headers, response);
+	       	}
            @Override
            public void onFailure(int statusCode, Header[] headers,
            		String responseString, Throwable throwable) {

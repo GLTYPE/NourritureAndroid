@@ -88,6 +88,9 @@ public class ProfileFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(context, EditUserProfile.class);
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("user",user);
+				intent.putExtras(bundle);
 				startActivity(intent);
 			}
 		});
@@ -119,7 +122,8 @@ public class ProfileFragment extends Fragment {
 					int role = response.getInt("role");
 					String pic = response.getString("picture");
 					String email = response.getString("email");
-					 user = new User(email,pic,firstname, lastname, role);
+					user = new User(email,pic,firstname, lastname, role);
+					user.setUserId(response.getString("_id"));
 					displayInfo();
 				
 					

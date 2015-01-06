@@ -32,7 +32,12 @@
 			android:id="@+id/et_lastname"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:hint="lastname"/>	     
+			android:hint="lastname"/>	    
+  		<EditText
+			android:id="@+id/et_role"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="role"/>	     
 	    <Button
 	        android:id="@+id/signupButton"
 	        android:layout_width="match_parent"

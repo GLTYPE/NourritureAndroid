@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.nourritour.ProfileActivity"
-    android:background="@color/light_grey" >
+    android:background="@color/grey" >
     
     <LinearLayout android:id="@+id/edit_profile"
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1"
-        android:background="@color/light_grey"
+        android:background="@color/white"
         android:layout_marginTop="10dp">
 		<ImageView
 		    android:contentDescription="@string/icon_user_like"
@@ -96,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_marginTop="10dp"
+        android:background="@color/white"
         android:orientation="horizontal">
 		<ImageView
 		    android:contentDescription="@string/icon_recipes"
@@ -133,7 +134,7 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_marginTop="10dp"
-        android:background="@color/light_grey"
+        android:background="@color/white"
         android:orientation="horizontal">
 		<ImageView
 		    android:contentDescription="@string/icon_moments"

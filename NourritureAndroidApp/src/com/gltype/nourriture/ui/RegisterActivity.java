@@ -48,7 +48,7 @@ public class RegisterActivity extends Activity {
 		
 		et_firstname=(EditText) findViewById(R.id.et_firstname);
 		et_lastname=(EditText) findViewById(R.id.et_lastname);
-//		et_role=(EditText) findViewById(R.id.et_role);
+		et_role=(EditText) findViewById(R.id.et_role);
 		
 		signupBtn = (Button) findViewById(R.id.signupButton);
 		//progresView = findViewById(R.id.login_progress);
@@ -59,10 +59,11 @@ public class RegisterActivity extends Activity {
 			public void onClick(View v) {
 				String email = et_email.getText().toString(); 
 	            String password = et_password.getText().toString();
-	            String passwordAgain = et_password.getText().toString();
+	            String passwordAgain = et_passwordAgain.getText().toString();
 	            String firstname = et_firstname.getText().toString(); 
 	            String lastname = et_lastname.getText().toString(); 
 	            int role = Integer.getInteger(et_role.getText().toString()); 
+	            
 	            User user= new User(email, password, firstname, lastname, role);
 	            if (TextUtils.isEmpty(email.trim())  
 	                    || TextUtils.isEmpty(password.trim())) {  
