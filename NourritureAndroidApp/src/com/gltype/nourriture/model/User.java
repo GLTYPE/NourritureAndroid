@@ -13,9 +13,9 @@ public class User implements Serializable {
 	private String token;
 	
 	
-	public User(String email,String picture,String firstname,String lastname,int role){
+	public User(String email,String password,String firstname,String lastname,int role){
 		this.email=email;
-		this.picture = picture;
+		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.role = role;

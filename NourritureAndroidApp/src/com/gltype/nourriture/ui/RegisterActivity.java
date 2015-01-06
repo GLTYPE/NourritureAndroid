@@ -62,7 +62,7 @@ public class RegisterActivity extends Activity {
 	            String passwordAgain = et_passwordAgain.getText().toString();
 	            String firstname = et_firstname.getText().toString(); 
 	            String lastname = et_lastname.getText().toString(); 
-	            int role = Integer.getInteger(et_role.getText().toString()); 
+	            int role = Integer.parseInt(et_role.getText().toString()); 
 	            
 	            User user= new User(email, password, firstname, lastname, role);
 	            if (TextUtils.isEmpty(email.trim())  
@@ -113,7 +113,7 @@ public class RegisterActivity extends Activity {
                     
                   // String resResult = new String(responseBody);  	
             	 Toast.makeText(RegisterActivity.this,"Register Successfully" , Toast.LENGTH_LONG).show(); 
-                    	Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    	Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     	startActivity(intent);
                     	//progresView.setVisibility(View.GONE);
                   
