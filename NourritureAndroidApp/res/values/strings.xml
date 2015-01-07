@@ -53,6 +53,14 @@
     <!-- Profile Edit -->
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="new_fn">new firstname</string>
+    <string name="new_ln">new lastname</string>
+    <string name="new_pic">new avatar picture</string>
+    <string name="new_about">new about</string>
+    <string name="new_email">new email addr</string>
+    <string name="old_password">old password</string>
+    <string name="new_password">new password</string>
+    <string name="new_password2">new password again</string>
 
     <!-- Search Page -->
     <string name="search_btn_name">Search</string>

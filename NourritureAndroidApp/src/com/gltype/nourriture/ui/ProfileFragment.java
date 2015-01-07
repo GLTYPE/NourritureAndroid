@@ -62,9 +62,9 @@ public class ProfileFragment extends Fragment {
 		gv_recipe = (GridView) view.findViewById(R.id.gv_recipe);
 		gv_moments = (GridView) view.findViewById(R.id.gv_moments);
 
-		gv_like.setVerticalSpacing(25);
-		gv_recipe.setVerticalSpacing(25);
-		gv_moments.setVerticalSpacing(25);
+		gv_like.setVerticalSpacing(30);
+		gv_recipe.setVerticalSpacing(30);
+		gv_moments.setVerticalSpacing(30);
 		
 		if(user != null) {
 			displayInfo();
@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment {
 		editProfile.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(context, EditUserProfile.class);
+				Intent intent = new Intent(context, UserDetialActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("user",user);
 				intent.putExtras(bundle);
@@ -120,14 +120,13 @@ public class ProfileFragment extends Fragment {
 					String firstname = response.getString("firstname");
 					String lastname = response.getString("lastname");
 					int role = response.getInt("role");
-					String pic = response.getString("picture");
 					String email = response.getString("email");
-					user = new User(email,pic,firstname, lastname, role);
+					user = new User(email,firstname, lastname, role);
 					user.setUserId(response.getString("_id"));
+					user.setAbout(response.getString("about"));
+					user.setPicture(response.getString("picture"));
 					displayInfo();
-				
-					
-					
+							
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

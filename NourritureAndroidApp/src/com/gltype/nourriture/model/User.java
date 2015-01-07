@@ -8,8 +8,9 @@ public class User implements Serializable {
 	private String password;
 	private String firstname;
 	private String lastname;
+	private String about = "";
 	private int role;
-	private String picture;
+	private String picture = "";
 	private String token;
 	
 	
@@ -88,6 +89,12 @@ public class User implements Serializable {
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+	public String getAbout() {
+		return about;
+	}
+	public void setAbout(String about) {
+		this.about = about;
 	}
 
 }

@@ -33,7 +33,8 @@
 		<!-- android:theme="@style/theme_fullScreen"/> -->
 	
 		<activity android:name="com.gltype.nourriture.ui.ProductDetialActivity" />
-		<activity android:name="com.gltype.nourriture.ui.EditUserProfile" />
+		<activity android:name="com.gltype.nourriture.ui.UserEditActivity" />
+		<activity android:name="com.gltype.nourriture.ui.UserDetialActivity" />
 		<activity android:name="com.gltype.nourriture.ui.ProductEditActivity" />
 		<activity android:name="com.gltype.nourriture.ui.RecipeDetialActivity" />
 		<activity android:name="com.gltype.nourriture.ui.RecipeEditActivity" />
