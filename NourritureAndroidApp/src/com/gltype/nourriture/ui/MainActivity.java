@@ -1,15 +1,31 @@
 package com.gltype.nourriture.ui;
 
+
 import com.gltype.nourriture.R;
+
+import com.gltype.nourriture.utils.MyActivityManager;
+
+
+
+import android.annotation.SuppressLint;
+
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+
+
 import android.support.v4.app.FragmentTabHost;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+
+import android.widget.Button;
 import android.widget.ImageView;
 
 import android.widget.TextView;
@@ -19,7 +35,6 @@ public class MainActivity extends FragmentActivity{
 
 	private FragmentTabHost mTabHost;
 	
-
 	private LayoutInflater layoutInflater;
 	
 	private int tabId[] = {R.string.Tab_HOME,R.string.Tab_MOMENTS,
@@ -30,11 +45,20 @@ public class MainActivity extends FragmentActivity{
 	private Class FClassArray[] = {HomeFragment.class,MomentFragment.class,
 			SearchFragment.class,ProfileFragment.class};
 	
+	MyActivityManager mam = MyActivityManager.getInstance();
+	//private View titleView;
+	//private Button btn_back;
+	
+	
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 //        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_startup);
+        mam.pushOneActivity(this);
+        Intent intent = getIntent();
+       
         initView();
     }
 	 	

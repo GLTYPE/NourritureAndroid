@@ -34,10 +34,35 @@
             </intent-filter>
         </activity>
         
-       <activity android:name="com.gltype.nourriture.ui.RegisterActivity" />
-       <activity android:name="com.gltype.nourriture.ui.MainActivity" />
-         <!-- android:theme="@style/theme_fullScreen"/> -->
-       
+		<activity android:name="com.gltype.nourriture.ui.RegisterActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.MainActivity" 
+		    android:theme="@style/theme_fullScreen"
+			android:windowSoftInputMode="adjustPan"/>
+		
+	
+		<activity android:name="com.gltype.nourriture.ui.ProductDetialActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.UserEditActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.UserDetialActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.ProductEditActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.RecipeDetialActivity"
+		     android:theme="@style/theme_fullScreen" />
+		<activity android:name="com.gltype.nourriture.ui.RecipeEditActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.IngredientDetialActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.IngredientEditActivity"
+		     android:theme="@style/theme_fullScreen" />
+		<activity android:name="com.gltype.nourriture.ui.AddMomentActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.MomentDetialActivity" 
+		     android:theme="@style/theme_fullScreen"/>
+		<activity android:name="com.gltype.nourriture.ui.MomentEditActivity"
+		     android:theme="@style/theme_fullScreen" />
     </application>
 
 </manifest>

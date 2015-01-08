@@ -24,5 +24,11 @@ public class StringTools {
 			return "Fail to get string";
 		}
 	}
-
+	public static String dateFormat(String date){
+		String newDate="";
+		date = date.replace("T"," ");
+        date = date.substring(0,19);
+        newDate=date;
+		return newDate;
+	}
 }

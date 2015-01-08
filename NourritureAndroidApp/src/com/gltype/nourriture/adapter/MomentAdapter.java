@@ -38,6 +38,10 @@ public class MomentAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public String getMomentId(int arg0) {
 		
 		return moments.get(arg0).getId();
 	}
@@ -45,23 +49,34 @@ public class MomentAdapter extends BaseAdapter {
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		View view = arg1;
+		 Holder holder;
 		if(null == view)
 		{
-			
-			
-			Holder holder= new Holder();
-			Moment moment = this.moments.get(arg0);
-			
 			view  = LayoutInflater.from(context).inflate(R.layout.item_template, null);
 			
-			holder.txt_item_uname = (TextView) view.findViewById(R.id.txt_item_uname);
+			holder= new Holder(view);
 			
-			holder.txt_item_content= (TextView) view.findViewById(R.id.txt_item_content);
-			holder.img_item_userphoto= (ImageView) view.findViewById(R.id.img_item_userphoto);
-			holder.txt_item_uname.setText(moment.getUsername());
-			holder.txt_item_content.setText(moment.getContent());
+			view.setTag(holder);
 			
-		//	SimpleImageLoader.showImg(holder.img_item_userphoto,moment.getPictureurl());
+			
+//			holder.txt_item_uname = (TextView) view.findViewById(R.id.txt_item_uname);
+//			holder.txt_item_time = (TextView) view.findViewById(R.id.txt_item_time);
+//			holder.txt_item_content= (TextView) view.findViewById(R.id.txt_item_content);
+//			holder.img_item_userphoto= (ImageView) view.findViewById(R.id.img_item_userphoto);
+			
+		}else{
+			holder= (Holder)view.getTag();
+		}
+		
+		Moment moment = this.moments.get(arg0);
+		holder.txt_item_uname.setText(moment.getUsername());
+		holder.txt_item_content.setText(moment.getContent());
+		holder.txt_item_time.setText(moment.getTime());
+		if("".equals(moment.getPictureurl())||moment.getPictureurl()==null){
+			holder.img_item_userphoto.setImageResource(R.drawable.usericon);
+		}else{
+			SimpleImageLoader.showImg(holder.img_item_userphoto,moment.getPictureurl());
+			
 		}
 		return view;
 	}
@@ -77,19 +92,12 @@ public class MomentAdapter extends BaseAdapter {
 		
 		TextView txt_item_content;
 		
-		ImageView img_item_content_pic;
-		
-		LinearLayout lyt_item_sublayout;
-		
-		TextView txt_item_subcontent;
-		
-		ImageView img_item_content_subpic;
-		
-		TextView txt_item_from;
-		
-		TextView txt_item_redirect;
-		
-		TextView txt_item_comment;
+		public Holder(View view){
+			txt_item_uname = (TextView) view.findViewById(R.id.txt_item_uname);
+			txt_item_time = (TextView) view.findViewById(R.id.txt_item_time);
+			txt_item_content= (TextView) view.findViewById(R.id.txt_item_content);
+			img_item_userphoto= (ImageView) view.findViewById(R.id.img_item_userphoto);
+		}
 		
 	}
 	

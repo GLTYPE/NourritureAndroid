@@ -1,9 +1,12 @@
 package com.gltype.nourriture.model;
 
-public class Moment {
-	private int id;
+import java.io.Serializable;
+
+public class Moment implements Serializable{
+	private String id;
 	private String username;
-	
+	private String ownId;
+	private String targetId;
 	private String content;
 	private String time;
 	private String pictureurl;
@@ -16,16 +19,28 @@ public class Moment {
 		this.pictureurl = pictureurl;
 	}
 	
+	public String getOwnId() {
+		return ownId;
+	}
+	public void setOwnId(String ownId) {
+		this.ownId = ownId;
+	}
+	public String getTargetId() {
+		return targetId;
+	}
+	public void setTargetId(String targetId) {
+		this.targetId = targetId;
+	}
 	public String getPictureurl() {
 		return pictureurl;
 	}
 	public void setPictureurl(String pictureurl) {
 		this.pictureurl = pictureurl;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

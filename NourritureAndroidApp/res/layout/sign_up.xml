@@ -4,35 +4,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-   
+		  <include android:id="@+id/layout_title_bar" layout="@layout/title_bar"/> 
+		<EditText
+			android:id="@+id/et_email"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="textEmailAddress"
+			android:hint="email"/>	    
+		<EditText
+			android:id="@+id/et_password"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="textPassword"
+			android:hint="@string/input_password"/>	 
+		<EditText
+			android:id="@+id/et_password_again"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="textPassword"
+			android:hint="@string/confirm_psw"/>	 
 	    <EditText
 			android:id="@+id/et_firstname"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:hint="firstname"/>	    
-  <EditText
+  		<EditText
 			android:id="@+id/et_lastname"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:hint="lastname"/>	  
-			<EditText
-			android:id="@+id/et_email"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:hint="email"/>	    
-			<EditText
-			android:id="@+id/et_password"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:hint="@string/input_username"/>	    
-			<EditText
+			android:hint="lastname"/>	    
+  		<EditText
 			android:id="@+id/et_role"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:hint="role"/>	     
 	    <Button
 	        android:id="@+id/signupButton"
-	        android:layout_width="wrap_content"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:text="@string/signup" />
     

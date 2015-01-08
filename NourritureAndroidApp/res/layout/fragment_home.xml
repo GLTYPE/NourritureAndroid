@@ -6,23 +6,34 @@
     android:orientation="vertical">
 
     <!-- welcome the user with username ['user' as defualt] -->
-    <TextView android:id="@+id/welcome_user"
-        android:layout_width="match_parent"
+    <FrameLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+	   <Button android:id="@+id/bt_home_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_gravity="left"
+        android:text="refresh"/>
+	     <TextView android:id="@+id/welcome_user"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:gravity="end"
+        android:layout_gravity="right"
         android:text="@string/welcome_user" />
+</FrameLayout>   
     
     <!--  show the newest videos(recipies moments) in Database -->
     <TextView android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="@string/text_newList"/>
+        android:text="Promote Recipes"/>
     
     <GridView android:id="@+id/home_view_newList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+       
         android:numColumns="3">
         
     </GridView>
@@ -31,7 +42,7 @@
     <TextView android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="@string/text_promoteList"/>
+        android:text="Promote Products"/>
     
     <GridView android:id="@+id/home_view_promoteList"
         android:layout_width="match_parent"
