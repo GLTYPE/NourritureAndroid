@@ -6,7 +6,7 @@ import android.os.Message;
 public class MyHandler extends Handler{
 	
 
-	public void onSuccess(String content){
+	public void onSuccess(String content,int status){
 		
 	}
 	public void onFailure(String content){
@@ -17,11 +17,12 @@ public class MyHandler extends Handler{
 	public void handleMessage(Message msg) {
 		// TODO Auto-generated method stub
 		String content =(String) msg.obj;
+		int status= msg.arg1;
 		switch(msg.what){
 		
 			case 1:{
 				
-				onSuccess(content);
+				onSuccess(content,status);
 				break;
 			}
 			case 2:{

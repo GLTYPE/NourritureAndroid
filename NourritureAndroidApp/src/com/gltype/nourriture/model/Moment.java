@@ -1,6 +1,8 @@
 package com.gltype.nourriture.model;
 
-public class Moment {
+import java.io.Serializable;
+
+public class Moment implements Serializable{
 	private String id;
 	private String username;
 	private String ownId;

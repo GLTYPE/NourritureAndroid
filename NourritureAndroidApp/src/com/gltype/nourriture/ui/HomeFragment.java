@@ -52,6 +52,7 @@ public class HomeFragment extends Fragment {
 	public List<Product> products;
 	public List<Recipe> recipes;
 	private Button refeshButton;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -89,10 +90,9 @@ public class HomeFragment extends Fragment {
 		getRecipesByAsyncHttpClientGet();
 		getProductsByAsyncHttpClientGet();		
 		
-		HomeProductAdapter adapter = new HomeProductAdapter(context, products);
-		HomeRecipeAdapter adapter2 =new HomeRecipeAdapter(context, recipes);
-		recipesgridView.setAdapter(adapter2);
-		productsgridView.setAdapter(adapter);
+		
+		
+		
 		
 		recipesgridView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
@@ -152,6 +152,8 @@ public class HomeFragment extends Fragment {
 								recipe.set_id(id);
 								recipes.add(recipe);
 							}
+							HomeRecipeAdapter adapter2 =new HomeRecipeAdapter(context, recipes);
+							recipesgridView.setAdapter(adapter2);
 						}else{
 							for(int i=0; i<9;i++){
 								jsonObject= response.getJSONObject(i);
@@ -166,6 +168,8 @@ public class HomeFragment extends Fragment {
 								recipe.set_id(id);
 								recipes.add(recipe);
 							}
+							HomeRecipeAdapter adapter2 =new HomeRecipeAdapter(context, recipes);
+							recipesgridView.setAdapter(adapter2);
 						}
 					} catch (JSONException e) {
 						
@@ -208,7 +212,11 @@ public class HomeFragment extends Fragment {
 								product.setValue(jsonObject.getString("values"));
 								product.setBrand(jsonObject.getString("brand"));
 								products.add(product);
+							
 							}
+							HomeProductAdapter adapter= new HomeProductAdapter(context, products);
+							 productsgridView.setAdapter(adapter);
+					
 						}else{
 							for(int i=0; i<9;i++){
 								jsonObject= response.getJSONObject(i);
@@ -222,6 +230,8 @@ public class HomeFragment extends Fragment {
 								product.setBrand(jsonObject.getString("brand"));
 								products.add(product);
 							}
+							HomeProductAdapter adapter= new HomeProductAdapter(context, products);
+							 productsgridView.setAdapter(adapter);
 						}
 					} catch (JSONException e) {
 						

@@ -7,11 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.gltype.nourriture.http.AsyncHttpClient;
+import com.gltype.nourriture.http.MyHandler;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Product;
 import com.gltype.nurriture.R;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
+
 import android.view.View.OnClickListener;
 import android.app.Activity;
 import android.content.Intent;
@@ -61,9 +62,42 @@ public class ProductDetialActivity extends Activity {
 				finish();
 			}
 		});
+//		editButton.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View arg0) {
+//				deleteMoment(product.getProductid());
+//				
+//			}
+//		});
+		
 		
 	}
 	
+	
+	public void deleteMoment(String procuctId) {  
+	   	 AsyncHttpClient client = new AsyncHttpClient(); 
+	        String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/products/"+procuctId; 
+	        JSONObject jsonObject = new JSONObject();
+	        try {
+				jsonObject.put("token",LoginActivity.token);
+			} catch (JSONException e) {
+				
+				e.printStackTrace();
+			}
+	        client.delete(url, jsonObject, new MyHandler(){
+	        	@Override
+	        	public void onSuccess(String content, int status) {
+	        		productDescription.setText(status+" "+content);
+	        	};
+	        	@Override
+	        	public void onFailure(String content) {
+	        		productDescription.setText(content);
+	        		super.onFailure(content);
+	        	}
+	        });
+	      
+	   }  
 	
 	
 }

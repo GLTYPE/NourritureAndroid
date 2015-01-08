@@ -64,7 +64,7 @@ public class SearchFragment extends Fragment {
 		 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
 		 searchSpinner.setAdapter(adapter);
 		 searchSpinner.setSelection(0);
-		 refresh(0);
+		// refresh(0);
 		 searchSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
 			 @Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
@@ -114,8 +114,8 @@ public class SearchFragment extends Fragment {
 	public void initProductsSearch(){
 		searchEdit.setText("pe");
 		searchProductsByName(searchEdit.getText().toString());
-		SearchProductAdapter pAdapter = new SearchProductAdapter(getActivity(), products);
-		searchListView.setAdapter(pAdapter);
+		
+		
 		searchListView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -135,8 +135,7 @@ public class SearchFragment extends Fragment {
 	public void initRecipesSearch(){
 		searchEdit.setText("si");
 		searchRecipesByName(searchEdit.getText().toString());
-		SearchRecipeAdapter rAdapter = new SearchRecipeAdapter(getActivity(), recipes);
-		searchListView.setAdapter(rAdapter);
+		
 		searchListView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -156,8 +155,7 @@ public class SearchFragment extends Fragment {
 	public void initIngredientSearch(){
 		searchEdit.setText("se");
 		searchIngredientsByName(searchEdit.getText().toString());
-		SearchIngredientAdapter iAdapter = new SearchIngredientAdapter(getActivity(), ingredients);
-		searchListView.setAdapter(iAdapter);
+		
 		searchListView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -202,6 +200,8 @@ public class SearchFragment extends Fragment {
 						
 							recipes.add(recipe);
 						}	
+						SearchRecipeAdapter rAdapter = new SearchRecipeAdapter(getActivity(), recipes);
+						searchListView.setAdapter(rAdapter);
 			
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -245,7 +245,8 @@ public class SearchFragment extends Fragment {
 							
 							products.add(product);
 						}	
-			
+						SearchProductAdapter pAdapter = new SearchProductAdapter(getActivity(), products);
+						searchListView.setAdapter(pAdapter);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -286,7 +287,8 @@ public class SearchFragment extends Fragment {
 							
 							ingredients.add(ingredient);
 						}	
-			
+						SearchIngredientAdapter iAdapter = new SearchIngredientAdapter(getActivity(), ingredients);
+						searchListView.setAdapter(iAdapter);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

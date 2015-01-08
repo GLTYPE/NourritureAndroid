@@ -12,7 +12,9 @@ import com.gltype.nourriture.adapter.MomentAdapter;
 import com.gltype.nourriture.adapter.SearchIngredientAdapter;
 import com.gltype.nourriture.model.Ingredient;
 import com.gltype.nourriture.model.Moment;
+import com.gltype.nourriture.model.Product;
 import com.gltype.nourriture.model.User;
+import com.gltype.nourriture.utils.StringTools;
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -49,8 +51,11 @@ public class MomentFragment extends Fragment {
 	private Button addbutton;
 	private int index;
 	 private ArrayAdapter<String> adapter;
+	//private MomentAdapter momentadapter;
 	 private static final String[] searchType={"Moments","My moments"};
-	
+	//private User user= null;
+	 public  String userPicture;
+		public  String userName;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -89,9 +94,41 @@ public class MomentFragment extends Fragment {
 				
 			}
 		});
-		// initMyMoments();
+
+		 addbutton.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					Intent intent = new Intent(MomentFragment.this.getActivity(), AddMomentActivity.class);
+                	startActivity(intent);
+					
+				}
+			});
+		 
+		 
+		 
+		 listView.setOnItemClickListener(new OnItemClickListener(){
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+						long arg3) {
+					 Moment moment = (Moment) arg0.getItemAtPosition(arg2);
+					 
+					  Intent intent =new Intent(MomentFragment.this.getActivity(), MomentDetialActivity.class);
+					  Bundle bundle = new Bundle();
+					  bundle.putSerializable("moment",moment);
+					  intent.putExtras(bundle);
+					  startActivity(intent);
+					
+				}
+			});	
+		 
+		 
+		 
+		 
 		return view;
-	}	
+	}
+	
+	
 	public void refresh(int selectIndex){
 		switch(selectIndex){
 			case 0:{
@@ -111,48 +148,48 @@ public class MomentFragment extends Fragment {
 	public void initTargetMoments(){
 		
 		getTargetMoments();
-		MomentAdapter adapter = new MomentAdapter(context, moments);
-		listView.setAdapter(adapter);
+
+		
 	}
 
 public void initMyMoments(){
-		//moments = new ArrayList<Moment>();
-		
-	//Moment moment = new Moment("aaaa", "asdhjgfdsah", "");
-	//Moment moment1 = new Moment("aaaa", "asdhjgfdsah", "");
-	//moments.add(moment);
-	//moments.add(moment1);
+	
 	
 		getMyMoments(HomeFragment.userId);
-		MomentAdapter adapter = new MomentAdapter(context, moments);
-		listView.setAdapter(adapter);
-
+	//	MomentAdapter adapter = new MomentAdapter(context, moments);
+		//listView.setAdapter(adapter);
+		
 	}
 	
 	public void getMyMoments(String ownerId) {				
 		String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/moments/owner/"+ownerId;
-		getInfo(url,1);
+		getInfo(url);
 	}
 	
 	public void getTargetMoments() {				
 		String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/moments";
-		getInfo(url,0);
+		getInfo(url);
 	}
 	
-	 public User getUserById(String userId) {  	
+	 public  void  getUserById(String userId) {  	
 	        AsyncHttpClient client = new AsyncHttpClient();  
-	  	    String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/id/"+userId; 
-	  	    final User user=new User();
+	  	    String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users/"+userId; 
+	  	
 	        client.get(url,new JsonHttpResponseHandler() {            
 	        	 @Override
 	        	public void onSuccess(int statusCode, Header[] headers,
 	        			JSONObject response) {
 					try {
-						 
-						String userName= response.getString("firstname");
-						String userPicture = response.getString("picture");
-						 user.setFirstname(userName);
-						 user.setPicture(userPicture);
+						
+						String firstname = response.getString("firstname");
+						String lastname = response.getString("lastname");
+						int role = response.getInt("role");
+						String pic = response.getString("picture");
+						String email = response.getString("email");
+						userName = firstname+" "+lastname;
+						userPicture = pic;
+						
+	
 						 
 					} catch (JSONException e) {
 						
@@ -164,14 +201,15 @@ public void initMyMoments(){
 	            @Override
 	            public void onFailure(int statusCode, Header[] headers,
 	            		String responseString, Throwable throwable) {
+	            	System.out.println("============="+responseString);
 	            	super.onFailure(statusCode, headers, responseString, throwable);
 	            }               
 	         });  	
-	        return user;
+	      
 	    }  
 	
 	
-	public void getInfo(String url,final int tag){
+	public  void getInfo(String url){
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get(url, new JsonHttpResponseHandler() {
 			@Override
@@ -183,25 +221,31 @@ public void initMyMoments(){
 					int len = response.length();					
 					JSONObject jsonObj = null;
 					
-						for(int i = 0; i < len; i++) {					
+						for(int i = 1; i < len; i++) {					
 							jsonObj = response.getJSONObject(i);
 							String id = jsonObj.getString("_id");
 						//	String name = jsonObj.getString("name");
 							String desc = jsonObj.getString("description");
 							
 							
-							//String date = jsonObj.getString("date");
+							String date = StringTools.dateFormat(jsonObj.getString("date"));
+							
 							String own =  jsonObj.getString("owner_id");				
 							String target =  jsonObj.getString("target_id");
-							User user=null;
+							//User user=null;
 							
-							user= getUserById(own);
-						
-							Moment moment = new Moment(user.getFirstname(), desc, user.getPicture());
-							
+							 getUserById(own);
+		
+							Moment moment = new Moment(userName,desc,userPicture);
+							moment.setTime(date);
+							moment.setId(id);
 							moments.add(moment);
 						}	
-			
+						//momentadapter.notifyDataSetChanged();
+						MomentAdapter	momentadapter = new MomentAdapter(context, moments);
+						
+						listView.setAdapter(momentadapter);
+						
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

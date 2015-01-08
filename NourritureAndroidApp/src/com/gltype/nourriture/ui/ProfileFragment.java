@@ -74,13 +74,13 @@ public class ProfileFragment extends Fragment {
 		}
 		getUserRecipesByAsycHttpClientGet();
 		
-		ProfileRecipeAdapter rAdapter = new ProfileRecipeAdapter(recipes, context);
-		gv_recipe.setAdapter(rAdapter);	
-		gv_like.setAdapter(rAdapter);	
+//		ProfileRecipeAdapter rAdapter = new ProfileRecipeAdapter(recipes, context);
+//		gv_recipe.setAdapter(rAdapter);	
+//		gv_like.setAdapter(rAdapter);	
 		
 		getUserMomentsByAsycHttpClientGet();
-		ProfileMomentAdapter mAdapter = new ProfileMomentAdapter(moments, context);
-		gv_moments.setAdapter(mAdapter);	
+//		ProfileMomentAdapter mAdapter = new ProfileMomentAdapter(moments, context);
+//		gv_moments.setAdapter(mAdapter);	
 		
 		
 		
@@ -181,6 +181,9 @@ public class ProfileFragment extends Fragment {
 							
 						}
 					}
+					ProfileRecipeAdapter rAdapter = new ProfileRecipeAdapter(recipes, context);
+					gv_recipe.setAdapter(rAdapter);	
+					gv_like.setAdapter(rAdapter);	
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -229,6 +232,8 @@ public class ProfileFragment extends Fragment {
 							moments.add(moment);
 						}
 					}
+					ProfileMomentAdapter mAdapter = new ProfileMomentAdapter(moments, context);
+					gv_moments.setAdapter(mAdapter);	
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

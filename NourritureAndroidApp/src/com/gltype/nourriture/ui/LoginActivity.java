@@ -43,7 +43,7 @@ public class LoginActivity extends Activity {
 	public static int role;
 	
 	public boolean isConnect = false;
-	UserDao userDao = new UserDao(this);
+	public UserDao userDao = new UserDao(this);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

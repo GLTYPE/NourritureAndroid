@@ -40,6 +40,9 @@
 		<activity android:name="com.gltype.nourriture.ui.RecipeEditActivity" />
 		<activity android:name="com.gltype.nourriture.ui.IngredientDetialActivity" />
 		<activity android:name="com.gltype.nourriture.ui.IngredientEditActivity" />
+		<activity android:name="com.gltype.nourriture.ui.AddMomentActivity" />
+		<activity android:name="com.gltype.nourriture.ui.MomentDetialActivity" />
+		<activity android:name="com.gltype.nourriture.ui.MomentEditActivity" />
     </application>
 
 </manifest>

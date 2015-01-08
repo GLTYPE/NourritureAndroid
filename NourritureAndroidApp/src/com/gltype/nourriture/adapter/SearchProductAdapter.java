@@ -46,12 +46,13 @@ public class SearchProductAdapter extends BaseAdapter {
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		View view = arg1;
+		SearchHolder holder;
 		if(null == view)
 		{
 			
 			
-			SearchHolder holder= new SearchHolder();
-			Product product = this.products.get(arg0);
+			 holder= new SearchHolder();
+			
 			
 			view  = LayoutInflater.from(context).inflate(R.layout.search_item_template, null);
 			
@@ -60,14 +61,18 @@ public class SearchProductAdapter extends BaseAdapter {
 			holder.tv_search_item_description = (TextView) view.findViewById(R.id.tv_item_description);		
 			holder.img_search_item= (ImageView) view.findViewById(R.id.img_item_pic);
 			
+			view.setTag(holder);
 			
-			holder.tv_search_item_name.setText(product.getName());
-			holder.tv_search_item_value.setText(product.getValue());
-			holder.tv_search_item_description.setText(product.getDescription());
-			if(""!=product.getPicture()){
-			
-				SimpleImageLoader.showImg(holder.img_search_item,product.getPicture());
-			}
+		}else {
+			holder = (SearchHolder)view.getTag();
+		}
+		Product product = this.products.get(arg0);
+		holder.tv_search_item_name.setText(product.getName());
+		holder.tv_search_item_value.setText(product.getValue());
+		holder.tv_search_item_description.setText(product.getDescription());
+		if(""!=product.getPicture()){
+		
+			SimpleImageLoader.showImg(holder.img_search_item,product.getPicture());
 		}
 		return view;
 	}

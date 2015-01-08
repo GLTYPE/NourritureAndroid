@@ -48,27 +48,30 @@ public class SearchIngredientAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
 		View view = convertView;
-
+		SearchHolder holder;
 		if(view == null) {
-			SearchHolder holder = new SearchHolder();
-			Ingredient ingredient = ingredients.get(position);
+			 holder = new SearchHolder();
+			
 			view  = LayoutInflater.from(context).inflate(R.layout.search_item_template, null);
 			
 			holder.tv_search_item_name = (TextView) view.findViewById(R.id.tv_item_name);
 			holder.tv_search_item_value = (TextView) view.findViewById(R.id.tv_item_value);
 			holder.tv_search_item_description = (TextView) view.findViewById(R.id.tv_item_description);		
 			holder.img_search_item= (ImageView) view.findViewById(R.id.img_item_pic);
+			view.setTag(holder);
 			
 			
-			holder.tv_search_item_name.setText(ingredient.getName());
-			holder.tv_search_item_value.setText(ingredient.getValue()+"");
-			holder.tv_search_item_description.setText(ingredient.getDescription());
-			if(""!=ingredient.getPicture()){
-			
-				SimpleImageLoader.showImg(holder.img_search_item,ingredient.getPicture());
-			}
+		}else{
+			holder= (SearchHolder)view.getTag();
 		}
+		Ingredient ingredient = ingredients.get(position);
+		holder.tv_search_item_name.setText(ingredient.getName());
+		holder.tv_search_item_value.setText(ingredient.getValue()+"");
+		holder.tv_search_item_description.setText(ingredient.getDescription());
+		if(""!=ingredient.getPicture()){
 		
+			SimpleImageLoader.showImg(holder.img_search_item,ingredient.getPicture());
+		}
 		return view;
 	}
 

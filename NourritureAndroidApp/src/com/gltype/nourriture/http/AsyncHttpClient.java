@@ -9,10 +9,13 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import com.gltype.nourriture.utils.ParamsWrapper;
 import com.gltype.nourriture.utils.StringTools;
@@ -88,7 +91,44 @@ public class AsyncHttpClient {
 	}
 	
 	
+	public void delete(final String url,final JSONObject jsonObject,final MyHandler myhandler){
+		verifyUrl(url);
+		new Thread(){
+			public void run(){
+				HttpClient client =new DefaultHttpClient(); 
+				HttpDeleteWithBody httpDelete= new HttpDeleteWithBody(url);
+				httpDelete.setHeader("Content-Type", "application/json; charset=UTF-8");
+				httpDelete.setHeader("X-Requested-With", "XMLHttpRequest");
+				 StringEntity stringEntity = null; 
+				try {
+					stringEntity = new StringEntity(jsonObject.toString());
+					
+					httpDelete.setEntity(stringEntity);
+					HttpResponse response = client.execute(httpDelete);
+					String content="";
+				
+					InputStream is = response.getEntity().getContent();
+					content = StringTools.getInputStream(is);
+					
+					Message msg = new Message();
+					msg.what=SUCCESS;
+					msg.obj= content;
+					msg.arg1=response.getStatusLine().getStatusCode();
+					myhandler.sendMessage(msg);
+				} catch (Exception e) {
+				
+					Message msg = new Message();
+					msg.what=FAILURE;
+					msg.obj = "Fail to requset";
+					//msg.arg1=response.getStatusLine().getStatusCode();
+					myhandler.sendMessage(msg);
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			};
+		}.start();
 		
+	}
 		
 		
 	
