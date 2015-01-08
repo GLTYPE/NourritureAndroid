@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.gltype.nourriture.adapter.MomentAdapter;
 import com.gltype.nourriture.model.Moment;
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 
 import android.content.Context;
 import android.os.Bundle;
