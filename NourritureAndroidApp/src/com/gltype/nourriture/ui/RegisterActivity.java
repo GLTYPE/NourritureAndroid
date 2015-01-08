@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.gltype.nourriture.model.User;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nurriture.R;
 
 import com.loopj.android.http.AsyncHttpClient;  
@@ -37,7 +38,9 @@ public class RegisterActivity extends Activity {
 
 	private Button signupBtn;
 	private View progresView;
-	
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,7 +55,17 @@ public class RegisterActivity extends Activity {
 		
 		signupBtn = (Button) findViewById(R.id.signupButton);
 		//progresView = findViewById(R.id.login_progress);
-		
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(RegisterActivity.this);
+				
+			}
+		});
 		signupBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -72,7 +85,7 @@ public class RegisterActivity extends Activity {
 	            	Toast.makeText(v.getContext(), "password doesn't match", Toast.LENGTH_LONG).show();
 	            } else {  
 	                
-	                loginByAsyncHttpClientPost(user);  
+	                RegisterByAsyncHttpClientPost(user);  
 	                //loginByAsyncHttpClientGet(userName, userPass);  
 	            } 			
 			}
@@ -81,7 +94,7 @@ public class RegisterActivity extends Activity {
 		
 	}  
    // firstname, lastname, picture, email, about, role, password
-    public void loginByAsyncHttpClientPost(User user) {  
+    public void RegisterByAsyncHttpClientPost(User user) {  
         AsyncHttpClient client = new AsyncHttpClient(); 
         String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/users"; 
 
@@ -112,9 +125,8 @@ public class RegisterActivity extends Activity {
                     byte[] responseBody) {  
                     
                   // String resResult = new String(responseBody);  	
-            	 Toast.makeText(RegisterActivity.this,"Register Successfully" , Toast.LENGTH_LONG).show(); 
-                    	Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    	startActivity(intent);
+            	 Toast.makeText(RegisterActivity.this,"Register Successfully! Please Login" , Toast.LENGTH_LONG).show(); 
+            		mam.popOneActivity(RegisterActivity.this);
                     	//progresView.setVisibility(View.GONE);
                   
             }  

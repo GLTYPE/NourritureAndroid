@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nourriture.model.Product;
+import com.gltype.nourriture.utils.MyActivityManager;
 
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -34,6 +35,9 @@ public class MomentEditActivity extends Activity {
 	private EditText et_desc;
 	private EditText et_pic;
 	public Button addButton;
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.moment_edit);
@@ -44,6 +48,19 @@ public class MomentEditActivity extends Activity {
 		addButton = (Button) findViewById(R.id.bt_addmomcommit);
 		et_desc.setText(moment.getContent());
 		//et_pic.setText(moment.getPictureurl());
+		
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(MomentEditActivity.this);
+				
+			}
+		});
+		
 		addButton.setOnClickListener(new OnClickListener() {
 			
 			@SuppressLint("SimpleDateFormat")
@@ -106,7 +123,7 @@ public class MomentEditActivity extends Activity {
 	                    
 	                   String resResult = new String(responseBody);  	
 	            	 Toast.makeText(MomentEditActivity.this,resResult , Toast.LENGTH_LONG).show(); 
-	                    	finish();
+	            	 mam.popOneActivity(MomentEditActivity.this);
 	                    	//progresView.setVisibility(View.GONE);
 	                  
 	            }  

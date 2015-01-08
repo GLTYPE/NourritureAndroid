@@ -105,10 +105,10 @@ public class AsyncHttpClient {
 					
 					httpDelete.setEntity(stringEntity);
 					HttpResponse response = client.execute(httpDelete);
-					String content="";
+					String content="Delete successfully!";
 				
-					InputStream is = response.getEntity().getContent();
-					content = StringTools.getInputStream(is);
+					//InputStream is = response.getEntity().getContent();
+					//content = StringTools.getInputStream(is);
 					
 					Message msg = new Message();
 					msg.what=SUCCESS;

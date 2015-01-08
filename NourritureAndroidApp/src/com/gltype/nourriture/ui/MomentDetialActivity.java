@@ -14,6 +14,7 @@ import com.gltype.nourriture.http.MyHandler;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Comment;
 import com.gltype.nourriture.model.Moment;
+import com.gltype.nourriture.utils.MyActivityManager;
 
 import com.gltype.nurriture.R;
 
@@ -42,6 +43,9 @@ public class MomentDetialActivity extends Activity {
 	private ImageView contentPic;
 	public  List<Comment> comments;
 	public ListView commentList;
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.moment_detial);
@@ -55,6 +59,19 @@ public class MomentDetialActivity extends Activity {
 		contentPic= (ImageView) findViewById(R.id.img_item_content_pic);
 		tv_date = (TextView)findViewById(R.id.txt_item_time);
 		commentList= (ListView)findViewById(R.id.lv_comment);
+		
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(MomentDetialActivity.this);
+				
+			}
+		});
+		
 		if("".equals(moment.getPictureurl())||moment.getPictureurl()==null){
 			userPhoto.setImageResource(R.drawable.usericon);
 		}else{
@@ -84,7 +101,7 @@ public class MomentDetialActivity extends Activity {
 				  bundle.putSerializable("moment",moment);
 				  intent.putExtras(bundle);
 				  startActivity(intent);
-				finish();
+					mam.popOneActivity(MomentDetialActivity.this);
 				
 			}
 		});
@@ -122,7 +139,10 @@ public class MomentDetialActivity extends Activity {
 	        client.delete(url, jsonObject, new MyHandler(){
 	        	@Override
 	        	public void onSuccess(String content, int status) {
+	        		if(status==204){
 	        		tv_momentdescription.setText(status+" "+content);
+	        		mam.popOneActivity(MomentDetialActivity.this);
+	        		}
 	        	};
 	        	@Override
 	        	public void onFailure(String content) {

@@ -221,13 +221,13 @@ public void initMyMoments(){
 					int len = response.length();					
 					JSONObject jsonObj = null;
 					
-						for(int i = 1; i < len; i++) {					
+						for(int i = 0; i < len; i++) {					
 							jsonObj = response.getJSONObject(i);
 							String id = jsonObj.getString("_id");
 						//	String name = jsonObj.getString("name");
 							String desc = jsonObj.getString("description");
 							
-							
+							//String date="";
 							String date = StringTools.dateFormat(jsonObj.getString("date"));
 							
 							String own =  jsonObj.getString("owner_id");				

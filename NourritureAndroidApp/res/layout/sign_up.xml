@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-		  
+		  <include android:id="@+id/layout_title_bar" layout="@layout/title_bar"/> 
 		<EditText
 			android:id="@+id/et_email"
 			android:layout_width="match_parent"

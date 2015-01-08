@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.gltype.nourriture.model.Moment;
+import com.gltype.nourriture.utils.MyActivityManager;
 
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -32,6 +33,9 @@ public class AddMomentActivity extends Activity {
 	private EditText et_desc;
 	private EditText et_pic;
 	public Button addButton;
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.add_moment);
@@ -40,6 +44,18 @@ public class AddMomentActivity extends Activity {
 		addButton = (Button) findViewById(R.id.bt_addmomcommit);
 		//progresView = findViewById(R.id.login_progress);
 		
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(AddMomentActivity.this);
+				
+			}
+		});
+		
 		addButton.setOnClickListener(new OnClickListener() {
 			
 			@SuppressLint("SimpleDateFormat")
@@ -47,9 +63,7 @@ public class AddMomentActivity extends Activity {
 			public void onClick(View v) {
 				String desc = et_desc.getText().toString(); 
 	            String pic = et_pic.getText().toString();
-	            
-	           
-	            
+	      
 	          Moment moment = new Moment(HomeFragment.userName, desc, pic);
 	          SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd    hh:mm:ss"); 
 	         
@@ -61,6 +75,7 @@ public class AddMomentActivity extends Activity {
 	          System.out.println("-------------"+date);
 	            if (TextUtils.isEmpty(desc.trim())) {  
 	                Toast.makeText(v.getContext(), "Say something!", Toast.LENGTH_LONG).show();  
+	           
 	            } else {  
 	                
 	            	addMomemt(moment);  
@@ -106,7 +121,7 @@ public class AddMomentActivity extends Activity {
 	                    
 	                  // String resResult = new String(responseBody);  	
 	            	 Toast.makeText(AddMomentActivity.this,"Add a new moment" , Toast.LENGTH_LONG).show(); 
-	                    	finish();
+	            	 mam.popOneActivity(AddMomentActivity.this);
 	                    	//progresView.setVisibility(View.GONE);
 	                  
 	            }  

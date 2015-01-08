@@ -11,6 +11,7 @@ import com.gltype.nourriture.http.AsyncHttpClient;
 import com.gltype.nourriture.http.MyHandler;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Product;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nurriture.R;
 
 import android.view.View.OnClickListener;
@@ -30,7 +31,9 @@ public class ProductDetialActivity extends Activity {
 	private TextView productValue;
 	private ImageView productImg;
 	private Button editButton;
-	
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,17 @@ public class ProductDetialActivity extends Activity {
 		this.productValue = (TextView) findViewById(R.id.tv_productvalue);
 		this.productImg = (ImageView) findViewById(R.id.img_product);
 		
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(ProductDetialActivity.this);
+				
+			}
+		});
 		
 		this.productName.setText(product.getName());
 		this.productBrand.setText(product.getBrand());
@@ -59,7 +73,7 @@ public class ProductDetialActivity extends Activity {
 				  bundle.putSerializable("product",product);
 				  intent.putExtras(bundle);
 				  startActivity(intent);
-				finish();
+				  mam.popOneActivity(ProductDetialActivity.this);
 			}
 		});
 //		editButton.setOnClickListener(new OnClickListener() {
@@ -75,7 +89,7 @@ public class ProductDetialActivity extends Activity {
 	}
 	
 	
-	public void deleteMoment(String procuctId) {  
+	public void deleteProduct(String procuctId) {  
 	   	 AsyncHttpClient client = new AsyncHttpClient(); 
 	        String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/products/"+procuctId; 
 	        JSONObject jsonObject = new JSONObject();

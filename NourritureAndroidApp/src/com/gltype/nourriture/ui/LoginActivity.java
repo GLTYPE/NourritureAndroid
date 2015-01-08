@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.gltype.nourriture.db.dao.UserDao;
 import com.gltype.nourriture.model.User;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nurriture.R; 
 
 import com.loopj.android.http.AsyncHttpClient;  
@@ -41,7 +42,7 @@ public class LoginActivity extends Activity {
 	private View progresView;
 	public static String token;
 	public static int role;
-	
+	MyActivityManager mam = MyActivityManager.getInstance();
 	public boolean isConnect = false;
 	public UserDao userDao = new UserDao(this);
 	@Override
@@ -56,7 +57,7 @@ public class LoginActivity extends Activity {
 		tv_forgetPwd = (TextView) findViewById(R.id.forgetPwd);
 		//progresView = findViewById(R.id.login_progress);
 		
-		
+		mam.pushOneActivity(this);
 		User user = userDao.find();
 		if(user!=null){
 			isConnect = true;
@@ -70,7 +71,7 @@ public class LoginActivity extends Activity {
 		if(isConnect){
 			Intent intent = new Intent(this, MainActivity.class);    
           	startActivity(intent);
-          	this.finish();
+          	mam.popOneActivity(this);
           	//tv_result.setText(token);
           	 Toast.makeText(this, token, Toast.LENGTH_LONG).show(); 
 		}
@@ -154,6 +155,7 @@ public class LoginActivity extends Activity {
 					tv_result.setText(token);
               	Intent intent = new Intent(LoginActivity.this, MainActivity.class);    
               	startActivity(intent);
+              	mam.popOneActivity(LoginActivity.this);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -173,44 +175,6 @@ public class LoginActivity extends Activity {
        
     }  
   
-    
-    public void loginByAsyncHttpClientGet(String userName, String userPass) {  
-      
-        AsyncHttpClient client = new AsyncHttpClient();  
-      
-        String url = "http://172.29.64.31:8000/HelloWorld/servlet/LoginServlet";  
-       
-        RequestParams params = new RequestParams();  
-        params.put("email", userName);
-        params.put("password", userPass);
-          
-       
-        client.get(url, params,new AsyncHttpResponseHandler() {  
-            @Override  
-            public void onSuccess(int statusCode, Header[] headers,  
-                    byte[] responseBody) {  
-               
-                System.out  
-                        .println("statusCode-------------------" + statusCode);  
-               
-                for (int i = 0; i < headers.length; i++) {  
-                    Header header = headers[i];  
-                    System.out.println("header------------Name:"  
-                            + header.getName() + ",--Value:"  
-                            + header.getValue());  
-                }  
-              
-                tv_result.setText(new String(responseBody));  
-            }  
-  
-            @Override  
-            public void onFailure(int statusCode, Header[] headers,  
-                    byte[] responseBody, Throwable error) {  
-               
-                error.printStackTrace();  
-            }  
-        });  
-    }  
 
 	
 

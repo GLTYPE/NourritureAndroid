@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.gltype.nourriture.model.User;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -35,8 +36,9 @@ public class UserEditActivity extends Activity {
 					 et_email, et_password, et_passwordAgain, et_old_password;
 	private String old_email;
 	private Button btn_save;	
-	
-	
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,7 +46,17 @@ public class UserEditActivity extends Activity {
 		Intent intent = this.getIntent();
 		this.user = (User) intent.getSerializableExtra("user");
 		displayUserInfo();	
-		
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(UserEditActivity.this);
+				
+			}
+		});
 	}
 
 
@@ -148,6 +160,7 @@ public class UserEditActivity extends Activity {
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONObject response) {
 				Toast.makeText(UserEditActivity.this, "Edit Success", Toast.LENGTH_SHORT).show();
+				mam.popOneActivity(UserEditActivity.this);
 				super.onSuccess(statusCode, headers, response);
 			}
 			@Override

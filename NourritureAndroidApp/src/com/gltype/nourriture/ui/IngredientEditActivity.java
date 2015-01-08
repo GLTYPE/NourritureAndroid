@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Ingredient;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -31,7 +32,9 @@ public class IngredientEditActivity extends Activity {
 	private EditText ingredientValue;
 	private EditText ingredientImg;
 	private Button editButton;
-	
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,19 @@ public class IngredientEditActivity extends Activity {
 		this.ingredientValue = (EditText) findViewById(R.id.et_ingredientvalue);
 		this.ingredientImg = (EditText) findViewById(R.id.et_ingredientimg);
 		
-		//this.ingredientName.setText(LoginActivity.token);
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(IngredientEditActivity.this);
+				
+			}
+		});
+		
+		
 		this.ingredientName.setText(ingredient.getName());
 		
 		this.ingredientDescription.setText(ingredient.getDescription());
@@ -62,7 +77,7 @@ public class IngredientEditActivity extends Activity {
 				ingredient.setValue(ingredientValue.getText().toString());
 				ingredient.setId(ingredient.getId());
 				editingredientByAsyncHttpClientPut(ingredient);
-				finish();
+				mam.popOneActivity(IngredientEditActivity.this);
 			}
 		});
 		

@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Product;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -32,7 +33,9 @@ public class ProductEditActivity extends Activity {
 	private EditText productValue;
 	private EditText productImg;
 	private Button editButton;
-	
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,19 @@ public class ProductEditActivity extends Activity {
 		this.productImg.setText(product.getPicture());
 		this.productValue.setText(product.getValue());
 		this.editButton=(Button) findViewById(R.id.bt_productcommit);
+		
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(ProductEditActivity.this);
+				
+			}
+		});
+		
 		editButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
@@ -63,7 +79,7 @@ public class ProductEditActivity extends Activity {
 				pro.setValue(productValue.getText().toString());
 				pro.setProductid(product.getProductid());
 				editProductByAsyncHttpClientPut(pro);
-				finish();
+			
 			}
 		});
 		
@@ -99,7 +115,7 @@ public class ProductEditActivity extends Activity {
 	       	public void onSuccess(int statusCode, Header[] headers,
 	       			JSONObject response) {
 	       		Toast.makeText(ProductEditActivity.this, "Edit Success", Toast.LENGTH_SHORT).show();
-					
+	       		mam.popOneActivity(ProductEditActivity.this);
 	       		super.onSuccess(statusCode, headers, response);
 	       	}
            @Override

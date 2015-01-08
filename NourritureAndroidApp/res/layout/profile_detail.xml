@@ -6,7 +6,7 @@
     android:layout_gravity="center_horizontal"
     android:gravity="center_horizontal"
     android:background="@color/light_grey">
-	 
+	 <include android:id="@+id/layout_title_bar" layout="@layout/title_bar"/>
 	<ImageView android:id="@+id/img_picture"
 		    android:layout_width="match_parent"
 		    android:layout_height="0dp"

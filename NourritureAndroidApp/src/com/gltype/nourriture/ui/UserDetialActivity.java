@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.gltype.nourriture.db.dao.UserDao;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.User;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nourriture.utils.RoleUtil;
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -35,6 +36,9 @@ public class UserDetialActivity extends Activity {
 	private Button btn_edit;	
 	private Button btn_signout;	
 	private UserDao dao= new UserDao(this);
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,6 +47,17 @@ public class UserDetialActivity extends Activity {
 		this.user = (User) intent.getSerializableExtra("user");
 		displayUserInfo();	
 
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(UserDetialActivity.this);
+				
+			}
+		});
 		btn_edit.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -52,7 +67,7 @@ public class UserDetialActivity extends Activity {
 				bundle.putSerializable("user", user);
 				intent.putExtras(bundle);
 				startActivity(intent);
-				finish();
+				mam.popOneActivity(UserDetialActivity.this);
 			}
 		});
 		
@@ -61,7 +76,7 @@ public class UserDetialActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				
-				
+				signOut();
 			}
 		});
 		
@@ -115,6 +130,11 @@ public class UserDetialActivity extends Activity {
         			JSONObject response) {
         		
         		 dao.delete(LoginActivity.token);
+        		 Intent intent = new Intent();  
+        		 intent.setClass(UserDetialActivity.this, LoginActivity.class);  
+        		 mam.finishAllActivity();
+        		 startActivity(intent); 
+        		
         		super.onSuccess(statusCode, headers, response);
         	}
             @Override

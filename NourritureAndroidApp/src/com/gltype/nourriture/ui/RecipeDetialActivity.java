@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Recipe;
+import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nurriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -29,7 +30,9 @@ public class RecipeDetialActivity extends Activity {
 	private TextView recipeValue;
 	private ImageView recipeImg;
 	private Button editButton;
-	
+	MyActivityManager mam = MyActivityManager.getInstance();
+	private View titleView;
+	private Button btn_back;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,18 @@ public class RecipeDetialActivity extends Activity {
 		SimpleImageLoader.showImg(this.recipeImg, recipe.getPicture());
 		this.recipeValue.setText(recipe.getValue()+"");
 		this.editButton=(Button) findViewById(R.id.bt_recipeedit);
+		titleView = findViewById(R.id.layout_title_bar);
+		mam.pushOneActivity(this);
+		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(RecipeDetialActivity.this);
+				
+			}
+		});
+		
 		editButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
@@ -58,7 +73,7 @@ public class RecipeDetialActivity extends Activity {
 				  bundle.putSerializable("recipe",recipe);
 				  intent.putExtras(bundle);
 				  startActivity(intent);
-				finish();
+				  mam.popOneActivity(RecipeDetialActivity.this);
 			}
 		});
 		
