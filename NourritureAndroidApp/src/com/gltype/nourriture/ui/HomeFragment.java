@@ -1,6 +1,6 @@
 package com.gltype.nourriture.ui;
 
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

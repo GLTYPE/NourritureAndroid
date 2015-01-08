@@ -16,7 +16,7 @@ import java.util.Map;
 import org.apache.http.HttpException;
 
 import com.gltype.nourriture.utils.MD5Util;
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;
