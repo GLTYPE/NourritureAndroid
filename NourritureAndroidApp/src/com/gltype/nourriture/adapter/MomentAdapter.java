@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Moment;
-import com.gltype.nourriture.R;
+import com.gltype.nurriture.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 public class MomentAdapter extends BaseAdapter {
 
 	private List<Moment> moments;

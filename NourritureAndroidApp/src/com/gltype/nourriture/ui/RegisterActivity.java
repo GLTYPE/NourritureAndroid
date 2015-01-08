@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.gltype.nourriture.model.User;
-import com.gltype.nourriture.R; 
+import com.gltype.nurriture.R; 
 
 import com.loopj.android.http.AsyncHttpClient;  
 import com.loopj.android.http.AsyncHttpResponseHandler;  

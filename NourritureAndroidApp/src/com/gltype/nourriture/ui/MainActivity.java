@@ -1,6 +1,6 @@
 package com.gltype.nourriture.ui;
 
-import com.gltype.nourriture.R;
+import com.gltype.nurriture.R;
 
 
 import android.content.Context;
