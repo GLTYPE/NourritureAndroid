@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nourriture.utils.MyActivityManager;
 
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 

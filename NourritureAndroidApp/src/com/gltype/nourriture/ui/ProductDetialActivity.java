@@ -12,7 +12,7 @@ import com.gltype.nourriture.http.MyHandler;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Product;
 import com.gltype.nourriture.utils.MyActivityManager;
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 
 import android.view.View.OnClickListener;
 import android.app.Activity;

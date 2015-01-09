@@ -6,7 +6,7 @@ import java.util.List;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Comment;
 
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;

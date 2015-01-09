@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.gltype.nourriture.model.User;
 import com.gltype.nourriture.utils.MyActivityManager;
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 

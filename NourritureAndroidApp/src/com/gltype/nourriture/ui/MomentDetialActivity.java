@@ -16,7 +16,7 @@ import com.gltype.nourriture.model.Comment;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nourriture.utils.MyActivityManager;
 
-import com.gltype.nurriture.R;
+import com.gltype.nourriture.R;
 
 
 

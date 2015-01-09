@@ -24,6 +24,7 @@ import android.widget.EditText;
 
 import android.widget.Toast;
 
+
 public class RecipeEditActivity extends Activity {
 	private Recipe recipe;
 	private EditText recipeName;
