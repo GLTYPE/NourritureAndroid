@@ -23,7 +23,7 @@ import com.gltype.nourriture.utils.ParamsWrapper.NameValue;
 
 
 import android.os.Message;
-public class AsyncHttpClient {
+public class MyAsyncHttpClient {
 	protected static final int SUCCESS = 1;
 	protected static final int FAILURE = 2;
 	

@@ -2,7 +2,13 @@ package com.gltype.nourriture.model;
 
 import java.io.Serializable;
 
+import org.json.JSONArray;
+
 public class Moment implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String username;
 	private String ownId;
@@ -10,6 +16,8 @@ public class Moment implements Serializable{
 	private String content;
 	private String time;
 	private String pictureurl;
+	private String contentimg;
+	private String commentArray;
 	public Moment(){
 		
 	}
@@ -63,4 +71,17 @@ public class Moment implements Serializable{
 	public void setTime(String time) {
 		this.time = time;
 	}
+	public String getContentimg() {
+		return contentimg;
+	}
+	public void setContentimg(String contentimg) {
+		this.contentimg = contentimg;
+	}
+	public String getCommentArray() {
+		return commentArray;
+	}
+	public void setCommentArray(String commentArray) {
+		this.commentArray = commentArray;
+	}
+	
 }

@@ -207,5 +207,9 @@ public class UserEditActivity extends Activity {
         
 		return isRight;
 	}
-	
+	@Override
+	protected void onDestroy() {
+		mam.popOneActivity(this);
+		super.onDestroy();
+	}
 }

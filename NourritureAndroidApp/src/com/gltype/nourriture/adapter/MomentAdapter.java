@@ -59,11 +59,7 @@ public class MomentAdapter extends BaseAdapter {
 			view.setTag(holder);
 			
 			
-//			holder.txt_item_uname = (TextView) view.findViewById(R.id.txt_item_uname);
-//			holder.txt_item_time = (TextView) view.findViewById(R.id.txt_item_time);
-//			holder.txt_item_content= (TextView) view.findViewById(R.id.txt_item_content);
-//			holder.img_item_userphoto= (ImageView) view.findViewById(R.id.img_item_userphoto);
-			
+
 		}else{
 			holder= (Holder)view.getTag();
 		}
@@ -78,6 +74,12 @@ public class MomentAdapter extends BaseAdapter {
 			SimpleImageLoader.showImg(holder.img_item_userphoto,moment.getPictureurl());
 			
 		}
+		if("".equals(moment.getContentimg())||moment.getContentimg()==null){
+			holder.img_item_content_pic.setVisibility(View.GONE);
+		}else{
+			SimpleImageLoader.showImg(holder.img_item_content_pic,moment.getContentimg());
+			
+		}
 		return view;
 	}
 	
@@ -85,6 +87,7 @@ public class MomentAdapter extends BaseAdapter {
 	{
 		
 		ImageView img_item_userphoto;
+		ImageView img_item_content_pic;
 		
 		TextView txt_item_uname;	
 		
@@ -97,6 +100,7 @@ public class MomentAdapter extends BaseAdapter {
 			txt_item_time = (TextView) view.findViewById(R.id.txt_item_time);
 			txt_item_content= (TextView) view.findViewById(R.id.txt_item_content);
 			img_item_userphoto= (ImageView) view.findViewById(R.id.img_item_userphoto);
+			img_item_content_pic= (ImageView) view.findViewById(R.id.img_item_content_pic);
 		}
 		
 	}

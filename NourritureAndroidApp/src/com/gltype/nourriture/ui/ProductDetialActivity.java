@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gltype.nourriture.http.AsyncHttpClient;
+import com.gltype.nourriture.http.MyAsyncHttpClient;
 import com.gltype.nourriture.http.MyHandler;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Product;
@@ -90,7 +90,7 @@ public class ProductDetialActivity extends Activity {
 	
 	
 	public void deleteProduct(String procuctId) {  
-	   	 AsyncHttpClient client = new AsyncHttpClient(); 
+	   	 MyAsyncHttpClient client = new MyAsyncHttpClient(); 
 	        String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/products/"+procuctId; 
 	        JSONObject jsonObject = new JSONObject();
 	        try {
@@ -112,6 +112,10 @@ public class ProductDetialActivity extends Activity {
 	        });
 	      
 	   }  
-	
+	@Override
+	protected void onDestroy() {
+		mam.popOneActivity(this);
+		super.onDestroy();
+	}
 	
 }

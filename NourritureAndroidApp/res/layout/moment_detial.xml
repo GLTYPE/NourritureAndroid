@@ -107,16 +107,45 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	     
-	        android:layout_gravity="start"
+	        
 	        android:text="delete" />
      <Button
 	        android:id="@+id/bt_momentedit"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	     
-	        android:layout_gravity="end"
+	       
 	        android:text="edit" />
+      <Button
+	        android:id="@+id/bt_addcomment"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	     
+	      
+	        android:text="comment" />
   </LinearLayout>
+  <LinearLayout 
+      android:id="@+id/commentlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+     android:visibility="gone">
+
+  
+	    <EditText
+			android:id="@+id/et_desc"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			/>	    
+ 		
+	    <Button
+	        android:id="@+id/bt_addcomcommit"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:text="@string/commit" />
+    
+</LinearLayout>
     <ListView
         android:id="@+id/lv_comment"
         android:layout_width="match_parent"

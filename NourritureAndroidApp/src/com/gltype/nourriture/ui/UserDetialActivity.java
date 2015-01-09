@@ -149,5 +149,9 @@ public class UserDetialActivity extends Activity {
        
     }  
 	
-	
+	 @Override
+		protected void onDestroy() {
+			mam.popOneActivity(this);
+			super.onDestroy();
+		}
 }

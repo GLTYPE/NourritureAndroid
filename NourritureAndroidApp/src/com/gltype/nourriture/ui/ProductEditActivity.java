@@ -130,4 +130,10 @@ public class ProductEditActivity extends Activity {
       
    }  
 
+	
+	@Override
+	protected void onDestroy() {
+		mam.popOneActivity(this);
+		super.onDestroy();
+	}
 }

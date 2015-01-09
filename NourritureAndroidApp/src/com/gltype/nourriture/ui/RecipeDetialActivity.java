@@ -78,7 +78,11 @@ public class RecipeDetialActivity extends Activity {
 		});
 		
 	}
-	
+	@Override
+	protected void onDestroy() {
+		mam.popOneActivity(this);
+		super.onDestroy();
+	}
 	
 	
 }

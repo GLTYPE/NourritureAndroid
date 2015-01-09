@@ -14,6 +14,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="back"
+		
 		android:layout_gravity="left"
 		android:layout_marginTop="6dp"
 	/>
@@ -24,8 +25,9 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
-		android:textColor="@color/white"
+		android:textColor="@color/black"
 		android:textSize="25dp"
+		
 		/>
 
 

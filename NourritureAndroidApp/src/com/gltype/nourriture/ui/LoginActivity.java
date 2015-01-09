@@ -74,7 +74,7 @@ public class LoginActivity extends Activity {
           	startActivity(intent);
           	mam.popOneActivity(this);
           	//tv_result.setText(token);
-          	 Toast.makeText(this, token, Toast.LENGTH_LONG).show(); 
+          	 Toast.makeText(this, "Login Successfully", Toast.LENGTH_LONG).show(); 
 		}
 		else{
 			loginBtn.setOnClickListener(new OnClickListener() {
@@ -153,7 +153,7 @@ public class LoginActivity extends Activity {
 					
 					isConnect = true;
 					userDao.add(token, role);
-					tv_result.setText(token);
+					tv_result.setText("Login Successfully");
               	Intent intent = new Intent(LoginActivity.this, MainActivity.class);    
               	startActivity(intent);
               	mam.popOneActivity(LoginActivity.this);
