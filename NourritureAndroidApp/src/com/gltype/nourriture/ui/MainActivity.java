@@ -52,7 +52,7 @@ public class MainActivity extends FragmentActivity{
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_startup);

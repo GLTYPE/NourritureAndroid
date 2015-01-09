@@ -76,16 +76,20 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="0dp"
 	    android:layout_weight="5"
-	    android:orientation="vertical"
+	    android:orientation="horizontal"
 	    android:gravity="center_horizontal">
+		
 		<Button android:id="@+id/btn_edit"
-		    android:layout_width="wrap_content"
+		    android:layout_width="100dp"
 		    android:layout_height="wrap_content"
 		    android:text="edit"/>  
-		    <Button android:id="@+id/btn_signout"
-		    android:layout_width="wrap_content"
+		    
+		<Button android:id="@+id/btn_signout"
+		    android:layout_marginLeft="20dp"
+		    android:layout_width="100dp"
 		    android:layout_height="wrap_content"
 		    android:text="sign out"/>  
+		    
 	</LinearLayout> 
 
 </LinearLayout>

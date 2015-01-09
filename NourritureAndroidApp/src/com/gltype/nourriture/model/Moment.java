@@ -10,6 +10,7 @@ public class Moment implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String id;
+	private String name;
 	private String username;
 	private String ownId;
 	private String targetId;
@@ -25,6 +26,11 @@ public class Moment implements Serializable{
 		this.username = username;
 		this.content = content;
 		this.pictureurl = pictureurl;
+	}
+	
+	public Moment(String name,String time){
+		this.name = name;
+		this.time = time;
 	}
 	
 	public String getOwnId() {

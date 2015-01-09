@@ -11,44 +11,35 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gltype.nourriture.adapter.MomentAdapter;
-import com.gltype.nourriture.model.Ingredient;
-import com.gltype.nourriture.model.Moment;
-
-import com.gltype.nourriture.R;
-
-import com.gltype.nourriture.model.Product;
-import com.gltype.nourriture.model.User;
-import com.gltype.nourriture.utils.StringTools;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.text.TextUtils;
-
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
+
+import com.gltype.nourriture.R;
+import com.gltype.nourriture.adapter.MomentAdapter;
+import com.gltype.nourriture.model.Moment;
+import com.gltype.nourriture.utils.StringTools;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class MomentFragment extends Fragment {
 	
@@ -58,8 +49,8 @@ public class MomentFragment extends Fragment {
 	private View progresView;
 	public  List<Moment> moments;
 	private Spinner mSpinner;
-	private Button refreshbutton;
-	private Button addbutton;
+	private ImageButton refreshbutton;
+	private ImageButton addbutton;
 	private Button addCommit;
 	private EditText et_momentname;
 	private EditText et_desc;
@@ -80,8 +71,8 @@ public class MomentFragment extends Fragment {
 		 
 		View view =  inflater.inflate(R.layout.fragment_moments, null);		
 		this.listView = (ListView) view.findViewById(R.id.moments_list);
-		this.refreshbutton = (Button) view.findViewById(R.id.bt_refresh);
-		this.addbutton = (Button) view.findViewById(R.id.bt_add);
+		this.refreshbutton = (ImageButton) view.findViewById(R.id.bt_refresh);
+		this.addbutton = (ImageButton) view.findViewById(R.id.bt_add);
 		this.mSpinner = (Spinner) view.findViewById(R.id.sp_moment);
 		this.addCommit = (Button) view.findViewById(R.id.bt_addmomcommit);
 		et_desc=(EditText)view.findViewById(R.id.et_desc);

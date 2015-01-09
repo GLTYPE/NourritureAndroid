@@ -1,8 +1,6 @@
 package com.gltype.nourriture.ui;
 
 
-import com.gltype.nourriture.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,42 +9,37 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gltype.nourriture.adapter.SearchIngredientAdapter;
-import com.gltype.nourriture.adapter.SearchProductAdapter;
-import com.gltype.nourriture.adapter.SearchRecipeAdapter;
-
-import com.gltype.nourriture.model.Ingredient;
-import com.gltype.nourriture.model.Product;
-import com.gltype.nourriture.model.Recipe;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;  
+
+import com.gltype.nourriture.R;
+import com.gltype.nourriture.adapter.SearchIngredientAdapter;
+import com.gltype.nourriture.adapter.SearchProductAdapter;
+import com.gltype.nourriture.adapter.SearchRecipeAdapter;
+import com.gltype.nourriture.model.Ingredient;
+import com.gltype.nourriture.model.Product;
+import com.gltype.nourriture.model.Recipe;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class SearchFragment extends Fragment {
 	
 	private EditText searchEdit;
-	private Button searchButton;
+	private ImageButton searchButton;
 	private Spinner searchSpinner;
 	private ListView searchListView;
 	
@@ -60,7 +53,7 @@ public class SearchFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view =inflater.inflate(R.layout.fragment_search, null);	
-		this.searchButton = (Button) view.findViewById(R.id.bt_search);
+		this.searchButton = (ImageButton) view.findViewById(R.id.bt_search);
 		this.searchEdit = (EditText) view.findViewById(R.id.et_search);
 		this.searchSpinner = (Spinner) view.findViewById(R.id.sp_search);
 		this.searchListView = (ListView) view.findViewById(R.id.lv_serach);

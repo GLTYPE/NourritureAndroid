@@ -11,6 +11,7 @@ public class Product implements Serializable{
 	private String brand="";
 	private String ings="";
 	private String value="";
+	private String ownerId;
 	public Product(String name){
 		this.name = name;
 	}
@@ -64,6 +65,14 @@ public class Product implements Serializable{
 	}
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	public String getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 	
 

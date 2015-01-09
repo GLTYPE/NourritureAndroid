@@ -1,6 +1,5 @@
 package com.gltype.nourriture.ui;
 
-import com.gltype.nourriture.R;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,32 +8,28 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gltype.nourriture.adapter.HomeProductAdapter;
-import com.gltype.nourriture.adapter.HomeRecipeAdapter;
-
-
-import com.gltype.nourriture.model.Product;
-import com.gltype.nourriture.model.Recipe;
-import com.loopj.android.http.AsyncHttpClient;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-
-import android.widget.Button;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.gltype.nourriture.R;
+import com.gltype.nourriture.adapter.HomeProductAdapter;
+import com.gltype.nourriture.adapter.HomeRecipeAdapter;
+import com.gltype.nourriture.model.Product;
+import com.gltype.nourriture.model.Recipe;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 @SuppressLint("NewApi")
 public class HomeFragment extends Fragment {
@@ -49,7 +44,7 @@ public class HomeFragment extends Fragment {
 	public static String userId;
 	public List<Product> products;
 	public List<Recipe> recipes;
-	private Button refeshButton;
+	private ImageButton refeshButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,7 +52,7 @@ public class HomeFragment extends Fragment {
 		View view=inflater.inflate(R.layout.fragment_home, null);
 		context = getActivity();
 		textView = (TextView) view.findViewById(R.id.welcome_user);		
-		refeshButton = (Button) view.findViewById(R.id.bt_home_refresh);
+		refeshButton = (ImageButton) view.findViewById(R.id.bt_home_refresh);
 		 getUserByAsyncHttpClientGet(LoginActivity.token);
 		 recipesgridView = (GridView) view.findViewById(R.id.home_view_newList);
 		 productsgridView = (GridView) view.findViewById(R.id.home_view_promoteList);
