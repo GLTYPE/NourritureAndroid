@@ -27,7 +27,7 @@
 		android:layout_gravity="center"
 		android:textColor="@color/black"
 		android:textSize="25dp"
-		
+		android:text="Nourriture"
 		/>
 
 

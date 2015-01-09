@@ -39,6 +39,7 @@ public class UserEditActivity extends Activity {
 	MyActivityManager mam = MyActivityManager.getInstance();
 	private View titleView;
 	private Button btn_back;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class UserEditActivity extends Activity {
 		titleView = findViewById(R.id.layout_title_bar);
 		mam.pushOneActivity(this);
 		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		
 		btn_back.setOnClickListener(new OnClickListener() {
 			
 			@Override
