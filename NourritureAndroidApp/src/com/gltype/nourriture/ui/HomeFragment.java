@@ -63,8 +63,7 @@ public class HomeFragment extends Fragment {
 			
 			@Override
 			public void onClick(View arg0) {
-				refresh();
-				
+				refresh();		
 			}
 		});
 		 System.out.println("===================Create view");
@@ -78,15 +77,12 @@ public class HomeFragment extends Fragment {
 		 System.out.println("===================Destroy view");
 		super.onDestroyView();
 	}
+	
 	public void refresh()
 	{		
 		getRecipesByAsyncHttpClientGet();
 		getProductsByAsyncHttpClientGet();		
-		
-		
-		
-		
-		
+				
 		recipesgridView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,

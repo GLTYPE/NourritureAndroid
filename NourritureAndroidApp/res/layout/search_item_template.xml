@@ -11,7 +11,7 @@
   android:layout_width="85dp"
   android:layout_height="85dp"
   android:src="@drawable/usericon"
-  android:layout_marginTop="5dp"/>
+  android:layout_marginTop="5dp" android:contentDescription="TODO"/>
   
  
   <LinearLayout

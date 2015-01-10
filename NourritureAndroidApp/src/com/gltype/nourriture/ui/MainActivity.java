@@ -2,8 +2,8 @@ package com.gltype.nourriture.ui;
 
 
 import com.gltype.nourriture.R;
-
 import com.gltype.nourriture.utils.MyActivityManager;
+
 
 
 
@@ -11,23 +11,19 @@ import android.annotation.SuppressLint;
 
 
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-
-
 import android.support.v4.app.FragmentTabHost;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-
 import android.widget.Button;
 import android.widget.ImageView;
-
 import android.widget.TextView;
 
 
@@ -39,10 +35,13 @@ public class MainActivity extends FragmentActivity{
 	
 	private int tabId[] = {R.string.Tab_HOME,R.string.Tab_MOMENTS,
 			R.string.Tab_SEARCH,R.string.Tab_PROFILE};
+	
 	private int tabSrcId[] = {R.drawable.tab_icon_home,R.drawable.tab_icon_moments,
 			R.drawable.tab_icon_search,R.drawable.tab_icon_profile};	
+	
 	private String tabSpecs[] = {"HOME","MOMENTS","SEARCH","PROFILE"};
-	private Class FClassArray[] = {HomeFragment.class,MomentFragment.class,
+	
+	private Class<?> FClassArray[] = {HomeFragment.class,MomentFragment.class,
 			SearchFragment.class,ProfileFragment.class};
 	
 	MyActivityManager mam = MyActivityManager.getInstance();
