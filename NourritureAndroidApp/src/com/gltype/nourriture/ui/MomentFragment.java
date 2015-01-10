@@ -82,8 +82,8 @@ public class MomentFragment extends Fragment {
 		 adapter = new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item,searchType);  
 		 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
 		 mSpinner.setAdapter(adapter);
-		 mSpinner.setSelection(1);
-		 refresh(1);
+		 mSpinner.setSelection(0);
+		 refresh(0);
 		 mSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
 			 @Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
@@ -181,11 +181,11 @@ public class MomentFragment extends Fragment {
 	public void refresh(int selectIndex){
 		switch(selectIndex){
 			case 0:{
-				initTargetMoments();
+				initAllMoments();
 				break;
 			}
 			case 1:{
-				initMyMoments();
+				initTargetMoments();
 				break;
 			}
 			
@@ -194,28 +194,28 @@ public class MomentFragment extends Fragment {
 	
 	
 	
-	public void initTargetMoments(){
+	public void initAllMoments(){
 		
-		getTargetMoments();
+		getAllMoments();
 
 		
 	}
 
-public void initMyMoments(){
+public void initTargetMoments(){
 	
 	
-		getMyMoments(HomeFragment.userId);
+		getTargetMoments(HomeFragment.userId);
 	//	MomentAdapter adapter = new MomentAdapter(context, moments);
 		//listView.setAdapter(adapter);
 		
 	}
 	
-	public void getMyMoments(String ownerId) {				
-		String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/moments/target/"+ownerId;
+	public void getTargetMoments(String targetId) {				
+		String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/moments/target/"+targetId;
 		getInfo(url);
 	}
 	
-	public void getTargetMoments() {				
+	public void getAllMoments() {				
 		String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/moments";
 		getInfo(url);
 	}

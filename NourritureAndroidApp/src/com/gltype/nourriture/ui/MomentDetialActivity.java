@@ -70,7 +70,7 @@ public class MomentDetialActivity extends Activity {
 		String commentArrStr = moment.getCommentArray();
 		
 		try {
-			if(commentArrStr!=null||"".equals(commentArrStr)){
+			if(commentArrStr!=null){
 			commentJsonArr = new JSONArray(commentArrStr);
 			}
 		} catch (JSONException e) {
@@ -210,8 +210,10 @@ public class MomentDetialActivity extends Activity {
 		getComment();
 		}
 		else{
+			comments = new ArrayList<Comment>();
 			commentAdapter = new CommentAdapter(this, comments);
 			commentList.setAdapter(commentAdapter);
+			
 		}
 	}
 	

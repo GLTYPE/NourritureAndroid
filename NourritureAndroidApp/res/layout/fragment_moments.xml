@@ -52,7 +52,7 @@
 			android:id="@+id/et_desc"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="This is a moment from android app"/>	    
+			android:text="happy!!"/>	    
  		
 			<EditText
 			android:id="@+id/et_picture"
