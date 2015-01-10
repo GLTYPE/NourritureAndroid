@@ -61,10 +61,12 @@
 		     android:theme="@style/theme_fullScreen" />
         <activity android:name="com.gltype.nourriture.ui.ShowAllListActivity"
 		     android:theme="@style/theme_fullScreen" />
+    	
+    	<uses-library android:name="android.test.runner"/>
+    
     </application>
    
-		<uses-library android:name="android.test.runner"/>
-	</application>
+
 	
     <instrumentation 
 	    android:label="Tests" 

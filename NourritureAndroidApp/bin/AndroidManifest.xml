@@ -5,13 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-<<<<<<< Updated upstream
-        android:minSdkVersion="4"
-        android:targetSdkVersion="19" />
-=======
         android:minSdkVersion="8"
         android:targetSdkVersion="100" />
->>>>>>> Stashed changes
     <uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -64,20 +59,19 @@
 		     android:theme="@style/theme_fullScreen"/>
 		<activity android:name="com.gltype.nourriture.ui.MomentEditActivity"
 		     android:theme="@style/theme_fullScreen" />
-<<<<<<< Updated upstream
-		<activity android:name="com.gltype.nourriture.ui.ShowAllListActivity" 
+        <activity android:name="com.gltype.nourriture.ui.ShowAllListActivity"
 		     android:theme="@style/theme_fullScreen" />
+    	
+    	<uses-library android:name="android.test.runner"/>
+    
     </application>
-=======
    
-		<uses-library android:name="android.test.runner"/>
-	</application>
+
 	
     <instrumentation 
 	    android:label="Tests" 
 	    android:targetPackage="com.gltype.nourriture" 
 	    android:name="android.test.InstrumentationTestRunner">
 	</instrumentation>
->>>>>>> Stashed changes
 
 </manifest>
