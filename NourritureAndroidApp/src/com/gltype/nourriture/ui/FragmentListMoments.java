@@ -27,9 +27,9 @@ public class FragmentListMoments extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.profile_fragment_moments, null);
+		View view = inflater.inflate(R.layout.profile_fragment_moments, container, false);
 		
-		ls_moments = (ListView) view.findViewById(R.id.list_moments);
+//		ls_moments = (ListView) view.findViewById(R.id.list_moments);
 //		adapter = new ArrayAdapter<Moment>(getActivity(), R.layout.profile_list_item_template);
 		
 		return view;
