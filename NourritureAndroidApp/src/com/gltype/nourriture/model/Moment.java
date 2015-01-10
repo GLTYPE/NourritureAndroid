@@ -89,5 +89,11 @@ public class Moment implements Serializable{
 	public void setCommentArray(String commentArray) {
 		this.commentArray = commentArray;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }

@@ -7,13 +7,6 @@ import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gltype.nourriture.imageCache.SimpleImageLoader;
-import com.gltype.nourriture.model.Recipe;
-import com.gltype.nourriture.utils.MyActivityManager;
-import com.gltype.nourriture.R;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +14,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.gltype.nourriture.R;
+import com.gltype.nourriture.model.Recipe;
+import com.gltype.nourriture.utils.MyActivityManager;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 
 public class RecipeEditActivity extends Activity {
@@ -35,7 +34,7 @@ public class RecipeEditActivity extends Activity {
 	private Button editButton;
 	MyActivityManager mam = MyActivityManager.getInstance();
 	private View titleView;
-	private Button btn_back;
+	private ImageButton btn_back;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class RecipeEditActivity extends Activity {
 		
 		titleView = findViewById(R.id.layout_title_bar);
 		mam.pushOneActivity(this);
-		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back=(ImageButton) titleView.findViewById(R.id.btn_back);
 		btn_back.setOnClickListener(new OnClickListener() {
 			
 			@Override

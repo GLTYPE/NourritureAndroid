@@ -1,26 +1,28 @@
 package com.gltype.nourriture.ui;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.gltype.nourriture.R;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nourriture.model.Product;
 import com.gltype.nourriture.model.Recipe;
-import com.gltype.nourriture.R;
-import com.gltype.nourriture.R.color;
+import com.gltype.nourriture.utils.MyActivityManager;
 
 public class ShowAllListActivity extends FragmentActivity {
 	private int which;
@@ -33,22 +35,21 @@ public class ShowAllListActivity extends FragmentActivity {
 	private List<Recipe> recipes;
 	private List<Moment> moments;
 	
-	private TextView tx_like;
-	private TextView tx_recipes;
-	private TextView tx_moments;
-	
 	private ImageView img_tabLine0;
 	private ImageView img_tabLine1;
 	private ImageView img_tabLine2;
 	
-	private int screen1third;//1/3 length of screen
-
-	@SuppressWarnings("unchecked")
+	private View titleView;
+	private ImageButton btn_back;
+	MyActivityManager mam = MyActivityManager.getInstance();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		Intent intent = getIntent();
+		mam.pushOneActivity(this);
+		
 		which = (Integer) intent.getSerializableExtra("whichList");	
 		
 		mlike = (List<Product>) intent.getSerializableExtra("products");
@@ -56,21 +57,27 @@ public class ShowAllListActivity extends FragmentActivity {
 		moments = (List<Moment>) intent.getSerializableExtra("moments");
 		
 		setContentView(R.layout.all_item_list_switch);
-		Toast.makeText(getApplicationContext(), String.format("which page: %d", which), Toast.LENGTH_SHORT).show();
-//		initTab();
 		initView();
 	}
 
 	private void initView() {
 		vp_list = (ViewPager) findViewById(R.id.list_viewpager);
-		
-		tx_like = (TextView) findViewById(R.id.tx_like);
-		tx_recipes = (TextView) findViewById(R.id.tx_recipes);
-		tx_moments = (TextView) findViewById(R.id.tx_moments);
 
 		img_tabLine0 = (ImageView) findViewById(R.id.tabline0);
 		img_tabLine1 = (ImageView) findViewById(R.id.tabline1);
 		img_tabLine2 = (ImageView) findViewById(R.id.tabline2);
+		
+		titleView = findViewById(R.layout.title_bar);
+		btn_back = (ImageButton) titleView.findViewById(R.id.btn_back);
+		
+		btn_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				mam.popOneActivity(ShowAllListActivity.this);
+				
+			}
+		});
 		
 		f_datas = new ArrayList<Fragment>();
 		FragmentListLike like = new FragmentListLike();
@@ -101,23 +108,15 @@ public class ShowAllListActivity extends FragmentActivity {
 			
 			@Override
 			public void onPageSelected(int arg0) {
-				
-				Toast.makeText(getApplicationContext(), String.format("which page: %d", arg0), Toast.LENGTH_SHORT).show();
-
 				changeTextColor(arg0);
-//				which = arg0;
 			}
 
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 		});
@@ -125,22 +124,22 @@ public class ShowAllListActivity extends FragmentActivity {
 	}
 
 	protected void resetTextColor() {
-		img_tabLine0.setBackgroundColor(color.white);
-		img_tabLine1.setBackgroundColor(color.white);
-		img_tabLine2.setBackgroundColor(color.white);
+		img_tabLine0.setBackgroundColor(Color.TRANSPARENT);
+		img_tabLine1.setBackgroundColor(Color.TRANSPARENT);
+		img_tabLine2.setBackgroundColor(Color.TRANSPARENT);
 	}
 	
 	protected void changeTextColor(int position) {
 		resetTextColor();
 		switch (position) {
 		case 0:
-			img_tabLine0.setBackgroundColor(color.blue);
+			img_tabLine0.setBackgroundColor(Color.GRAY);
 			break;
 		case 1:
-			img_tabLine1.setBackgroundColor(color.blue);
+			img_tabLine1.setBackgroundColor(Color.GRAY);
 			break;
 		case 2:
-			img_tabLine2.setBackgroundColor(color.blue);
+			img_tabLine2.setBackgroundColor(Color.GRAY);
 			break;
 		}
 	}

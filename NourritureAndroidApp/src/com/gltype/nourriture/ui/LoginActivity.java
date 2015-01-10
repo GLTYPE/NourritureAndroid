@@ -42,6 +42,7 @@ public class LoginActivity extends Activity {
 	private TextView tv_forgetPwd;
 	private View progresView;
 	public static String token;
+//	public static String userId;
 	public static int role;
 	MyActivityManager mam = MyActivityManager.getInstance();
 	public boolean isConnect = false;
@@ -64,6 +65,7 @@ public class LoginActivity extends Activity {
 			isConnect = true;
 			token = user.getToken();
 			role = user.getRole();
+//			userId = user.getUserId();
 			
 			System.out.println("-------------------"+role);
 		}
@@ -150,6 +152,7 @@ public class LoginActivity extends Activity {
 				try {
 					token = response.getString("token");
 					role = response.getInt("role");
+//					userId = response.getString("_id");
 					
 					isConnect = true;
 					userDao.add(token, role);

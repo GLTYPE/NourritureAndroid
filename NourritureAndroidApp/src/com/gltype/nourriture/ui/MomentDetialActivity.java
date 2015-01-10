@@ -6,13 +6,29 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.http.Header;
 import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.gltype.nourriture.R;
 import com.gltype.nourriture.adapter.CommentAdapter;
 import com.gltype.nourriture.http.MyAsyncHttpClient;
 import com.gltype.nourriture.http.MyHandler;
@@ -21,27 +37,8 @@ import com.gltype.nourriture.model.Comment;
 import com.gltype.nourriture.model.Moment;
 import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nourriture.utils.StringTools;
-
-import com.gltype.nourriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
-
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.view.View.OnClickListener;
 
 public class MomentDetialActivity extends Activity {
 		
@@ -62,7 +59,7 @@ public class MomentDetialActivity extends Activity {
 	private LinearLayout commentlayout;
 	MyActivityManager mam = MyActivityManager.getInstance();
 	private View titleView;
-	private Button btn_back;
+	private ImageButton btn_back;
 	private JSONArray commentJsonArr= null;
 	CommentAdapter commentAdapter ;
 	@Override
@@ -96,7 +93,7 @@ public class MomentDetialActivity extends Activity {
 		
 		titleView = findViewById(R.id.layout_title_bar);
 		mam.pushOneActivity(this);
-		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back=(ImageButton) titleView.findViewById(R.id.btn_back);
 		btn_back.setOnClickListener(new OnClickListener() {
 			
 			@Override

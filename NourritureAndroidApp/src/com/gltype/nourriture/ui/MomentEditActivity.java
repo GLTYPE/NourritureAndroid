@@ -8,25 +8,23 @@ import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gltype.nourriture.model.Moment;
-import com.gltype.nourriture.model.Product;
-import com.gltype.nourriture.utils.MyActivityManager;
-
-import com.gltype.nourriture.R;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.gltype.nourriture.R;
+import com.gltype.nourriture.model.Moment;
+import com.gltype.nourriture.utils.MyActivityManager;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class MomentEditActivity extends Activity {
 	
@@ -37,7 +35,7 @@ public class MomentEditActivity extends Activity {
 	public Button addButton;
 	MyActivityManager mam = MyActivityManager.getInstance();
 	private View titleView;
-	private Button btn_back;
+	private ImageButton btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.moment_edit);
@@ -51,7 +49,7 @@ public class MomentEditActivity extends Activity {
 		
 		titleView = findViewById(R.id.layout_title_bar);
 		mam.pushOneActivity(this);
-		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back=(ImageButton) titleView.findViewById(R.id.btn_back);
 		btn_back.setOnClickListener(new OnClickListener() {
 			
 			@Override

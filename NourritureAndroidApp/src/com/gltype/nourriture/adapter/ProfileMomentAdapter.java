@@ -56,7 +56,7 @@ public class ProfileMomentAdapter extends BaseAdapter {
 			holder.img_item = (ImageView) view.findViewById(R.id.img_item);
 			holder.txt_item_name = (TextView) view.findViewById(R.id.tv_item_name);
 			
-			holder.txt_item_name.setText(moment.getContent());
+			holder.txt_item_name.setText(moment.getName());
 			if(holder.img_item != null) {
 				SimpleImageLoader.showImg(holder.img_item, moment.getPictureurl());
 			}

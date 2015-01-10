@@ -44,7 +44,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 @SuppressLint("NewApi")
 public class ProfileFragment extends Fragment {
 	
-	public User user = null;
+	public User user;
 	public List<Moment> moments;
 	public List<Recipe> recipes;
 	public List<Product> products;
@@ -66,23 +66,20 @@ public class ProfileFragment extends Fragment {
 		initView(view);
 		
 		if(user != null) {
+//			Toast.makeText(context, "user is not null", Toast.LENGTH_SHORT).show();
 			displayInfo();
 		} else {
 
+//			Toast.makeText(context, "user is null", Toast.LENGTH_SHORT).show();
 			getUserInfoByAsyncHttpClientGet();
 		}
 		
+		
 		getUserRecipesByAsycHttpClientGet();
-		ProfileRecipeAdapter rAdapter = new ProfileRecipeAdapter(recipes, context);
-		gv_recipe.setAdapter(rAdapter);	
 
 		getUserlikesByAsycHttpClientGet();
-		HomeProductAdapter lAdapter = new HomeProductAdapter(context, products);
-		gv_like.setAdapter(lAdapter);
 		
-		getUserMomentsByAsycHttpClientGet();
-		ProfileMomentAdapter mAdapter = new ProfileMomentAdapter(moments, context);
-		gv_moments.setAdapter(mAdapter);		
+		getUserMomentsByAsycHttpClientGet();	
 		
 		editProfile.setOnClickListener(new OnClickListener() {
 			@Override
@@ -189,8 +186,7 @@ public class ProfileFragment extends Fragment {
 					user.setUserId(response.getString("_id"));
 					user.setAbout(response.getString("about"));
 					user.setPicture(response.getString("picture"));
-					displayInfo();
-							
+					displayInfo();					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -206,8 +202,10 @@ public class ProfileFragment extends Fragment {
 
 	public void getUserMomentsByAsycHttpClientGet() {
 		AsyncHttpClient moment_client = new AsyncHttpClient();
-		String moment_url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/moments"; 
-//		moment_url += user.getUserId();
+		
+		String moment_url = null;
+		moment_url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/moments/owner/"; 
+		moment_url += HomeFragment.userId;
 		
 		moment_client.get(moment_url, new JsonHttpResponseHandler() {					
 			@Override
@@ -217,24 +215,28 @@ public class ProfileFragment extends Fragment {
 					moments = new ArrayList<Moment>();
 					JSONObject jsonObj = null;
 					int len = response.length() < 3 ? response.length() : 3;
+					
+					Toast.makeText(context, "get moments", Toast.LENGTH_SHORT).show();
+					
 					for (int i = 0; i < len; i++) {							
 							//{"__v":0,"comments":[]}
 						jsonObj = response.getJSONObject(i);
-						String userName = user.getFirstname();
 						String name = jsonObj.getString("name");
 						String date = jsonObj.getString("date");
 						String pic = jsonObj.getString("picture");
 						Moment moment = new Moment(name, date);
 						
 						moment.setPictureurl(pic);
-						moment.setUsername(userName);
 						moment.setContent(jsonObj.getString("description"));
 						moment.setOwnId(jsonObj.getString("owner_id"));
 						moment.setTargetId(jsonObj.getString("target_id"));
 						moment.setId(jsonObj.getString("_id"));	
 
 						moments.add(moment);
+						
 					}
+					ProfileMomentAdapter mAdapter = new ProfileMomentAdapter(moments, context);
+					gv_moments.setAdapter(mAdapter);	
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -244,7 +246,6 @@ public class ProfileFragment extends Fragment {
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					Throwable throwable, JSONArray errorResponse) {
-				// TODO Auto-generated method stub
 				super.onFailure(statusCode, headers, throwable, errorResponse);
 			}
 		});
@@ -278,6 +279,8 @@ public class ProfileFragment extends Fragment {
 						recipe.setValue(jsonObj.getInt("values"));
 						recipes.add(recipe);
 					}	
+					ProfileRecipeAdapter rAdapter = new ProfileRecipeAdapter(recipes, context);
+					gv_recipe.setAdapter(rAdapter);	
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -294,7 +297,6 @@ public class ProfileFragment extends Fragment {
 	public void getUserlikesByAsycHttpClientGet() {
 		AsyncHttpClient client = new AsyncHttpClient();
 		String url = "http://ec2-54-77-212-173.eu-west-1.compute.amazonaws.com:4242/products";
-		//moment_client.get(moment_url + user.getUserId(), new JsonHttpResponseHandler() {
 		client.get(url, new JsonHttpResponseHandler() {					
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
@@ -306,7 +308,6 @@ public class ProfileFragment extends Fragment {
 					for (int i = 0; i < len; i++) {
 						jsonObj = response.getJSONObject(i);
 						//"ings":[],"moments":[],"rate":[]
-						String username = user.getFirstname();
 						String name = jsonObj.getString("name");
 						String pic = jsonObj.getString("picture");
 						Product pro = new Product(name);
@@ -319,6 +320,8 @@ public class ProfileFragment extends Fragment {
 
 						products.add(pro);
 					}
+					HomeProductAdapter lAdapter = new HomeProductAdapter(context, products);
+					gv_like.setAdapter(lAdapter);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

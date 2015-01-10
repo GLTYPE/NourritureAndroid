@@ -1,27 +1,24 @@
 package com.gltype.nourriture.ui;
 
-import java.util.ArrayList;
-
-import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.gltype.nourriture.R;
 import com.gltype.nourriture.http.MyAsyncHttpClient;
 import com.gltype.nourriture.http.MyHandler;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.Product;
 import com.gltype.nourriture.utils.MyActivityManager;
-import com.gltype.nourriture.R;
-
-import android.view.View.OnClickListener;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class ProductDetialActivity extends Activity {
 	private Product product;
@@ -33,7 +30,7 @@ public class ProductDetialActivity extends Activity {
 	private Button editButton;
 	MyActivityManager mam = MyActivityManager.getInstance();
 	private View titleView;
-	private Button btn_back;
+	private ImageButton btn_back;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,7 @@ public class ProductDetialActivity extends Activity {
 		
 		titleView = findViewById(R.id.layout_title_bar);
 		mam.pushOneActivity(this);
-		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back=(ImageButton) titleView.findViewById(R.id.btn_back);
 		btn_back.setOnClickListener(new OnClickListener() {
 			
 			@Override

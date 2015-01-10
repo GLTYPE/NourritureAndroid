@@ -8,28 +8,21 @@ import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gltype.nourriture.model.User;
-
-import com.gltype.nourriture.R; 
-
-import com.gltype.nourriture.utils.MyActivityManager;
-
-
-import com.loopj.android.http.AsyncHttpClient;  
-import com.loopj.android.http.AsyncHttpResponseHandler;  
-import com.loopj.android.http.RequestParams;  
-  
-import android.app.Activity;  
-import android.content.Intent;
-import android.os.Bundle;  
-import android.text.TextUtils;  
-import android.view.LayoutInflater;
-import android.view.View;  
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;  
-import android.widget.TextView;  
-import android.widget.Toast;  
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.gltype.nourriture.R;
+import com.gltype.nourriture.model.User;
+import com.gltype.nourriture.utils.MyActivityManager;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class RegisterActivity extends Activity {
 	private EditText et_email;
@@ -43,7 +36,7 @@ public class RegisterActivity extends Activity {
 	private View progresView;
 	MyActivityManager mam = MyActivityManager.getInstance();
 	private View titleView;
-	private Button btn_back;
+	private ImageButton btn_back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,7 +53,7 @@ public class RegisterActivity extends Activity {
 		//progresView = findViewById(R.id.login_progress);
 		titleView = findViewById(R.id.layout_title_bar);
 		mam.pushOneActivity(this);
-		btn_back=(Button) titleView.findViewById(R.id.btn_back);
+		btn_back=(ImageButton) titleView.findViewById(R.id.btn_back);
 		btn_back.setOnClickListener(new OnClickListener() {
 			
 			@Override
