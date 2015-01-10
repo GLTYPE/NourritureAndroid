@@ -66,19 +66,14 @@ public class ProfileFragment extends Fragment {
 		initView(view);
 		
 		if(user != null) {
-//			Toast.makeText(context, "user is not null", Toast.LENGTH_SHORT).show();
 			displayInfo();
 		} else {
 
-//			Toast.makeText(context, "user is null", Toast.LENGTH_SHORT).show();
 			getUserInfoByAsyncHttpClientGet();
 		}
 		
-		
 		getUserRecipesByAsycHttpClientGet();
-
 		getUserlikesByAsycHttpClientGet();
-		
 		getUserMomentsByAsycHttpClientGet();	
 		
 		editProfile.setOnClickListener(new OnClickListener() {
@@ -97,47 +92,37 @@ public class ProfileFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {	
-				Intent intent = new Intent(context, ShowAllListActivity.class);
-				whichList = 0;
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("whichList", whichList);
-				bundle.putSerializable("products", (Serializable) products);
-				bundle.putSerializable("recipes", (Serializable) recipes);
-				bundle.putSerializable("moments", (Serializable) moments);
-				intent.putExtras(bundle);
-				startActivity(intent);			
+				sendMsg(0);			
 			}
 		});		
 		tv_recipe.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(context, ShowAllListActivity.class);
-				whichList = 1;
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("whichList", whichList);
-				bundle.putSerializable("products", (Serializable) products);
-				intent.putExtras(bundle);
-				startActivity(intent);
-				
+				sendMsg(1);
 			}
 		});		
 		tv_moments.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(context, ShowAllListActivity.class);
-				whichList = 2;
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("whichList", whichList);
-				bundle.putSerializable("products", (Serializable) products);
-				intent.putExtras(bundle);
-				startActivity(intent);
-				
+				sendMsg(2);
 			}
 		});
 		
 		return view;
+	}
+	
+	private void sendMsg(int whichPage) {
+		Intent intent = new Intent(context, ShowAllListActivity.class);
+		whichList = whichPage;
+		Bundle bundle = new Bundle();
+		bundle.putSerializable("whichList", whichList);
+		bundle.putSerializable("products", (Serializable) products);
+		bundle.putSerializable("recipes", (Serializable) recipes);
+		bundle.putSerializable("moments", (Serializable) moments);
+		intent.putExtras(bundle);
+		startActivity(intent);
 	}
 	
 	private void initView(View view) {
@@ -215,8 +200,6 @@ public class ProfileFragment extends Fragment {
 					moments = new ArrayList<Moment>();
 					JSONObject jsonObj = null;
 					int len = response.length() < 3 ? response.length() : 3;
-					
-					Toast.makeText(context, "get moments", Toast.LENGTH_SHORT).show();
 					
 					for (int i = 0; i < len; i++) {							
 							//{"__v":0,"comments":[]}

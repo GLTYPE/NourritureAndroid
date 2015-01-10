@@ -43,6 +43,7 @@ public class ShowAllListActivity extends FragmentActivity {
 	private ImageButton btn_back;
 	MyActivityManager mam = MyActivityManager.getInstance();
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,7 +68,7 @@ public class ShowAllListActivity extends FragmentActivity {
 		img_tabLine1 = (ImageView) findViewById(R.id.tabline1);
 		img_tabLine2 = (ImageView) findViewById(R.id.tabline2);
 		
-		titleView = findViewById(R.layout.title_bar);
+		titleView = findViewById(R.id.view_title);
 		btn_back = (ImageButton) titleView.findViewById(R.id.btn_back);
 		
 		btn_back.setOnClickListener(new OnClickListener() {
@@ -80,12 +81,12 @@ public class ShowAllListActivity extends FragmentActivity {
 		});
 		
 		f_datas = new ArrayList<Fragment>();
-		FragmentListLike like = new FragmentListLike();
-		FragmentListMoments moments = new FragmentListMoments();
-		FragmentListRecipes recipes = new FragmentListRecipes();
-		f_datas.add(like);
-		f_datas.add(recipes);
-		f_datas.add(moments);
+		FragmentListLike fLike = new FragmentListLike(mlike);
+		FragmentListMoments fMoments = new FragmentListMoments(moments);
+		FragmentListRecipes fRecipes = new FragmentListRecipes(recipes);
+		f_datas.add(fLike);
+		f_datas.add(fRecipes);
+		f_datas.add(fMoments);
 		
 		fragment_adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 			
