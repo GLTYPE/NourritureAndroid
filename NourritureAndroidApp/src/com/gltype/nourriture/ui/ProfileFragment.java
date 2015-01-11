@@ -56,7 +56,7 @@ public class ProfileFragment extends Fragment {
 	private Context context;
 
 	private int whichList;
-	private TextView tv_like, tv_recipe, tv_moments;
+	private LinearLayout ll_like, ll_recipe, ll_moments;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,21 +88,21 @@ public class ProfileFragment extends Fragment {
 		});
 		
 
-		tv_like.setOnClickListener(new OnClickListener() {
+		ll_like.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {	
 				sendMsg(0);			
 			}
 		});		
-		tv_recipe.setOnClickListener(new OnClickListener() {
+		ll_recipe.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				sendMsg(1);
 			}
 		});		
-		tv_moments.setOnClickListener(new OnClickListener() {
+		ll_moments.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -133,9 +133,9 @@ public class ProfileFragment extends Fragment {
 		gv_like = (GridView) view.findViewById(R.id.gv_user_like);
 		gv_recipe = (GridView) view.findViewById(R.id.gv_recipe);
 		gv_moments = (GridView) view.findViewById(R.id.gv_moments);
-		tv_like = (TextView) view.findViewById(R.id.text_user_like);
-		tv_recipe = (TextView) view.findViewById(R.id.text_recipe);
-		tv_moments = (TextView) view.findViewById(R.id.text_moments);
+		ll_like = (LinearLayout) view.findViewById(R.id.ll_user_like);
+		ll_recipe = (LinearLayout) view.findViewById(R.id.ll_user_recipes);
+		ll_moments = (LinearLayout) view.findViewById(R.id.ll_user_moments);
 
 		gv_like.setVerticalSpacing(30);
 		gv_recipe.setVerticalSpacing(30);

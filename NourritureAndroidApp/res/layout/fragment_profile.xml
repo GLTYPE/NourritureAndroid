@@ -53,6 +53,7 @@
 
     <!-- show the recipes products that user LIKE -->
     <LinearLayout
+        android:id="@+id/ll_user_like"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -107,6 +108,7 @@
 
     <!-- show the RECIPES  user puts -->
     <LinearLayout
+        android:id="@+id/ll_user_recipes"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
@@ -162,6 +164,7 @@
 
     <!-- show the MOMENTS user shared -->
     <LinearLayout
+        android:id="@+id/ll_user_moments"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
