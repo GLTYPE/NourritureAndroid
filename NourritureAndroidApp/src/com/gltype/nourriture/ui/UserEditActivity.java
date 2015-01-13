@@ -109,7 +109,6 @@ public class UserEditActivity extends Activity {
 			user.setFirstname(et_firstname.getText().toString());
 			user.setLastname(et_lastname.getText().toString());
 			user.setEmail(et_email.getText().toString());
-//			String picPath = 
 			user.setPicture(et_picture.getText().toString());
 			user.setAbout(et_about.getText().toString());
 			

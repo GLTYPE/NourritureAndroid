@@ -2,6 +2,7 @@ package com.gltype.nourriture.ui;
 
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,6 @@ import android.widget.ListView;
 
 import com.gltype.nourriture.R;
 import com.gltype.nourriture.adapter.ProfileListRecipeAdapter;
-import com.gltype.nourriture.model.Moment;
 import com.gltype.nourriture.model.Recipe;
 
 public class FragmentListRecipes extends Fragment {
@@ -22,9 +22,11 @@ public class FragmentListRecipes extends Fragment {
 	private List<Recipe> recipes;
 	private ListView lv_recipes;
 	private ProfileListRecipeAdapter adapter;
+	private Context context;
 	
-	public FragmentListRecipes(List<Recipe> recipes) {
+	public FragmentListRecipes(List<Recipe> recipes, Context context) {
 		this.recipes = recipes;
+		this.context = context;
 	}
 	
 	@Override
@@ -34,7 +36,7 @@ public class FragmentListRecipes extends Fragment {
 		View view = inflater.inflate(R.layout.profile_fragment_recipes, container, false);
 		
 		lv_recipes = (ListView) view.findViewById(R.id.list_recipes);
-		adapter = new ProfileListRecipeAdapter(recipes, getActivity());
+		adapter = new ProfileListRecipeAdapter(recipes, context);
 		lv_recipes.setAdapter(adapter);
 		
 		lv_recipes.setOnItemClickListener(new OnItemClickListener() {

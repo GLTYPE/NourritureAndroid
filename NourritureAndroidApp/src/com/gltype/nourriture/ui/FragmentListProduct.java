@@ -2,6 +2,7 @@ package com.gltype.nourriture.ui;
 
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,15 +17,17 @@ import com.gltype.nourriture.R;
 import com.gltype.nourriture.adapter.ProfileListLikeAdapter;
 import com.gltype.nourriture.model.Product;
 
-public class FragmentListLike extends Fragment {
+public class FragmentListProduct extends Fragment {
 	
 	private List<Product> pros;
 	private ListView lv_pros;
 	private ProfileListLikeAdapter adapter;
+	private Context context;
 	
 	
-	public FragmentListLike(List<Product> pros) {
+	public FragmentListProduct(List<Product> pros, Context context) {
 		this.pros = pros;
+		this.context = context;
 	}
 	
 	@Override
@@ -33,6 +36,7 @@ public class FragmentListLike extends Fragment {
 		View view  = inflater.inflate(R.layout.profile_fragment_like, container, false);
 		
 		lv_pros = (ListView) view.findViewById(R.id.list_like);
+		
 		adapter = new ProfileListLikeAdapter(pros, getActivity());
 		lv_pros.setAdapter(adapter);
 		lv_pros.setOnItemClickListener(new OnItemClickListener() {
@@ -41,7 +45,7 @@ public class FragmentListLike extends Fragment {
 			public void onItemClick(AdapterView<?> list, View view, int position,
 					long arg3) {
 				Product product = (Product) list.getItemAtPosition(position);
-				Intent intent = new Intent(FragmentListLike.this.getActivity(), ProductDetialActivity.class);
+				Intent intent = new Intent(FragmentListProduct.this.getActivity(), ProductDetialActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("product", product);
 				intent.putExtras(bundle);

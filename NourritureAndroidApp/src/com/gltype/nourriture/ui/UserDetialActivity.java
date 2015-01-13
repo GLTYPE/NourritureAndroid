@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.gltype.nourriture.R;
 import com.gltype.nourriture.db.dao.UserDao;
+import com.gltype.nourriture.imageCache.SimpleImageLoader;
 import com.gltype.nourriture.model.User;
 import com.gltype.nourriture.utils.MyActivityManager;
 import com.gltype.nourriture.utils.RoleUtil;
@@ -97,8 +98,7 @@ public class UserDetialActivity extends Activity {
 		userRole.setText(new RoleUtil(user.getRole()).getRoleStr());
 		userEmail.setText(user.getEmail());
 		userAbout.setText(user.getAbout());
-		if (TextUtils.isEmpty(user.getPicture()))
-			img_picture.setImageResource(R.drawable.avatar_tomato);
+		SimpleImageLoader.showImg(img_picture, user.getPicture());
 		
 	}
 	
@@ -149,8 +149,8 @@ public class UserDetialActivity extends Activity {
     }  
 	
 	 @Override
-		protected void onDestroy() {
-			mam.popOneActivity(this);
-			super.onDestroy();
-		}
+	protected void onDestroy() {
+		mam.popOneActivity(this);
+		super.onDestroy();
+	}
 }

@@ -2,6 +2,7 @@ package com.gltype.nourriture.ui;
 
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,9 +23,11 @@ public class FragmentListMoments extends Fragment {
 	private List<Moment> moments;
 	private ListView ls_moments;
 	private ProfileListMomentAdapter adapter;
+	private Context context;
 	
-	public FragmentListMoments(List<Moment> moments) {
+	public FragmentListMoments(List<Moment> moments, Context context) {
 		this.moments = moments;
+		this.context = context;
 	}
 	
 	@Override

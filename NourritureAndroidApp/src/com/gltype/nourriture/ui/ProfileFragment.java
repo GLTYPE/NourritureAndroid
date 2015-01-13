@@ -15,20 +15,24 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gltype.nourriture.adapter.HomeProductAdapter;
-import com.gltype.nourriture.adapter.MomentAdapter;
 import com.gltype.nourriture.adapter.ProfileMomentAdapter;
 import com.gltype.nourriture.adapter.ProfileRecipeAdapter;
 import com.gltype.nourriture.imageCache.SimpleImageLoader;
@@ -37,7 +41,6 @@ import com.gltype.nourriture.model.Product;
 import com.gltype.nourriture.model.Recipe;
 import com.gltype.nourriture.model.User;
 import com.gltype.nourriture.utils.RoleUtil;
-import com.gltype.nourriture.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -49,14 +52,17 @@ public class ProfileFragment extends Fragment {
 	public List<Recipe> recipes;
 	public List<Product> products;
 	
+	private ArrayList<Fragment> fragmentList;
+	
 	private LinearLayout editProfile;
 	private TextView tv_username,tv_userrole;
 	private ImageView img_avatar;
-	private GridView gv_like, gv_recipe, gv_moments;
 	private Context context;
+	
+//	private ViewPager viewPager_list;
 
-	private int whichList;
-	private LinearLayout ll_like, ll_recipe, ll_moments;
+	private LinearLayout ll_likes, ll_recipes, ll_moments;
+	private ImageView img_tabLine0, img_tabLine1, img_tabLine2;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,15 +72,14 @@ public class ProfileFragment extends Fragment {
 		initView(view);
 		
 		if(user != null) {
-			displayInfo();
+	 		displayInfo();
 		} else {
 
 			getUserInfoByAsyncHttpClientGet();
 		}
 		
-		getUserRecipesByAsycHttpClientGet();
+		changeTextColor(0);
 		getUserlikesByAsycHttpClientGet();
-		getUserMomentsByAsycHttpClientGet();	
 		
 		editProfile.setOnClickListener(new OnClickListener() {
 			@Override
@@ -88,41 +93,35 @@ public class ProfileFragment extends Fragment {
 		});
 		
 
-		ll_like.setOnClickListener(new OnClickListener() {
+		ll_likes.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {	
-				sendMsg(0);			
+				changeTextColor(0);	
+//				viewPager_list.setCurrentItem(0);
+				getUserlikesByAsycHttpClientGet();
 			}
 		});		
-		ll_recipe.setOnClickListener(new OnClickListener() {
+		ll_recipes.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				sendMsg(1);
+				changeTextColor(1);
+//				viewPager_list.setCurrentItem(1);
+				getUserRecipesByAsycHttpClientGet();
 			}
 		});		
 		ll_moments.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				sendMsg(2);
+				changeTextColor(2);
+//				viewPager_list.setCurrentItem(2);
+				getUserMomentsByAsycHttpClientGet();
 			}
 		});
 		
 		return view;
-	}
-	
-	private void sendMsg(int whichPage) {
-		Intent intent = new Intent(context, ShowAllListActivity.class);
-		whichList = whichPage;
-		Bundle bundle = new Bundle();
-		bundle.putSerializable("whichList", whichList);
-		bundle.putSerializable("products", (Serializable) products);
-		bundle.putSerializable("recipes", (Serializable) recipes);
-		bundle.putSerializable("moments", (Serializable) moments);
-		intent.putExtras(bundle);
-		startActivity(intent);
 	}
 	
 	private void initView(View view) {
@@ -130,25 +129,44 @@ public class ProfileFragment extends Fragment {
 		tv_username = (TextView) view.findViewById(R.id.profile_username);
 		tv_userrole = (TextView) view.findViewById(R.id.profile_userlevel);
 		img_avatar = (ImageView) view.findViewById(R.id.profile_avatar);
-		gv_like = (GridView) view.findViewById(R.id.gv_user_like);
-		gv_recipe = (GridView) view.findViewById(R.id.gv_recipe);
-		gv_moments = (GridView) view.findViewById(R.id.gv_moments);
-		ll_like = (LinearLayout) view.findViewById(R.id.ll_user_like);
-		ll_recipe = (LinearLayout) view.findViewById(R.id.ll_user_recipes);
+
+		ll_likes = (LinearLayout) view.findViewById(R.id.ll_user_like);
+		ll_recipes = (LinearLayout) view.findViewById(R.id.ll_user_recipes);
 		ll_moments = (LinearLayout) view.findViewById(R.id.ll_user_moments);
 
-		gv_like.setVerticalSpacing(30);
-		gv_recipe.setVerticalSpacing(30);
-		gv_moments.setVerticalSpacing(30);
-
+		img_tabLine0 = (ImageView) view.findViewById(R.id.tabline0);
+		img_tabLine1 = (ImageView) view.findViewById(R.id.tabline1);
+		img_tabLine2 = (ImageView) view.findViewById(R.id.tabline2);
+		
+		fragmentList = new ArrayList<Fragment>();
+		
 	}
 	
 	public void displayInfo() {
 
 		tv_username.setText(user.getFirstname() + " " + user.getLastname());
 		tv_userrole.setText(new RoleUtil(user.getRole()).getRoleStr());
-		if("".equals(user.getPicture())) {
-			SimpleImageLoader.showImg(img_avatar,user.getPicture());
+		SimpleImageLoader.showImg(img_avatar,user.getPicture());
+	}
+
+	protected void resetTextColor() {
+		img_tabLine0.setBackgroundColor(Color.TRANSPARENT);
+		img_tabLine1.setBackgroundColor(Color.TRANSPARENT);
+		img_tabLine2.setBackgroundColor(Color.TRANSPARENT);
+	}
+	
+	protected void changeTextColor(int position) {
+		resetTextColor();
+		switch (position) {
+		case 0:
+			img_tabLine0.setBackgroundColor(Color.GRAY);
+			break;
+		case 1:
+			img_tabLine1.setBackgroundColor(Color.GRAY);
+			break;
+		case 2:
+			img_tabLine2.setBackgroundColor(Color.GRAY);
+			break;
 		}
 	}
 	
@@ -199,10 +217,9 @@ public class ProfileFragment extends Fragment {
 				try {
 					moments = new ArrayList<Moment>();
 					JSONObject jsonObj = null;
-					int len = response.length() < 3 ? response.length() : 3;
+					int len = response.length();
 					
 					for (int i = 0; i < len; i++) {							
-							//{"__v":0,"comments":[]}
 						jsonObj = response.getJSONObject(i);
 						String name = jsonObj.getString("name");
 						String date = jsonObj.getString("date");
@@ -218,8 +235,11 @@ public class ProfileFragment extends Fragment {
 						moments.add(moment);
 						
 					}
-					ProfileMomentAdapter mAdapter = new ProfileMomentAdapter(moments, context);
-					gv_moments.setAdapter(mAdapter);	
+					FragmentListMoments f_moments = new FragmentListMoments(moments, context);
+					fragmentList.add(f_moments);
+					
+					getFragmentManager().beginTransaction().replace(R.id.fl_list, f_moments).commit();
+					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -246,11 +266,10 @@ public class ProfileFragment extends Fragment {
 					JSONArray response) {
 				try {					
 					recipes = new ArrayList<Recipe>();
-					int len = response.length() < 3 ? response.length() : 3;					
+					int len = response.length();
 					JSONObject jsonObj = null;
 					for(int i = 0; i < len; i++) {					
 						jsonObj = response.getJSONObject(i);
-						//"ings":[],"moments":[],"rate":[]
 						String name = jsonObj.getString("name");
 						String pic = jsonObj.getString("picture");
 							
@@ -262,8 +281,11 @@ public class ProfileFragment extends Fragment {
 						recipe.setValue(jsonObj.getInt("values"));
 						recipes.add(recipe);
 					}	
-					ProfileRecipeAdapter rAdapter = new ProfileRecipeAdapter(recipes, context);
-					gv_recipe.setAdapter(rAdapter);	
+					FragmentListRecipes f_recipes = new FragmentListRecipes(recipes, context);
+					fragmentList.add(f_recipes);
+					
+					getFragmentManager().beginTransaction().replace(R.id.fl_list, f_recipes).commit();
+					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -287,10 +309,9 @@ public class ProfileFragment extends Fragment {
 				try {
 					products = new ArrayList<Product>();
 					JSONObject jsonObj = null;
-					int len = response.length() < 3 ? response.length() : 3;
+					int len = response.length();
 					for (int i = 0; i < len; i++) {
 						jsonObj = response.getJSONObject(i);
-						//"ings":[],"moments":[],"rate":[]
 						String name = jsonObj.getString("name");
 						String pic = jsonObj.getString("picture");
 						Product pro = new Product(name);
@@ -299,12 +320,15 @@ public class ProfileFragment extends Fragment {
 						pro.setBrand(jsonObj.getString("brand"));
 						pro.setOwnerId(jsonObj.getString("owner"));
 						pro.setValue(jsonObj.getString("values"));
-//						pro.setId(jsonObj.getString("_id"));
 
 						products.add(pro);
+
 					}
-					HomeProductAdapter lAdapter = new HomeProductAdapter(context, products);
-					gv_like.setAdapter(lAdapter);
+					FragmentListProduct f_likes = new FragmentListProduct(products, context);
+					fragmentList.add(f_likes);
+					
+					getFragmentManager().beginTransaction().replace(R.id.fl_list, f_likes).commit();
+					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -314,7 +338,6 @@ public class ProfileFragment extends Fragment {
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					Throwable throwable, JSONArray errorResponse) {
-				// TODO Auto-generated method stub
 				super.onFailure(statusCode, headers, throwable, errorResponse);
 			}
 		});

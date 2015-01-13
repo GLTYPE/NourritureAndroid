@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.nourritour.ProfileActivity"
-    android:background="@color/grey" >
+    android:background="@color/light_grey" >
     
     <LinearLayout android:id="@+id/edit_profile"
         android:layout_width="match_parent"
@@ -19,7 +19,8 @@
             android:id="@+id/profile_avatar"
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:layout_weight="1"          
+            android:layout_weight="1"   
+    	    android:layout_marginLeft="5dp"       
             android:scaleType="fitCenter"/>
          <!--    android:src="@drawable/avatar_tomato" -->
 
@@ -50,173 +51,14 @@
 	           <!--  android:text="@string/profile_userlevel"  -->
 		</LinearLayout>
     </LinearLayout>
-
-    <!-- show the recipes products that user LIKE -->
-    <LinearLayout
-        android:id="@+id/ll_user_like"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:background="@color/white"
-        android:layout_marginTop="5dp">
-        
-        <LinearLayout
-	        android:layout_height="wrap_content"
-	        android:layout_width="match_parent"
-	        android:orientation="horizontal">
-	        
-            <ImageView
-			    android:contentDescription="@string/icon_user_like"
-				android:id="@+id/icon_user_like"
-				android:layout_width="32dp"
-				android:layout_height="match_parent"
-				android:src="@drawable/icon_ilike" />
-            
-            <TextView
-				android:id="@+id/text_user_like"
-				android:layout_width="0dp"
-				android:layout_weight="1"
-				android:layout_height="wrap_content"
-				android:text="@string/text_user_like"
-				android:textSize="20sp" />
-            
-			<TextView
-			    android:layout_width="wrap_content"
-			    android:layout_height="match_parent"
-			    android:gravity="center"
-			    android:layout_marginRight="3dp"
-			    android:text="@string/show_more"/>
-            
-        </LinearLayout>
-		
-        <LinearLayout 
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginLeft="30dp">
-			
-			<GridView
-			    android:id="@+id/gv_user_like"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:numColumns="3" />
-		</LinearLayout>	
-			
-    </LinearLayout>
-
-    <!-- show the RECIPES  user puts -->
-    <LinearLayout
-        android:id="@+id/ll_user_recipes"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:orientation="vertical">
-		
-		<LinearLayout
-	        android:layout_height="wrap_content"
-	        android:layout_width="match_parent"
-	        android:orientation="horizontal">
-		
-		    <ImageView
-			    android:contentDescription="@string/icon_recipes"
-				android:id="@+id/icon_recipe"
-				android:layout_width="32dp"
-				android:layout_height="match_parent"
-				android:src="@drawable/icon_myrecipe" />
-		    
-		    <TextView
-				android:id="@+id/text_recipe"
-				android:layout_width="0dp"
-				android:layout_weight="1"
-				android:layout_height="wrap_content"
-				android:text="@string/text_user_recipes"
-				android:textSize="20sp" />
-		    
-		    <TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="match_parent"
-			    android:text="@string/show_more"
-			    android:gravity="center"
-			    android:layout_marginRight="3dp"/>
-		    
-		</LinearLayout>
-			
-		<LinearLayout 
-		    android:layout_height="0dp"
-		    android:layout_width="match_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1"
-		    android:layout_marginLeft="30dp">
-			
-			<GridView
-			    android:id="@+id/gv_recipe"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:numColumns="3" />
-			
-		</LinearLayout>
-		
-    </LinearLayout>
-
-    <!-- show the MOMENTS user shared -->
-    <LinearLayout
-        android:id="@+id/ll_user_moments"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_marginTop="5dp"        
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="vertical">
-		
-		<LinearLayout
-		    android:layout_height="wrap_content"
-		    android:layout_width="match_parent"
-		    android:orientation="horizontal">
-			
-			<ImageView
-			    android:contentDescription="@string/icon_moments"
-				android:id="@+id/icon_moments"
-				android:layout_width="32dp"
-				android:layout_height="match_parent"
-				android:scaleType="fitCenter"
-				android:background="#00000000"
-				android:src="@drawable/icon_moments" />
-			
-			<TextView
-				android:id="@+id/text_moments"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:text="@string/text_user_moments"
-				android:textSize="20sp" />
-			
-			<TextView 
-			    android:layout_width="wrap_content"
-			    android:layout_height="match_parent"
-			    android:text="@string/show_more"
-			    android:layout_marginRight="3dp"
-			    android:gravity="center"/>
-		
-		</LinearLayout>
-		
-		<LinearLayout
-		    android:layout_height="0dp"
-		    android:layout_width="match_parent"
-		    android:orientation="vertical"
-		    android:layout_marginLeft="30dp"
-		    android:layout_weight="1">
-			
-			<GridView
-			    android:id="@+id/gv_moments"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:numColumns="3" />
-			
-		</LinearLayout>
-    </LinearLayout>
+    
+	<include layout="@layout/showlist_top"/>
+	
+	<FrameLayout android:id="@+id/fl_list"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="3"
+	    android:layout_marginTop="1dp"
+	    android:background="@color/white">
+	</FrameLayout>
 </LinearLayout>

@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,8 +20,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gltype.nourriture.R;
@@ -35,17 +39,20 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 public class HomeFragment extends Fragment {
 
 	
-	private TextView textView ;
-	private GridView recipesgridView;
-	private GridView productsgridView;
 	private Context context;
 	public static String userPicture;
 	public static String userName;
 	public static String userId;
 	public List<Product> products;
 	public List<Recipe> recipes;
+	
 	private ImageButton refeshButton;
-
+	private TextView textView ;
+	private LinearLayout ll_promotePro, ll_promoteRec;
+	private ImageView img_proProduct, img_proRecipe;
+	
+	private int current;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -53,21 +60,47 @@ public class HomeFragment extends Fragment {
 		context = getActivity();
 		textView = (TextView) view.findViewById(R.id.welcome_user);		
 		refeshButton = (ImageButton) view.findViewById(R.id.bt_home_refresh);
-		 getUserByAsyncHttpClientGet(LoginActivity.token);
-		 recipesgridView = (GridView) view.findViewById(R.id.home_view_newList);
-		 productsgridView = (GridView) view.findViewById(R.id.home_view_promoteList);
-		 recipesgridView.setVerticalSpacing(25);
-		 productsgridView.setVerticalSpacing(25);
-		 refresh();
-		 refeshButton.setOnClickListener(new OnClickListener() {
+		ll_promotePro = (LinearLayout) view.findViewById(R.id.promote_product);
+		ll_promoteRec = (LinearLayout) view.findViewById(R.id.promote_recipe);
+		img_proProduct = (ImageView) view.findViewById(R.id.img_proProduct);
+		img_proRecipe = (ImageView) view.findViewById(R.id.img_proRecipe);
+		
+		getUserByAsyncHttpClientGet(LoginActivity.token);
+		 
+		getProductsByAsyncHttpClientGet();
+		changeTextColor(0);
+		
+		refeshButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
-				refresh();		
+				changeTextColor(current);
+				refresh(current);		
 			}
 		});
-		 System.out.println("===================Create view");
-		 return view;
+		
+		ll_promotePro.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				changeTextColor(0);
+				getProductsByAsyncHttpClientGet();
+				current = 0;
+			}
+		});
+		
+		ll_promoteRec.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				changeTextColor(1);
+				getRecipesByAsyncHttpClientGet();
+				current = 1;
+			}
+		});
+		
+		System.out.println("===================Create view");
+		return view;
 		
 	}
 	
@@ -78,42 +111,36 @@ public class HomeFragment extends Fragment {
 		super.onDestroyView();
 	}
 	
-	public void refresh()
-	{		
-		getRecipesByAsyncHttpClientGet();
-		getProductsByAsyncHttpClientGet();		
-				
-		recipesgridView.setOnItemClickListener(new OnItemClickListener(){
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				 Recipe recipe = (Recipe) arg0.getItemAtPosition(arg2);
-				 
-				  Intent intent =new Intent(HomeFragment.this.getActivity(), RecipeDetialActivity.class);
-				  Bundle bundle = new Bundle();
-				  bundle.putSerializable("recipe",recipe);
-				  intent.putExtras(bundle);
-				  startActivity(intent);
-				
-			}
-		});	
-		productsgridView.setOnItemClickListener(new OnItemClickListener(){
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				 Product product = (Product) arg0.getItemAtPosition(arg2);
-				 
-				  Intent intent =new Intent(HomeFragment.this.getActivity(), ProductDetialActivity.class);
-				  Bundle bundle = new Bundle();
-				  bundle.putSerializable("product",product);
-				  intent.putExtras(bundle);
-				  startActivity(intent);
-				
-			}
-		});	
-		
+	public void refresh(int whichList)
+	{	
+		switch (whichList) {
+		case 0:
+			getProductsByAsyncHttpClientGet();
+			break;
+		case 1:
+			getRecipesByAsyncHttpClientGet();
+			break;
+		default:
+			break;
+		}
 	}	
+
+	protected void resetTextColor() {
+		img_proRecipe.setBackgroundColor(Color.TRANSPARENT);
+		img_proProduct.setBackgroundColor(Color.TRANSPARENT);
+	}
 	
+	protected void changeTextColor(int position) {
+		resetTextColor();
+		switch (position) {
+		case 0:
+			img_proProduct.setBackgroundColor(Color.GRAY);
+			break;
+		case 1:
+			img_proRecipe.setBackgroundColor(Color.GRAY);
+			break;
+		}
+	}
 	
 	 public void getRecipesByAsyncHttpClientGet() {  	
 	        AsyncHttpClient client = new AsyncHttpClient();
@@ -127,39 +154,24 @@ public class HomeFragment extends Fragment {
 					try {
 						recipes = new ArrayList<Recipe>();
 						JSONObject jsonObject = null;
-						if(response.length()<=9){
-							for(int i=0; i<response.length();i++){
-								jsonObject= response.getJSONObject(i);
-								String name= jsonObject.getString("name");
-								String img= jsonObject.getString("picture");
-								
-								
-								String id = jsonObject.getString("_id");
-								String desc = jsonObject.getString("description");
-								String value = jsonObject.getString("values");
-								Recipe recipe =new Recipe(name,Integer.parseInt(value),desc,img);
-								recipe.set_id(id);
-								recipes.add(recipe);
-							}
-							HomeRecipeAdapter adapter2 =new HomeRecipeAdapter(context, recipes);
-							recipesgridView.setAdapter(adapter2);
-						}else{
-							for(int i=0; i<9;i++){
-								jsonObject= response.getJSONObject(i);
-								String name= jsonObject.getString("name");
-								String img= jsonObject.getString("picture");
-								
-								
-								String id = jsonObject.getString("_id");
-								String desc = jsonObject.getString("description");
-								String value = jsonObject.getString("values");
-								Recipe recipe =new Recipe(name,Integer.parseInt(value),desc,img);
-								recipe.set_id(id);
-								recipes.add(recipe);
-							}
-							HomeRecipeAdapter adapter2 =new HomeRecipeAdapter(context, recipes);
-							recipesgridView.setAdapter(adapter2);
+						
+						for(int i=0; i<response.length();i++){
+							jsonObject= response.getJSONObject(i);
+							String name= jsonObject.getString("name");
+							String img= jsonObject.getString("picture");
+							
+							
+							String id = jsonObject.getString("_id");
+							String desc = jsonObject.getString("description");
+							String value = jsonObject.getString("values");
+							Recipe recipe =new Recipe(name,Integer.parseInt(value),desc,img);
+							recipe.set_id(id);
+							recipes.add(recipe);
 						}
+						
+						FragmentListRecipes f_promoteRecipes =new FragmentListRecipes(recipes, context);
+						getFragmentManager().beginTransaction().replace(R.id.frame_promotelist, f_promoteRecipes).commit();
+					
 					} catch (JSONException e) {
 						
 						e.printStackTrace();
@@ -189,39 +201,22 @@ public class HomeFragment extends Fragment {
 					try {
 						products = new ArrayList<Product>();
 						JSONObject jsonObject = null;
-						if(response.length()<=9){
-							for(int i=0; i<response.length();i++){
-								jsonObject= response.getJSONObject(i);
-								String productname= jsonObject.getString("name");
-								String img= jsonObject.getString("picture");
-								Product product = new Product(productname);
-								product.setPicture(img);
-								product.setProductid(jsonObject.getString("_id"));
-								product.setDescription(jsonObject.getString("description"));
-								product.setValue(jsonObject.getString("values"));
-								product.setBrand(jsonObject.getString("brand"));
-								products.add(product);
-							
-							}
-							HomeProductAdapter adapter= new HomeProductAdapter(context, products);
-							 productsgridView.setAdapter(adapter);
 					
-						}else{
-							for(int i=0; i<9;i++){
-								jsonObject= response.getJSONObject(i);
-								String productname= jsonObject.getString("name");
-								String img= jsonObject.getString("picture");
-								Product product = new Product(productname);
-								product.setPicture(img);
-								product.setProductid(jsonObject.getString("_id"));
-								product.setDescription(jsonObject.getString("description"));
-								product.setValue(jsonObject.getString("values"));
-								product.setBrand(jsonObject.getString("brand"));
-								products.add(product);
-							}
-							HomeProductAdapter adapter= new HomeProductAdapter(context, products);
-							 productsgridView.setAdapter(adapter);
+						for(int i=0; i<response.length();i++){
+							jsonObject= response.getJSONObject(i);
+							String productname= jsonObject.getString("name");
+							String img= jsonObject.getString("picture");
+							Product product = new Product(productname);
+							product.setPicture(img);
+							product.setProductid(jsonObject.getString("_id"));
+							product.setDescription(jsonObject.getString("description"));
+							product.setValue(jsonObject.getString("values"));
+							product.setBrand(jsonObject.getString("brand"));
+							products.add(product);
 						}
+						FragmentListProduct f_promoteProduct = new FragmentListProduct(products, context);
+						getFragmentManager().beginTransaction().replace(R.id.frame_promotelist, f_promoteProduct).commit();
+						
 					} catch (JSONException e) {
 						
 						e.printStackTrace();
