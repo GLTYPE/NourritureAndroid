@@ -1,187 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
- >
-  
-  
-  
-  <ImageView android:id="@+id/img_item_userphoto"
-  android:layout_width="40dp"
-  android:layout_height="40dp"
-  android:src="@drawable/usericon"
-  android:layout_marginTop="5dp"/>
-  
- 
-  <LinearLayout
-  android:layout_width="match_parent"
-  android:orientation="vertical"
-  android:layout_height="wrap_content"
-  android:layout_margin="5dp">
-  
-  
-  
-	 
-	<LinearLayout
-	  android:layout_width="match_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="horizontal">
-	  
-	  
-	  <!-- username -->
-	  <TextView android:id="@+id/txt_item_uname"
-		  android:layout_width="wrap_content"
-		  android:layout_height="wrap_content"
-		  android:text="JohanYan"
-		  android:textColor="#424d54"
-		  android:textSize="20dp"
-		  
-	  />
-	  
-	 
-	  
-	  
-	  
-		  <RelativeLayout 
-		   			android:layout_width="fill_parent"
-				    android:layout_height="wrap_content"
-				    android:gravity="right"
-				  >
-				  
-				  <!-- time -->
-				 <TextView android:id="@+id/txt_item_time"
-				  android:layout_width="wrap_content"
-				  android:layout_height="wrap_content"
-				  android:text="1 hour ago"
-				  android:textColor="#efa608"
-				  android:textSize="10dp"
-				  />  
-				  
-		</RelativeLayout>		  
-	 </LinearLayout> 
-  
-  
-  
-  
-	 
-	<LinearLayout
-	  android:layout_width="match_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="vertical">
-	  
-	  
-	    <!-- content --> 
-				 <TextView android:id="@+id/txt_item_content"
-				  android:layout_width="fill_parent"
-				  android:layout_height="wrap_content"
-				  android:text="That's a amazing moment!That's a amazing moment!"
-				  android:textColor="#6b717b"
-				  android:textSize="12dp"
-				  />  
-	  
-	  
-	  
-	   <ImageView android:id="@+id/img_item_content_pic"
-			 
-			   android:layout_width="125dp"
-  				android:layout_height="150dp"
-			  android:src="@drawable/usericon"
-			  android:layout_marginTop="3dp"
-			  />
-	  
-	 </LinearLayout>
-  
-  	
-  
-  	 <!-- share --> 
-	<LinearLayout
-	  android:layout_width="match_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="vertical"
-	  android:layout_marginTop="3dp"
-	  android:background="@drawable/popup">
-  
-  
-  
-  		 <!-- share -->
-				 <TextView android:id="@+id/txt_item_subcontent"
-				  android:layout_width="fill_parent"
-				  android:layout_height="wrap_content"
-				  android:text="That's a amazing moment!"
-				  android:textColor="#6b717b"
-				  android:textSize="12dp"
-				  />  
-	  
-	  
-	  
-	<!--     <ImageView android:id="@+id/img_item_content_subpic"
-			  android:layout_width="wrap_content"
-			  android:layout_height="wrap_content"
-			  android:src="@drawable/usericon"
-			  android:layout_marginTop="3dp"
-			  />-->
-  
-  
-  </LinearLayout>
-  
-  
-  
-  	 <!-- o --> 
-	<LinearLayout
-	  android:layout_width="match_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="horizontal"
-	  android:layout_marginTop="3dp"
-	  android:layout_marginBottom="3dp"
-	 >
-  
-  		
-  	 <!-- from -->
-	  <TextView android:id="@+id/txt_item_from"
-		  android:layout_width="wrap_content"
-		  android:layout_height="wrap_content"
-		  android:text="From:Iphone6plus"
-		  android:textColor="#9ba0aa"
-		  android:textSize="10dp"
-	  />
-  	
-  
-  <LinearLayout
-	  android:layout_width="match_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="horizontal"
-	  android:gravity="right"
-	 >
-  	
-  <TextView android:id="@+id/txt_item_redirect"
-		  android:layout_width="wrap_content"
-		  android:layout_height="wrap_content"
-		  android:drawableLeft="@drawable/redirect_icon"
-		  android:text="10"
-		  android:textColor="#9ba0aa"
-		  android:textSize="10dp"
-	  />
-	  
-	<TextView android:id="@+id/txt_item_comment"
-		  android:layout_width="wrap_content"
-		  android:layout_height="wrap_content"
-		  android:layout_marginLeft="5dp"
-		  android:drawableLeft="@drawable/comment_icon"
-		  android:text="100"
-		  android:textColor="#9ba0aa"
-		  android:textSize="10dp"
-	  />  
-  
-  </LinearLayout>
-  
-  
-  </LinearLayout>
-  
-  
-  </LinearLayout>
-  
-  
-  
-  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/img_item_userphoto"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/usericon" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <!-- username -->
+
+            <TextView
+                android:id="@+id/txt_item_uname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JohanYan"
+                android:textColor="#424d54"
+                android:textSize="20dp" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right" >
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- content -->
+
+            <TextView
+                android:id="@+id/txt_item_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="That&apos;s a amazing moment!That&apos;s a amazing moment!"
+                android:textColor="#6b717b"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/img_item_content_pic"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/usericon" />
+        </LinearLayout>
+
+        <!-- o -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal" >
+               
+            <!-- time -->
+            <TextView
+                android:id="@+id/txt_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 hour ago"
+                android:textColor="#efa608"
+                android:textSize="10dp" />
+
+            <!-- from -->
+            <TextView
+                android:id="@+id/txt_item_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="From:Iphone6 plus"
+                android:textColor="#9ba0aa"
+                android:textSize="10dp" />  
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txt_item_redirect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/redirect_icon"
+                    android:text="10"
+                    android:textColor="#9ba0aa"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/txt_item_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:drawableLeft="@drawable/comment_icon"
+                    android:text="100"
+                    android:textColor="#9ba0aa"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

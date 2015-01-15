@@ -68,7 +68,7 @@
     
     
     
-    <string name="commit">COMMIT</string>   
+    <string name="commit">Commit</string>   
     <string name="loading">loading...</string>
 
 </resources>

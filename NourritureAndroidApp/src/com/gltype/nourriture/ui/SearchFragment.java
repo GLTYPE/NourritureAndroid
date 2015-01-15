@@ -20,7 +20,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -53,8 +52,8 @@ public class SearchFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view =inflater.inflate(R.layout.fragment_search, null);	
-		this.searchButton = (ImageButton) view.findViewById(R.id.bt_search);
 		this.searchEdit = (EditText) view.findViewById(R.id.et_search);
+		this.searchButton = (ImageButton) view.findViewById(R.id.bt_search);
 		this.searchSpinner = (Spinner) view.findViewById(R.id.sp_search);
 		this.searchListView = (ListView) view.findViewById(R.id.lv_serach);
 		 adapter = new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item,searchType);  
@@ -109,7 +108,7 @@ public class SearchFragment extends Fragment {
 	}
 	
 	public void initProductsSearch(){
-		searchEdit.setText("pe");
+//		searchEdit.setText("pe");
 		searchProductsByName(searchEdit.getText().toString());
 		
 		
@@ -130,7 +129,7 @@ public class SearchFragment extends Fragment {
 	}
 	
 	public void initRecipesSearch(){
-		searchEdit.setText("si");
+//		searchEdit.setText("si");
 		searchRecipesByName(searchEdit.getText().toString());
 		
 		searchListView.setOnItemClickListener(new OnItemClickListener(){
@@ -150,7 +149,7 @@ public class SearchFragment extends Fragment {
 	}
 	
 	public void initIngredientSearch(){
-		searchEdit.setText("se");
+//		searchEdit.setText("se");
 		searchIngredientsByName(searchEdit.getText().toString());
 		
 		searchListView.setOnItemClickListener(new OnItemClickListener(){

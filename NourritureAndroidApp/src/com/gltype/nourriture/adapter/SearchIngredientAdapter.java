@@ -66,12 +66,12 @@ public class SearchIngredientAdapter extends BaseAdapter {
 		}
 		Ingredient ingredient = ingredients.get(position);
 		holder.tv_search_item_name.setText(ingredient.getName());
-		holder.tv_search_item_value.setText(ingredient.getValue()+"");
+		holder.tv_search_item_value.setText(ingredient.getValue()+" calories");
 		holder.tv_search_item_description.setText(ingredient.getDescription());
-		if(""!=ingredient.getPicture()){
+//		if(""!=ingredient.getPicture()){
 		
 			SimpleImageLoader.showImg(holder.img_search_item,ingredient.getPicture());
-		}
+//		} 
 		return view;
 	}
 

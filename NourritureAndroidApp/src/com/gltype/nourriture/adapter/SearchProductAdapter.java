@@ -68,7 +68,7 @@ public class SearchProductAdapter extends BaseAdapter {
 		}
 		Product product = this.products.get(arg0);
 		holder.tv_search_item_name.setText(product.getName());
-		holder.tv_search_item_value.setText(product.getValue());
+		holder.tv_search_item_value.setText(product.getValue()+" calories");
 		holder.tv_search_item_description.setText(product.getDescription());
 		if(""!=product.getPicture()){
 		

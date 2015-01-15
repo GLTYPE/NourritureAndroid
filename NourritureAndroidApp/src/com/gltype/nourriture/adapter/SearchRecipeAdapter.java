@@ -65,7 +65,7 @@ public class SearchRecipeAdapter extends BaseAdapter {
 		}
 		Recipe recipe = recipes.get(position);
 		holder.tv_search_item_name.setText(recipe.getName());
-		holder.tv_search_item_value.setText(recipe.getValue()+"");
+		holder.tv_search_item_value.setText(recipe.getValue()+" calories");
 		holder.tv_search_item_description.setText(recipe.getDescription());
 		if(""!=recipe.getPicture()){
 		

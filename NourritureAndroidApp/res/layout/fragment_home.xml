@@ -2,136 +2,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <!-- welcome the user with username ['user' as defualt] -->
-    <LinearLayout android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/light_grey">
-        
-	    <TextView android:id="@+id/welcome_user"
-	        android:layout_width="0dp"
-	        android:layout_weight="1"
-	        android:layout_height="45dp"
-	        android:textSize="20sp"
-	        android:layout_marginLeft="10dp"
-	        android:layout_marginTop="10dp"
-	        android:gravity="center_vertical"
-	        android:text="@string/welcome_user" />
-        
-        <ImageButton android:id="@+id/bt_home_refresh"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:scaleType="fitCenter"
-	        android:layout_marginRight="15dp"
-	        android:src="@drawable/icon_refresh"
-	        android:background="#00000000"
-	        android:text="refresh"/>	
-        
-    </LinearLayout> 
-    
-    <LinearLayout android:id="@+id/home_switchBar"
+        android:background="@color/grey"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/welcome_user"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/welcome_user"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/bt_home_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15dp"
+            android:background="#00000000"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_refresh"
+            android:text="refresh" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/home_switchBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:padding="5dp">
-	        
-        <LinearLayout android:id="@+id/promote_product"
+        android:padding="5dp" >
+
+        <LinearLayout
+            android:id="@+id/promote_product"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal|bottom">
-            
-            <TextView android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="horizontal" >
+
+            <TextView
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="3"
+                android:gravity="right|bottom"
                 android:text="Products"
-	        	android:textSize="20sp"
-                android:gravity="right|bottom"/>
-            <LinearLayout android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                
-	            <ImageView android:layout_width="0dp"
-	                android:layout_height="wrap_content"
-	                android:layout_weight="1"
-	                android:layout_gravity="center_vertical"
-	                android:scaleType="fitStart"
-	                android:src="@drawable/icon_new_blue"/>
-	            
-	            <ImageView android:layout_width="0dp"
-	                android:layout_height="wrap_content"
-	                android:layout_weight="1"/>
-            
-            </LinearLayout>
-            
-        </LinearLayout>
-    
-	    <ImageView android:layout_height="match_parent"
-	        android:layout_width="1dp"
-	        android:background="@color/grey"/>
-	    
-        <LinearLayout android:id="@+id/promote_recipe"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal|bottom">
-            
-            <TextView android:layout_height="match_parent"
+                android:textSize="20sp" />
+
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="3"
-                android:text="Recipes"
-	        	android:textSize="20sp"
-                android:gravity="right|bottom"/>
-            <LinearLayout android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-                
-	            <ImageView android:layout_width="0dp"
-	                android:layout_height="wrap_content"
-	                android:layout_weight="1"
-	                android:layout_gravity="center_vertical"
-	                android:scaleType="fitStart"
-	                android:src="@drawable/icon_new_blue"/>
-	            
-	            <ImageView android:layout_width="0dp"
-	                android:layout_height="wrap_content"
-	                android:layout_weight="1"/>
-            
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/icon_new_blue" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/grey" />
+
+        <LinearLayout
+            android:id="@+id/promote_recipe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="right|bottom"
+                android:text="Recipes"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/icon_new_blue" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:orientation="horizontal">
-		
-		<ImageView android:id="@+id/img_proProduct"
-		    android:layout_height="match_parent"
-		    android:layout_width="0dp"
-		    android:layout_weight="1"
-		    android:background="@color/white"/>
-           
-		<ImageView android:id="@+id/img_proRecipe"
-		    android:layout_height="match_parent"
-		    android:layout_width="0dp"
-		    android:layout_weight="1"
-		    android:background="@color/white"/>
-           
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/img_proProduct"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white" />
+
+        <ImageView
+            android:id="@+id/img_proRecipe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white" />
     </LinearLayout>
-    <!--  show the newest videos(recipies moments) in Database -->
-    <FrameLayout android:id="@+id/frame_promotelist"
-        android:layout_weight="8"
+    <!-- show the newest videos(recipies moments) in Database -->
+
+    <FrameLayout
+        android:id="@+id/frame_promotelist"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_width="match_parent">
-        
+        android:layout_weight="9" >
     </FrameLayout>
-    
+
 </LinearLayout>
