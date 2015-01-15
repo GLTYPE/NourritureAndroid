@@ -226,7 +226,9 @@ public class ProfileFragment extends Fragment {
 						String pic = jsonObj.getString("picture");
 						Moment moment = new Moment(name, date);
 						
-						moment.setPictureurl(pic);
+						moment.setPictureurl(HomeFragment.userPicture);
+						moment.setContentimg(pic);
+						moment.setUsername(HomeFragment.userName);
 						moment.setContent(jsonObj.getString("description"));
 						moment.setOwnId(jsonObj.getString("owner_id"));
 						moment.setTargetId(jsonObj.getString("target_id"));

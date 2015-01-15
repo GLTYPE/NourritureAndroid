@@ -8,32 +8,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light_grey"
         android:gravity="center_horizontal"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+   		android:background="@drawable/bg_darkgray" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <Spinner
+                android:id="@+id/sp_search"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="2" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="@string/search_txt_hint"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/bt_search"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_margin="10dp"
             android:background="#0000"
             android:scaleType="fitCenter"
-            android:src="@drawable/tab_icon_search" />
-
-        <Spinner
-            android:id="@+id/sp_search"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_weight="2" />
-
-        <EditText
-            android:id="@+id/et_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:hint="@string/search_txt_hint"
-            android:textSize="10sp" />
+            android:src="@drawable/icon_search_white" />
     </LinearLayout>
 
     <ListView

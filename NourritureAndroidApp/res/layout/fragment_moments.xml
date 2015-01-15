@@ -2,78 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    >
- <LinearLayout
-	     android:layout_width="match_parent"
-	     android:layout_height="wrap_content"
-	     android:background="@color/light_grey"
-	     android:gravity="center_horizontal"
-	     android:orientation="horizontal" >
+    android:orientation="vertical" >
 
-	    <ImageButton android:id="@+id/bt_refresh"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:layout_marginLeft="10dp"
-	      	android:gravity="start"
-	      	android:src="@drawable/icon_refresh"
-	      	android:background="#0000"/>  
-	    <Spinner
-	        android:layout_marginLeft="10dp"
-	        android:layout_marginRight="10dp"
-	        android:id="@+id/sp_moment"	       
-	      	android:layout_weight="1"
-	        android:layout_width="0dp"
-	        android:layout_height="55dp" />
-	    
-	     <ImageButton android:id="@+id/bt_add"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	      	android:gravity="start"
-	      	android:layout_marginRight="10dp"
-	      	android:src="@drawable/icon_add"
-	      	android:background="#0000"/>  
-    
-    </LinearLayout>
-  
-	<LinearLayout 
-	    android:id="@+id/addlayout"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-	    android:visibility="gone" >
-
-   		<EditText
-			android:id="@+id/et_momentname"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="Happy!!!!"/>	    
-	    <EditText
-			android:id="@+id/et_desc"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="happy!!"/>	    
- 		
-			<EditText
-			android:id="@+id/et_picture"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="http://static.caipiaogu.com/images/news/2014/12/154_small.jpg"/>	    
-	    <Button
-	        android:id="@+id/bt_addmomcommit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:text="@string/commit" />
-    
-	</LinearLayout>
-
-	<ListView
-        android:id="@+id/moments_list"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_darkgray"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/bt_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="#0000"
+            android:gravity="start"
+            android:src="@drawable/icon_refresh" />
+
+        <Spinner
+            android:id="@+id/sp_moment"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/bt_add"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_marginRight="20dp"
+            android:scaleType="fitCenter"
+            android:background="#0000"
+            android:gravity="start"
+            android:src="@drawable/icon_add_white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <EditText
+            android:id="@+id/et_momentname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Happy!!!!" />
+
+        <EditText
+            android:id="@+id/et_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="happy!!" />
+
+        <EditText
+            android:id="@+id/et_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="http://static.caipiaogu.com/images/news/2014/12/154_small.jpg" />
+
+        <Button
+            android:id="@+id/bt_addmomcommit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/commit" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/moments_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" >
     </ListView>
 
 </LinearLayout>

@@ -3,34 +3,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-<include android:id="@+id/layout_title_bar" layout="@layout/title_bar"/>
-   
-	    <EditText
-			android:id="@+id/et_ingredientname"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			/>	    
- 		
-			<EditText
-			android:id="@+id/et_ingredientvalue"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			/>	    
-			<EditText
-			android:id="@+id/et_ingredientimg"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			/>	    
-			<EditText
-			android:id="@+id/et_ingredientdescription"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			/>	     
-	    <Button
-	        android:id="@+id/bt_ingredientcommit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:text="@string/commit" />
-    
+
+    <include
+        android:id="@+id/layout_title_bar"
+        layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Name"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_ingredientname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Value"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_ingredientvalue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Image"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_ingredientimg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Dipect"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_ingredientdescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_ingredientcommit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_white"
+        android:padding="5dp"
+        android:text="@string/commit" />
+
 </LinearLayout>
